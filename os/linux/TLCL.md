@@ -329,6 +329,70 @@
 
 ### Seeing The World As The Shell Sees It
 
+- Expansion
+
+	- How does the shell interpret wild cards in commands?
+
+		- I think this is about something with expansions. You see, before the command is executed, I think this so called ‘expansion’ expands the things that we wrote down. For example, if we put in $PATH, that means it’ll actually get the path and then print it! -> If we did it with echo.
+
+	- Pathname Expansion
+
+		- The mechanism of the wildcards is actually pathname expansion.
+
+		- It expands the filenames! With the wildcards.
+
+	- Tilde Expansion
+
+		- Didn’t know people called the ‘~’ notation tilde.
+
+	- Arithmetic Expansion
+
+		- The shell prompt can be used as a calculator. Like a REPL! For example: echo $((2 +2 ))
+
+			- For a more general way:  $((expression)) -> like this.
+
+		- Didn’t know arithmetic meant something like the old four ways to compute. 
+
+	- Brace Expansion
+
+		- Brace operations are cool! Don’t know how to actually define this but, it does iterations for you. {a..z}, {1..5} for instance. It will print those parts repeatedly! On the echo command of course.
+
+		- I think there’ll be a place that tells what you can do with the brace expansion. But the example that I saw on the book was making files in chronological date order. Mkdir {2007..2009}-{01..12} -> Like this!
+
+	- Parameter Expansion
+
+		- Well, this can be used in the command line for just putting out the actual value. Parameter expansion is what I think, variables! Environment variables like $PATH. 
+
+			- Good for printing, but I think it will be used way more better in shell scripting.
+
+		- To look at all your environment variables, use the ‘printenv’ command.
+
+	- Command Substitution
+
+		- $(command) -> is something that gives back a executed, delegated results! $(ls) will give you the results of the command, and you do another ls on top of that, it will give you a list of lists!
+
+		- It’ll sure be useful when I know what arguments I want to put in a certain command.
+
+- Quoting
+
+	- Double Quotes
+
+		- Double quotes will let you use special characters like $ in the commands, but it still will interpret parameter, arithmetic, and command substitution.
+
+	- Single Quotes
+
+		- If we need to suppress all the expansions, we use single quotes! It’ll just print out everything we want! 
+
+	- Escaping Characters
+
+		- Yeeep, escaping characters. Everywhere in programming. Even when you use double quotes, you can escape em with \. \a, \b, \n, \r, \t etc.
+
+- Summing Up
+
+- Further Reading
+
+	- Well the bash reference manual contains all the stuff over in this chapter. [Here!](http://www.gnu.org/software/bash/manual/bashref.html)
+
 ### Advanced Keyboard Tricks
 
 ### Permissions
