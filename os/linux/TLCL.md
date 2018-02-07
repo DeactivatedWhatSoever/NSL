@@ -395,6 +395,54 @@
 
 ### Advanced Keyboard Tricks
 
+- Command Line Editing
+
+	- Cursor Movement
+
+		- If we type in the command line, there are some places that we want to go. For example, the beginning, the end, one word, clearing the screen, etc.
+
+			- Ctrl-a(alphabet a? Beginning?) Ctrl-e(end?) Ctrl-f(forward) Ctrl-b(backward) Alt-f,b(one word! Why alt?) Ctrl-l clear the screen!
+
+	- Modifying Text
+
+		- Deleting characters, exchanging with others, converting words to upper or lower case.
+
+	- Cutting And Pasting (Killing And Yanking) Text
+
+		- Killing is cut and Yanking is paste. Ctrl u and Ctrl k I think. The pasting was Ctrl y. Yank!
+
+	- Completion
+
+		- The tab interface! Tab for auto completion! Alt-* for all possible stuff. But I’m not finding what the ‘meta’ key in Mac is. It doesn’t seem to work like Linux.
+
+			- How do completion work? Where does the completion actually get searched?
+
+- Using History
+
+	- Searching History
+
+		- Using less and grep!
+
+		- !88 -> Cool…. Execute the 88th command in history.
+
+		- Using ctrl-s or ctrl-r -> You can search history! Also, if you want to copy the command, then use ctrl-j. Last, if you want to get more results, then press ctrl-r
+
+	- History Expansion
+
+		- Use !! And you’ll execute the previous command!
+
+		- !string -> Execute something starting with this, !?string -> something containing!
+
+		- script -> This command outputs all the commands into a file in the current shell session.
+
+			- I wonder how the shell session is recorded? What makes a shell session?
+
+- Summing Up
+
+- Further Reading
+
+	- Well, there’s a pretty good article on computer terminals in [wikipedia.](http://en.wikipedia.org/wiki/Computer_terminal)
+
 ### Permissions
 
 ### Processes
