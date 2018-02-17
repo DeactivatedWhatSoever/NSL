@@ -445,6 +445,84 @@
 
 ### Permissions
 
+- Owners, Group Members, And Everybody Else
+
+	- id: finding out my identity.
+
+	- I’m wondering whether if you’re in a group, and that file has a permission to a specific user, does that mean, if I’m in the group then I can just access that file? If it has a specific owner, I wonder how that works.
+
+		- Ahh so the unix system usually creates a single member group for that user. 
+
+		- I wonder what the ‘world’ is about. Does that mean there can be anonymous people in linux? 
+
+		- I think the permissions cascade. If you’re the user, you can do anything with it. If not, then it will go to the group and check the privileges of the group, if not the group it will check the ‘world’.
+
+- Reading, Writing, And Executing
+
+	- rwx(Read, Write, Execute) for each, Owner, Group, World. Remember, the privileges work different whether the file is a file, or a directory. 
+
+	- chmod - Change File Mode
+
+		- Getting to know Octal and Hex. Actually the computer only uses binary but it’s sort of a convenience for humans. Octals can represent 3 bits, hex can represent 4 bits. So it’ll be easier for humans to read if there are too many binary digits.
+
+		- x = 1, w = 2, r = 4 If you add up all the permissions, it will be 7. So 7(user)7(group)7(world) will mean open everything for the user, group, and the world.
+
+	- Setting File Mode With The GUI
+
+		- When you ever get to see the file mode GUI, you’ll be able to understand everything.
+
+	- umask - Set Default Permissions
+
+		- When you create a file, it will have some default permissions. But the umask command will help you ‘change’ the default permissions on the files you create. But most of the time, you won’t be using this command unless you’re in a high security environment.
+
+		- Didn’t know there were special permissions. If you use the umask command, you have to enter 0000. Which has four digits. Not three. The first one is the special permission so, if you ever get to set it, look up for special permissions and check what to set.
+
+- Changing Identities
+
+	- su - Run A Shell With Substitute User And Group IDs
+
+		- The su command will let you login to a new shell as that user. Don’t forget the -(-l) attribute! It will give you some convenience by making your working directory for the changing user.
+
+	- sudo - Execute A Command As Another User
+
+		- Well, just the same as su, but not creating a new shell session. Look at the sudo -l and you can see what commands you can do!
+
+		- I got to know how sudo came out. Ubuntu was the guys that started this custom. Just giving them access to the commands that they want will actually make security better. Most people get tempted to just login to root. But Ubuntu made this not default to login to root. 
+
+			- Didn’t know in windows, to have root privileges, you have to give them the administrator privileges. Absolutely everything! No wonder it gets viruses and malicious software everyday. 
+
+	- chown - Change File Owner And Group
+
+		- Chown [owner][:[group]] file ... Sounds like ‘change owner’ lol.
+
+	- Chgrp - Change Group Ownership
+
+		- Well, this only changes the group permissions.
+
+		- Didn’t know chown only could change user privileges. That’s why chgrp was made. But from the later versions, chown was able to change both owners and groups!
+
+- Exercising Our Privileges
+
+	- Well this part is where you actually do the stuff. Well it was making a shared file for music. There was a problem about umask. The other users that come in need to create directories and files inside the shared directory, but the umask only lasts for the session. The book said this will be solved in chapter 11.
+
+- Changing Your Password
+
+	- passed [user]
+
+- Summing Up
+
+- Further Reading
+
+	- [Malware](https://en.wikipedia.org/wiki/Malware)
+
+	- adduser
+
+	- useradd
+
+	- groupadd
+
+	- You should learn how to maintain users, user groups! This is a part of system administration man.
+
 ### Processes
 
 ## Part 2 - Configuration And The Environment
