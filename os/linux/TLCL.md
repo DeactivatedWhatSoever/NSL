@@ -525,6 +525,80 @@
 
 ### Processes
 
+- Hmm… why do programs misbehave? Kernel panics? Why? I wish to know about this stuff a bit more. So, we can know stuff with these commands: ps, top, jobs, bg, fg, kill, killall, shutdown. 
+
+- How A Process Works
+
+	- Didn’t know processes had owners! So it has permissions. Also process ids are allocated sequentially. The kernel allocates memory to each process. Oh, and the processes get started by the /etc/init.init script. It’s a bunch of shell scripts that get executed when the computer is turned on. Well for more exactly, when the kernel gets active.
+
+		- It’s more of a parent process that makes the child processes. I don’t know who the parent is. Is there actually a mother process? And that process does the allocate the memory to the children processes? A process that allocates children processes. I think that’ll be right. Or a process that’s feature is actually allocating processes! 
+
+- Viewing Processes
+
+	- Tty is Teletype. It refers to the controlling terminal for the process. Dunno why macOS has ‘ttys’.
+
+	- When I print out ps x in macOS, I have some questions. First, It’s TT. TTY in Linux. STAT is what I think is like status? But gotta know that too. If the tty is a question mark, it means there’s no terminal process handling it. No controlling terminal!
+
+	- You can view the ‘snapshot’ of the computers process with the ps command. Ps -ef, ps x, ps aux, these will tell you more and more information.
+
+	- Viewing Process Dynamically With top
+
+		- If you want to look at all the changing things of process, you can use the ‘top’ command.
+
+		- I think you should get to know what swap space (virtual memory) is.
+
+- Controlling Processes
+
+	- Interrupting A Process
+
+		- You can interrupt a process with the  ctrl-c key. But not all programs can be interrupted by this way.
+
+	- Putting A Process In The Background
+
+		- The terminal prompt is the foreground, and there’s also a background running! So if you want to execute a program in the background, use the & in the command. Like so: xlogo &. You can see the programs in the background with ps and jobs commands.
+
+			- I think you should get to know what the ‘job control’ thing really is. Is it a process of some sort? 
+
+	- Returning A Process To The Foreground
+
+		- If you want to bring the job to the foreground, use ‘fg %(Job number, job spec)
+
+	- Stopping (Pausing) A Process
+
+		- I see that ctrl-c does a termination, and ctrl-z does a ‘stop’ for the process.
+
+		- We can move the stopped process either to the foreground or ‘background’. To move it to the background, use the bg %(job spec) command.
+
+		- Woah, didn’t know if you launched GUI programs in the terminal, it will show you a lot of information like error messages and status! Also, there’s a lot of options on the GUI programs!
+
+- Signals
+
+	- The ctrl-c, and ctrl-z stuff are actually sending ‘signals’! INT (interrupt), TSTP (Terminal Stop). That’s what they do! Also, the kill command sends a INT signal to the process that you’re trying to kill!
+
+	- Sending Signals To Processes With Kill
+
+		- Kill [-signal] PID ... HUP, INT, KILL, TERM, CONT, STOP There is no ‘clean up’ when you use -9(KILL). I wonder what clean up does. Also, the kernel just destroys the program. The signal doesn’t go to the program itself.
+
+		- All the other signals can be printed with the kill -l command.
+
+	- Sending Signals To Multiple Processes With killall
+
+		- Killall [-u user] [-signal] name...
+
+- Shutting Down The System
+
+	- There’s halt, power off, reboot, and shutdown. Shutdown has a lot of more various features if you see the options.
+
+- More Process Related Commands
+
+	- Pstree, vmstat, load, tload.
+
+		- The pstree command shows the processes in a tree! It means that it shows the hierarchy! Parent-child relationships :)
+
+- Summing Up
+
+	- I think you should go and find some monitoring tools for processes. There must be a lot of stuff that you can monitor and manage.
+
 ## Part 2 - Configuration And The Environment
 
 ### The Environment
