@@ -603,6 +603,64 @@
 
 ### The Environment
 
+- Environment variables. These variables will help us on making customized shell experience for the session that we are in.
+
+	- So we’re going to learn printing, set, export and alias.
+
+- What Is Stored In The Environment?
+
+	- I think you should distinguish the notion for shell and bash. 
+
+	- Examining The Environment
+
+		- There are three environments(?) that you can examine. The shell (set), environment variables (printenv) and aliases(alias).
+
+			- It’s pretty much hard to distinguish from set and printenv. Gotta go search and see how they are different.
+
+	- Some Interesting Variables
+
+		- PATH: A colon-separated list of directories that are searched when you enter the name of a executable program. And how do you make a program that is executable? It should have the permissions and stuff, but how can I actually make it executable by a command. Just with the power of inserting into a path!
+
+		- PS1: Defines the contents of the shell prompt. This is something that we can actually customize heavily. I’m thinking, once I know all of this stuff, I might be able to create my own shell program! Bash vs Zsh, nope. Gonna make blobsh. Just like that. 
+
+- How Is The Environment Established?
+
+	- The shell has two sessions. A login session, and non-login sessions. A login sessions is a session when you need to login. Put in your username and password. The latter is when you open a terminal in the GUI.
+
+		- When you start a shell session in either way, the shell will execute startup scripts for both types.
+
+		- login: /etc/profile, ~/.bash_profile, ~/.bash_login, ~/.profile -> they cascade in order.
+
+		- non-login: /etc/bash.bashrc, ~/.bashrc
+
+	- What’s In A Startup File?
+
+		- You can see it by yourself but, first, it checks whether the file is there or not. When it exists, it runs the file. After that, it expands the PATH variable by the bin of the users. Lastly, it exports the path. What the export command does is that it makes the shell available to the child processes of the newly updated PATH variable.
+
+- Modifying The Environment
+
+	- Which Files Should We Modify?
+
+		- Mostly, we should modify .bash_profile, or .profile. And all the other things to .bashrc. Shouldn’t modify global files like /etc/profile and etc. Lets play it safe and try not to do global configuration that might will hurt others. 
+
+	- Text Editors
+
+		- There are graphical text editors and text-based editors. gedit, edit, write, Kate etc. Also for text-based would be vi, nano and emacs. vi is mostly replaced with vim(vi improved). I wonder what the different between vi and vim are.
+
+	- Using A Text Editor
+
+		- When you edit some important configuration files, you have to make a backup for it. The usual convention for the backup file is .bak, .sav, .old, or .orig.
+
+	- Activating Our Changes
+
+		- The changes will not take effect until we restart the session. So, we force the changes to take effect with the ‘source’ command
+
+- Summing Up
+
+- Further Reading
+
+	- The INVOCATION section of the bash man page covers the bash startup files in glory detail. We could see what other files bash actually startup! I think there will be plenty of things to learn over here. If we know these things, we can configure more things on startup.
+
 ### A Gentle Introduction To vi
 
 ### Customizing The Prompt
