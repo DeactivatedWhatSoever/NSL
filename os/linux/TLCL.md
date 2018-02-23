@@ -663,6 +663,108 @@
 
 ### A Gentle Introduction To vi
 
+- Why We Should Learn vi
+
+	- We don’t want other Linux and Unix users to think we are sissies. I loved this comment lol. The most important thing with vi is that it’s universal in the POSIX environment. Also, the fact that we don’t need to put our hands on the mouse while editing some text.
+
+- A Little Background
+
+	- Well most of the systems use vim more than vi. Vi improved. Also, didn’t know that the maker of the original vi was a co-founder of Sun Microsystems!
+
+- Starting And Stopping vi
+
+	- vi, q, q! Nothing special!
+
+- Editing Modes
+
+	- Okay, vi has editing modes. If we just make a file with vi, then it will be in some mode. When you start typing, it’ll go like crazy since all the keyboard strokes are commands.
+
+	- Entering Insert Mode
+
+		- Press the ‘I’ key and you’ll be in insert mode. Which means you can actually write some text!
+
+	- Saving Our Work
+
+		- I see, so we need to get back to ‘command mode’. The mode where you can write some text is ‘insert mode’. Got it. Well anyway, if you want to save just write :w. 
+
+- Moving The Cursor Around
+
+	- You’ll know the famous lhjk. Begin with zero and end with money($). W for a word forward, b for a word back. {Number}G -> Moves to the line you want! And of course G is for end of file.
+
+- Basic Editing
+
+	- Appending Text
+
+		- Cool, didn’t know A would actually go to the end of line and start in insert mode! With a space of course(what a does).
+
+	- Opening A Line
+
+		- Ooooh, o and O. O is the thing that I didn’t know! Most of the stuff does the opposite I guess. O appends a new line above the line that the cursor is on.
+
+	- Deleting Text
+
+		- I normally use the ‘d’ command. But never used x. It deletes the ‘thing’ that is on the cursor.
+
+	- Cutting, Copying, And Pasting Text
+
+		- I knew that the d command does a cut, but how do we delete text and don’t make it go into the paste buffer?
+
+		- Yank! Yanking which is y, for the copying.
+
+		- P or p for the pasting.
+
+	- Joining Lines
+
+		- You can join loins with ‘J’. It also gives you a space after the join! Which is really convenient. 
+
+- Search-And-Replace
+
+	- Searching Within A Line
+
+		- The ‘f’ command will search characters. It just searches within a line.
+
+	- Searching The Entire File
+
+		- / -> and type in the word or thing that you’re willing to search. Then use the ’n’ key to search for the same result. Next! I wonder b will be back?
+
+	- Global Search-And-Replace
+
+		- Woah, didn’t know this would work. Searching every file?!  :%s/Line/line/g -> Wonder what this means!
+
+		- : -> They call this the start of an ‘ex’ command. % -> This means, the first line to the last line.  s -> it’s the command that does the search and replace. /Line/line/ The search pattern and the replacement text g -> This means global!
+
+- Editing Multiple Files
+
+	- Well, you can just edit multiple files by just passing in a lot of files to vi!
+
+	- Switching Between Files
+
+		- Use ’:n’  and ‘:N’ to move between files. You can’t move to the other file if you haven’t saved the edited file.
+
+		- You can also see the files that are edited with the :buffers ex command. 
+
+	- Opening Additional Files For Editing
+
+		- The ‘:e’ ex command does the work for this.
+
+	- Copying Content From One File Into Another
+
+		- Just yank a line and go between this and that. That’s it!
+
+	- Inserting An Entire File Into Another
+
+		- Woah, the ‘:r’ ex command does the job. It’s called ‘read’. It reads in the file and appends all that on the command.
+
+- Saving Our Work
+
+	- If you :w {filename}, then it’ll write another file with the name {filename}. This could come in handy. 
+
+- Summing Up
+
+- Further Reading
+
+	- I think you should make yourself more efficient with vim. Also check out neovim. Read the wikipedia articles about vim when you are curious enough :)
+
 ### Customizing The Prompt
 
 ## Part 3 - Common Tasks And Essential Tools
