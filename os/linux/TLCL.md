@@ -767,6 +767,34 @@
 
 ### Customizing The Prompt
 
+- Ooh, this chapter will reveal the inner workings of the shell and the terminal emulator program itself! 
+
+- Anatomy Of A Prompt
+
+	- The PS1 (prompt string one) environment variable shows how the prompt is displayed. It uses the escapable special characters. You can just search the internet and get the special characters. Maybe you should do some customizing yourself some day.
+
+- Try Some Alternative Prompt Designs
+
+	- You can put in \a -> and also \[\] for making the terminal interpret as the sound. This can get useful when we have some long going processes and when they finish, the prompt will tell us that it finishes with a ring of a bell!
+
+- Adding Color
+
+	- \033[0;3xm, \033[1;3ym -> These are the colors that the terminal interprets when they are in the PS1 variable.
+
+- Moving The Cursor
+
+	- There’s a lot of escape codes that moves the cursor in the way we want. I think you should find it and have a go sometime. Instead of using the zsh defaults lol.
+
+- Summing Up
+
+	- The shell does have a way lot more to customize. So you should take a day to find the perfect prompt for you. Or make something cool all the time! Best for you mate :)
+
+- Further Reading
+
+	- [ANSI Escape Codes](https://en.wikipedia.org/wiki/ANSI_escape_code)
+
+	- [Bash Prompt HOWTO](http://tldp.org/HOWTO/Bash-Prompt-HOWTO/)
+
 ## Part 3 - Common Tasks And Essential Tools
 
 ### Package Management
