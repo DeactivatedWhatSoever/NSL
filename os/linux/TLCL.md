@@ -799,6 +799,88 @@
 
 ### Package Management
 
+- Packaging Systems
+
+	- There are two major packaging systems. (.deb, .rpm) -> Redhat vs Debian. So, package systems is a system of how to package a file or program? I think. Well, I have always been wanted to know how a package system works. Is a package manager & package system the same thing? Lets find out.
+
+- How A Package System Works
+
+	- Package Files
+
+		- Package files are the bottom basic unit of a package. A package is a compressed form of files that represent the program.   The contributors, which are the maintainers of such package usually get code from upstream and maintain it like the same way in GitHub. Nothing really special about this. But the thing is, what happens when a new version comes out? Do they just ‘patch’ the files? Or do they actually delete everything and reinstall it? Oh and I’m not sure whether I understand the meaning of ‘install’ in computers. What happens when I ‘install’ a program? Gotta find out.
+
+	- Repositories
+
+		- These repositories are the same in Git. But these guys have like 3. A development stage, stable one, and for third party repositories for like DVD or DRM support. 
+
+	- Dependencies
+
+		- I think this could be the hard part for package management. How are you going to resolve all those dependencies? You’ll first need to find whether you have the dependency, and what will happen when you have a dependency that both are the same but the versions don’t match! Are you going to install both versions? Or are you going to just use the one that may be compatible for both of the packages! Also, how does the dependency get injected in the packages?
+
+	- High And Low-Level Package Tools
+
+		- Didn’t know there would be high and low level package tools. Well I did have a little hint when there was a rpm and yum command. Rpm does the installing and removing package files, and yum does the dependency resolution and metadata search.
+
+- Common Package Management Tasks
+
+	- Didn’t know you could actually ‘make’ packages with the low-level tools.
+
+	- Finding A Package In A Repository
+
+		- apt-get update apt-cache search package_to_search  That’s how you search for the packages you want!
+
+	- Installing A Package From A Repository
+
+		- apt-get update apt-get install package_name 
+
+	- Installing A Package From A Package File
+
+		- If you install a package file, you won’t be able to do dependency resolution since you install it right away with the low-level tools like dpkg and rpm.
+
+		- dpkg --install package_file
+
+	- Removing A Package
+
+		- apt-get remove package_name yum erase package_name
+
+	- Updating Packages From A Repository
+
+		- apt-get update; apt-get upgrade yum update
+
+	- Upgrading A Package From A Package File
+
+		- dpkg --install package_file Debian actually doesn’t have a way to upgrade from a package file. But rpm does! rpm -U package_file. The -I option is the install option for rpm.
+
+	- Listing Installed Packages
+
+		- dpkg --list rpm -qa
+
+	- Determining If A Package Is Installed
+
+		- dpkg --status package_name rpm -q package_name
+
+	- Displaying Info About An Installed Package
+
+		- Apt-cache show package_name yum info package_name  apt-get, apt-cache -> It seams that apt-get is a command that actually gets something remotely, and cache feels like something local. Should find apt-* related commands and take a look of the differences.
+
+	- Finding Which Package Installed A File
+
+		- dpkg --search file_name rpm -qf file_name  You can see what package installed vim by doing: rpm -qf /usr/bin/vim
+
+- Summing Up
+
+	- I got a huge expression on linux drivers. Didn’t know the difference with Windows. Windows has a driver disk. Which means, you have to install the driver to actually detect that device with the driver. But in Linux, it’s either support or no support of device. The kernel must have to driver to detect that device. If there isn’t a driver on the kernel, just implement it yourself. I know you can do that stuff.
+
+- Further Reading
+
+	- [Debian GNU/Linux FAQ](https://www.debian.org/doc/manuals/debian-faq/ch-pkgtools.en.html)
+
+	- [RPM](http://rpm.org/)
+
+	- [YUM](https://sites.duke.edu/linuxprojects/yum/)
+
+	- [Metadata](https://en.wikipedia.org/wiki/Metadata)
+
 ### Storage Media
 
 ### Networking
