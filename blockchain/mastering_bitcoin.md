@@ -69,31 +69,76 @@
 
 - Bitcoin Overview
 
+	- I know that the people in the network, which are miners, have to ‘mine’ the bitcoin transactions and add a block to the blockchain. The thing that I don’t understand is, they get paid for participating in the network by confirming transactions AND making blocks to the blockchain? 
+
+		- Confirming a transaction == Adding a block to the blockchain.  I’m not sure of this part whether it really is something or not. You should give searching a try.
+
+		- [The link for the search is here](https://bitcoin.stackexchange.com/questions/8918/which-is-the-relation-between-transactions-and-blocks). All the miners ‘confirm’ the transaction. Which I don’t actually know what that means. But if a whole block is confirmed, that block will be broadcasted through the network. I think I need more comprehension about this topic.
+
 - Buying a Cup of Coffee
+
+	- Well this just gives you an example of transaction. A from B. Wallet to wallet. You can view the real transaction over here: https://blockexplorer.com/tx/  
+	  0627052b6f28912f2703066a912ea577f2ce4da4caa5a5fbd8a57286c345c2f2
+
+		- I just looked at the confirmation number and it was massively big. So when the miners make a block, I think they confirm all the blocks in the blockchain. Well this is just a thought. Not confirmed.
 
 ### Bitcoin Transactions
 
 - Transaction Inputs and Outputs
 
+	- If you input a value to the transaction, there will be a fee! The input will be the amount that you really will send, and the output will actually have less than your input. The difference between the input and output is the transaction fee.
+
 - Transaction Chains
+
+	- Even this is the high level of transactions, it isn’t easy to comprehend for me. The output of one transaction is the input of the next transaction. Do you know what this means? I don’t think so. Well this does mean a chain. If we have a new transaction and make an input, the output will be the input of the next transaction. Joe needs to have the information that he sends and Alice needs to know the information that she received. And vice-versa.
 
 - Making Change
 
+	- Didn’t know wallets needed to actually make changes for people. Since bitcoin can be divided all the way, didn’t know they actually need changes. I think I should search more for this one since I don’t understand that bitcoin needs to make changes. 
+
+	- Transactions move value from transaction inputs to transaction outputs.
+
 - Common Transaction Forms
+
+	- If there’s ‘common’ transaction forms. That means there’s actually some other ‘forms’ of transactions. Wonder what they would look like.
+
+	- The ‘change’ thing is coming out again. Don’t really understand why bitcoins needs to do those kind of transactions! Well that is a common transaction.  Aggregating transaction: n inputs, 1 output  Distributing transactions: 1 input, n outputs
+
+	- I think you should find out ‘when’ and ‘how’ these transactions occur. If you don’t get through this, it won’t be easy for you to actually understand the transaction forms, I/O, chains, and etc.
 
 ### Constructing a Transaction
 
 - Getting the Right Inputs
 
+	- How can there be ‘unspent’ transaction outputs? I think the ‘unspent’ transaction outputs mean the ‘remaining coins’ in that wallet! That’s why bitcoin wallets need to deal with change! Because it doesn’t mean it actually just has the amount of 20! It actually means a transaction output leftovers!
+
+		- This is pretty much a guess, so please go and find out yourself after reading the whole chapter.
+
 - Creating the Outputs
+
+	- This is absolutely the same as above. It’s about change. 
 
 - Adding the Transaction to the Ledger
 
+	- I wonder how the transaction gets sent to the network. Will it have to be connected to the internet? What about the wallets? Are they just a program? How do hardware wallets work? How do they get into the network? What protocol do they use to communicate?
+
+		- They call the protocol, bitcoin node.
+
 ### Bitcoin Mining
+
+- The PoW and stuff, all the stuff that we generally know. Nothing new except got the initials of ASIC. Application Specific Integrated Circuits. 
+
+	- Still don’t know the confirmation and block making process and difference between the two. Does confirmation mean a creation of a block?!
 
 ### Mining Transactions in Blocks
 
+- A block of transactions, the priority of the transactions are actually the highest-fee transactions first! The bigger the money, the more confirmations it needs and gets.
+
+	- Lets check whether 1 block is 1 confirmation. 
+
 ### Spending the Transaction
+
+- Spending will make a chain. Also create transaction forms. From now on, we’ll see about wallets, addresses, signatures, transactions, the network, and mining. These are the key components of bitcoin. Not blockchain. 
 
 ## Bitcoin Core: The Reference Implementation
 
