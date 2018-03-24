@@ -5,9 +5,23 @@
 
 ### Why Did They Need to Change Java Again?
 
+- So Java came out to actually make developer just think about code and logic more than using up the CPU and every byte of memory as efficient as possible.
+
+	- Come to think of it, All the things that get developed, developers get easier to actually develop stuff.
+
+- So the challenge was, multi core CPU’s. We needed a way to actually provide ways to make use of them. Concurrency is the main issue in parallelism. And yes, that is the java.util.concurrent package, but it wasn’t enough. That’s why we started to use lambda enabled code.
+
+	- If we have lambdas, we can pass around functions and make callbacks more readable and easier. (Java still had callbacks and could be implemented by anonymous singular classes). But hey! We’re getting over and can do non-blocking stuff with lambdas.
+
+- OOP: Abstraction of data FP: Abstraction of behavior In the real world, we’ll need both of them.
+
 ### What Is Functional Programming?
 
+- The heart of functional programming: thinking about the problem domain in terms of immutable values and functions that translate between them.
+
 ### Example Domain
+
+- We’ve got three simple domains. Artist, Track and Album. We’ll use these domains to actually implement functional code. Pragmatic functional code.
 
 ## Lambda Expressions
 
