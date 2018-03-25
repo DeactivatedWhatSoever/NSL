@@ -117,31 +117,159 @@
 
 ### Java Virtual Machine Intro
 
+- What is the Java Virtual Machine? What is it for? Why did it come out?
+
+- Write once, run everywhere. Because of this, cross platform was a thing!
+
+- Memory allocation, memory acceptation, etc.
+
+	- This is also called Memory Management.
+
+- Garbage Collection
+
+	- Stop the world!
+
+- Object Finalisation finally() method
+
+- Class loader! I just wonder what this is.
+
 ### Memory Management
+
+- [Java 8 went from PermGen to Metaspace ](https://dzone.com/articles/java-8-permgen-metaspace)
+
+	- [Woah, so from now(Java 8) on, the PermGen space is removed!](https://www.infoq.com/articles/Java-PERMGEN-Removed)
+
+- [Difference between PermGen and Metaspace](https://stackoverflow.com/questions/27131165/what-is-the-difference-between-permgen-and-metaspace)
+
+	- The difference I’ve got from the course is that PermGen has a fixed size of memory and Metaspace can change space if the OS allows it.
+
+	- What is dynamic class(un)loading?
+
+		- Nowadays, classes may be loaded and unloaded during the lifespan of the JVM. I heard that once the class was loaded to the JVM, it could not get unloaded. Which means it’s permanent.
+
+	- What is the point of both PermGen and Metaspace having the java.lang.Class instances?
+
+- The heap memory is where all the object are? And those objects get garbage collected by the garbage collector with I think that the JVM manages.
+
+	- For this part, if the GC can’t collect enough memory that the system needs, the JVM or GC will raise the OutOfMemory Exception. 
+
+		- That’s why we need to try to make as less objects possible. If we use the ‘new’ keyword, that created object will go into the heap memory. 
+
+	- The thing is, the GC doesn’t always collect the objects inside the heap. There’s a allocation order. I think a collect order will be more appropriate. 
+
+	- 1. Young Generation 2. Old Generation 3. Permanent Generation(Dude, this is PermGem lol) => Metaspace or PermGen? In Java 8, there will be no PermGen, and meatspace will replace that memory space.
+
+		- If the objects don’t get collected, the objects will eventually go the permeant generation. If they get collected in the early stage, that’ll be good since the memory will be free.
+
+		- I think I need to know what we should put in each stage. Try not to make our objects go to the permanent generation since that’ll get all of our memory.
 
 ### How Can You Control the Memory?
 
+- Well for the best thing, is to make the smallest amount of objects and make the objects weight very light. That’s the best way to make the heap memory not clog full of useless objects.
+
+	- We also have a way to actually set the memory capacity for all the steps on GC. The allocation order, PermGen, metadata, and even all the other stages.
+
+	- [JVM memory parameters from Stack Overflow](https://stackoverflow.com/questions/14763079/what-are-the-xms-and-xmx-parameters-when-starting-jvms)
+
 ### Quiz 3: Java Virtual Machine - Memory - Quiz
+
+- How is memory allocated in Java? I got this wrong. I should go on the internet and see whether there’s anymore ‘exact’ flowcharts out there.
 
 ### Garbage Collection Questions
 
+- When does an object becomes edible for GC?
+
+	- When the program does not reference that specific object. Even the objects that use each other, will eventually get unreferenced if the program at some time doesn’t use them anymore.
+
+- When does the GC process run?
+
+	- When the JVM starts. I think I should put more search into over here and see whether how the JVM manages the life cycle of the GC. I think that GC cannot get destroyed in the JVM, if it does, JVM will crash anyway because the program won’t be able to get some memory.
+
+- What is the finalize() method?
+
+	- This is the method that the GC calls to actually finalize the object. Designate whether it’s going to get garbage collected or not.
+
+- You can ‘request’ to the GC to do a gc with System.gc(). Remember, it won’t do it right away since it’s only a request.
+
 ### Can I Tell the JVM to Collect My Garbage?
+
+- Yes, we can ‘request’ to the JVM with the System.gc() method.
+
+	- Remember, it won’t ‘always’ and run right away since it’s only a request.
 
 ### What is Stop-the-world?
 
+- When the GC does a GC, all the threads running on the program get paused. That will result to a pause on the program which isn’t a good user experience.
+
+	- The Stop-the-world method is actually easy to implement and fast. But to make the program not stop, there are other GC methods like incremental and concurrent methods.
+
+	- Incremental method is a phase where the GC does some specific GC and takes a lot of steps. It takes long, but doesn’t stops everything.
+
+	- Concurrent method is a phase that does the GC, but doesn’t stop the program.
+
+	- Well there’s not much information in this course about this topic. Guess I should go and search more.
+
 ### Quiz 4: Java Virtual Machine - GC - Quiz
+
+- When is the GC process running? 
+
+	- I got this wrong, but I think the quality of the quizzes really suck in this Udemy course. I mean, does CPU matter in GC? GC only checks the heap ‘memory’, which doesn’t really go care about CPU usage. Well if it does, then I’d be having a great time actually getting to know that.
 
 ### What is Object Finalization?
 
+- Saw an example over here and what it did was, implement the finalize method and called the System.gc(). 
+
+	- You’ll see that the GC calls the finalize() method.
+
+- Didn’t know but like System.gc, you can do System.runFinalization().
+
 ### Finalize or Finally?
+
+- Finally, is actually the try block thing. When you open a resource like a file writer, connection, or something like that, you need to close it. 
+
+	- I’m really not sure why we can’t just use it right away. Why do we ‘have to’ close it. Will it cause some errors? I think I should ask this.
+
+	- Freeing up resources. The close() method does that stuff for you I guess.
+
+	- Then we not everything have a close() method then?!
 
 ### Quiz 5: Finalization Quiz
 
+- Got two wrong but they were really ridiculous. The developer must write the finalize method for resource handling objects and stuff. That’s all.
+
 ### What is Class Loader?
+
+- A class loader gets the .class files and put them into the JVM memory. So that the JVM can use it and execute the byte code. 
+
+- The class loader has 3 types. Bootstrap, Extension, and Application(System). They go by order.
+
+	- Bootstrap: It gets the stuff from JAVA_HOME I think. The essential classes in the JDK.
+
+	- Extension: It gets the classes in the JDK, but the ext directory.
+
+	- Application: The actual classes that we put in the ‘classpath’. The class loader lastly gets the classes of our applications over here.
 
 ### What are the Class Loader Principles?
 
+- Since we can implement our own class loader, there are some principles that we must know and apply. 
+
+	- Delegation Principle
+
+		- If a particular class is not loaded already, the class loaders delegate the request to load that class to their parent class loaders. It passes on to the top!
+
+	- Visibility Principle
+
+		- The Parent can’t know the classes that the child class loaders loaded but the child can know the classes that the parent class loaders loaded.
+
+	- Uniqueness Principle
+
+		- Only one class can get loaded of that kind.
+
 ### Quiz 6: Class Loaders Quiz
+
+- What I learned most over here was, ClassNotFoundException and NoClassDefFoundException.
+
+	- It’s easy when we didn’t add those classes to the class path. But the problem is, these two exceptions still occur when we actually have those classes loaded! Lets search this and see if there are any solutions over here.
 
 ### Java Virtual Machine - Wrap-Up
 
