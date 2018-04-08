@@ -144,33 +144,111 @@
 
 ### Bitcoin Development Environment
 
+- Well this is it. Finally a technical chapter!
+
 ### Compiling Bitcoin Core from the Source Code
 
 - Selecting a Bitcoin Core Release
 
+	- Just selecting a version for git tag.
+
 - Configuring the Bitcoin Core Build
+
+	- Read the README and then go to the doc directory and you’ll get to see the build docs of each os.
+
+	- First we run the autogen.sh file. I think it generates all the code that we need? What is m4? 
+
+		- build-aux. Something like this.
+
+		- This just creates some configuration scripts automatically.
 
 - Building the Bitcoin Core Executables
 
+	- So first, you generate the configuration with autopen, and configure it, then compile the source code. When we actually compile the code, that means we are actually getting all the executables.
+
+		- So ‘make’ does the compilation, make install? What is the difference. Should find out.
+
+		- [Difference between make and make install](https://robots.thoughtbot.com/the-magic-behind-configure-make-make-install)
+
+		- Actually, it’s just build and installing the built source code to the right places.
+
+		- The definition of install, is I guess, putting the right files into the right place so the user can execute the program! Of course the installation will be binary files that can be executed by the computer right away.
+
+	- Once we build the bitcoin core executables, we’ll get two commands.  which bitcoind which bitcoiin-cli
+
 ### Running a Bitcoin Core Node
+
+- Running a bitcoin node means, that you want to develop software that is related with the bitcoin network. Like validating the blocks yourself, or actually validate the transactions that you yourself send. You can make a confirmation for the first time I think. 
+
+	- The computer that is going to participate in the bitcoin network must need at least 125GB of disk space and 2GB of RAM. Well, more is good in this space!
 
 - Running Bitcoin Core for the First Time
 
+	- When you run the ‘bitcoind’ command which is obviously bitcoin daemon, it will prompt you to set a RPC password. I think this is because of just making 1 minor per 1 request API. If everyone gets public access to the API, then the network will get useless traffic and get clogged. So I think it’s a good way to give away API keys so only authorized people can use the specific APIs.
+
+	- When I just run the bitcoind command, it just keeps on downloading the blocks. I wonder when it will finish. I gave the -printtoconsole option to see what it prints. I’ve been running it for like a day and it’s still printing!
+
 - Configuring the Bitcoin Core Node
+
+	- I can get info with the getinfo keyword. But they say it got deprecated and got replaced by getblockinfo and getnetworkinfo. 
+
+	- There’s a lot of other configurations for the bitcoin core. You can control a lot of the network node and the storage of the blockchain. If you want to see a list of them, just enter bitcoind -h
+
+		- Yep, there’s like more than 100 configurations.
+
+		- Connection options, Wallet options, Debugging/Testing options, Chain selection options(Testnet, test chain!), Node relay options, Block creation options, RPC server options. Wonder why there are so many options. Could there be bitcoin client optimization? lol
+
+	- By default, the bitcoin core just indexes the transactions that you did. But you can get ‘any’ transaction if you just configure it! txindex=1 -> That’ll do the job.
+
+	- Yep, the configuration and the optimizing points are for resource constrained systems mostly. 
 
 ### Bitcoin Core Application Programming Interface (API)
 
+- Since it used curl, I thought the API was actually networking with HTTP. But it says most of the commands are RPC commands. That’s why we set an RPC user and password in the configuration. Since version 16, it just goes with a cookie authentication! 
+
+	- Well anyways, when I execute the bitcoind command, I think it’s actually a server! But dude, we have to think what this really is. How it get serve all that and why it has an IP address. I think that’s for RPC networking. Or do other programs do this too? Gotta find out.
+
 - Getting Information on the Bitcoin Core Client Status
+
+	- The status command has all changed. We can get more specific information from other commands. The getinfo command is now deprecated.
+
+	- Instead we get, getblockchaininfo, getnetworkinfo, and getwalletinfo. Pretty much specific now!
 
 - Exploring and Decoding Transactions
 
+	- So you can get the raw transaction with the ‘getrawtransaction’ command and decode the result of that raw transaction with ‘decoderawtransaction’ command. I wonder why they did this.
+
+		- So the question comes again. A transaction comes in, what does it mean if it has 0 confirmations? Can it go into the block? How does the blockchain make the transaction go into the block? If the transaction is ‘confirmed’ is that when it goes into the block? So the transaction can be occurred but it needs to be confirmed to be able to get added to the block. So what exactly does a 0 confirmed transaction mean?
+
+		- So when the transaction is confirmed, then to transaction has is immutable. Before the confirmation, it can be modified and stuff. But when it’s modified, it won’t get confirmed! Or it will be only modified on one computer, so the others will confirm another hash! I think I’m starting to get this.
+
+	- The transactions actually get a chain of transactions. The input transactions, and the output transactions. They are all connected! So a block has a lot of transactions. And the transactions also have connected transactions
+
 - Exploring Blocks
 
+	- We explored transactions on the last section, now we get to explore the upper point. The block. All famous block! Of the blockchain!
+
+		- Getblock, getblockhash
+
+		- Obviously, we can get the block by its block id. Which would be the hash of it I guess? See all the transactions inside, and the confirmations etc. 
+
 - Using Bitcoin Core’s Programming Interface
+
+	- I think you should go and see what an RPC is exactly. It I thought it was a protocol. And it says it communicates in HTTP! 
+
+		- [RPC vs HTTP](https://www.quora.com/Why-HTTP-is-not-RPC)
+
+		- Well, first, we need to know that HTTP is just a transfer protocol. 
+
+		- RPC is just a standard to call code remotely. It’s the same category as REST!
+
+	- We can use the client libraries that just ‘wrap’ the calls of the bitcoin-cli! There’s a lot out there, but I’m sure that I could make a good one. Open source it, and make it my library. Awesome.
 
 ### Alternative Clients, Libraries, and Toolkits
 
 - C/C++
+
+	- Gotta learn this language ... Since everything is written in this lol.
 
 - JavaScript
 
@@ -182,11 +260,17 @@
 
 - Go
 
+	- Going to implement this client! In Go! 
+
 - Rust
+
+	- Thinking about Rust too. I think it could be a great language for distributed computing. But I’ve got to find whether there’s a good language for distributed computing. With that language, we’ll be able to implement a better blockchain. A distributed system actually.
 
 - C#
 
 - Objective-C
+
+- Pretty cool that there isn’t a Kotlin implementation yet. Well there could be someone writing it. But there’s also only one ‘go’ client too. I think I should make a project called ‘gobtc’. That’ll be a great toy project for learning the go language.
 
 ## Keys, Adresses
 
