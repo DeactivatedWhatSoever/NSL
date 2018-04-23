@@ -93,7 +93,195 @@
 
 ## Week 2
 
+### Creating Models in Design
+
+- Models: Bridging concepts and solutions. I wonder what this really means. As I think, is that models are something that makes concepts into actual solutions. But it’s the bridge. It’s the connector. It’s not even a concept or an implementation. Design to implementation. In the middle. So it actually helps you make the design to implement it in real life.
+
+### Languages Evolution
+
+- Languages have been evolving through the years. The video did a example with a developer called Ted. 
+
+- From the 1960s, computer resource was very low. Which means, we needed to use RAM, CPU power really strictly. I think that’s why the programming languages could only be written in one file and had only one global object for persisting data.
+
+- In the 1970s, the abstraction got bigger. They wanted to make data a little bit more abstract, and then it became from making other files with header files. 
+
+- 1980s, OOP comes in. The object is a factory, and no longer computing power is a threat. It’s the developer’s productivity that was the main threat.
+
+### Four Design Principles
+
+- Abstraction
+
+	- Abstracting away something means to simplify something. Over here, we need to make a concept from the context we are within. Defining the context is the most important thing since then we can define the attributes for the concept. 
+
+		- A class represents a concept in OOP, and we can abstract it away by defining the needed attributes that represents the current context.
+
+- Encapsulation
+
+	- Making data integrity, exposing and restricting. 
+
+	- When you have something, that something should be grouped in itself. That should represent itself with that data. If it’s connected and have dependency with others, we’ll have to think all those connections as a whole. Which means low maintainability.
+
+	- A capsule is the concept of this principle. We can access some attributes, but mostly it’s restricted from others. Only inside of the capsule can manipulate with the data inside.   We can expose data that we really want, but we can also restrict the data. 
+
+	- As a result of this principle, we can have less error-prone designs. The data represents itself so we don’t need to think about the others.
+
+- Decomposition
+
+	- I think this principle really goes well with the encapsulation principle. But what I’m thinking is, to abstract everything, we need to do encapsulation. But if we need to do encapsulation, we also need to decompose. 
+
+	- Decomposing something means to split different parts from a whole. Think about a car where all those parts make a car. Even the parts have different parts. 
+
+		- We also need to think of the lifetime of the parts, see if the parts are stick to a certain number or dynamic. Last, we need to know whether the what part is sharing with each other. This does put a dependency with each other, but I’m sure that it’s something that’s generalized. 
+
+- Generalization
+
+	- I thought abstraction was generalization. But these two words are absolutely different. We absolutely need to understand both of these concepts as clear as possible.
+
+		- Generalization is actually making the subject ‘general’. Abstraction is defining the behaviors and attributes of the subject. To make something general, we need duplication. Only when we start to see when something starts to get duplicated, we can generalize it and write one thing once. 
+
+		- To achieve this behavior of generalizing duplication, we use a concept of inheritance. A class can have a child. The parent class gives its attributes and behaviors to the child. The child also can have its specific needs. Because of this, if we find another class that might get duplicated, we just inherit the superclass and all is well.
+
+	- This is just a concept, but I wonder why Java created interfaces to make generalization. Would interfaces used to try generalizing behavior? Why only behavior? Lets think about this on the next lesson.
+
+### Expressing Design Structure in Java & UML Class Diagrams
+
+- Abstraction in Java and UML
+
+	- We can present the concept of a program with a CRC card. Putting the class name, attributes and behaviors, and then the connections of other objects. 
+
+	- On the other hand, on UML diagrams, we are getting closer to code. Which means we need to specify the data types, and also match the convention of that language. First, to make abstraction, we need to get the best name for the class name. Then, we start to find what attributes and behaviors it have. Remember, we need to specify the data types for thr attributes, parameters and return types for the behaviors. 
+
+- Encapsulation in Java and UML
+
+	- It’s cool how all of these principles come along so nicely with each other. We need to know what data should be collected inside a class. The attributes must be only used for that particular class. So, once we have decided the attributes, we need to expose or restrict them to other classes. 
+
+	- To restrict, we can use private identifiers. If we want to expose, we use public. It’s represented - or + in UMl. 
+
+	- We can represent restriction with setters and exposure with getters. By implementing our own rules in there, we can sure make everything encapsulated inside that class. 
+
+- Decomposition in Java and UML
+
+	- Somethint that we need to know the best. I’ve got a lot of insight from this principle. A whole into different parts, and different parts to a whole. We will be talking mostly about relationships over here. 
+
+	- We have three types of relationships. Which are aggregation, composition, and association. 
+
+		- Association is a relationship that are loosely coupled. The two objects might have each other like a many to many relationship. Both can have a lot or none. I think I need more examples of this relationship. It’s pretty hard to understand. But the best understandi g that I got was when it was explained in code. Ou can send parameters to each class. They don’t seem to have rach other in attributes. Well if they had attributes, it means they’re dependent with each other. That’s why they call it DI. Try to make dependency as low as possible. Or make it clear. Just passing around paramteres! We put 0 .. * in both sides. 
+
+		- Aggregation is a loose has a relationship. Of course a class has a relationship in its attributes from now on. We tend to give the whole a uncolored diamond and a 0..* relation. This is pretty much easy to understand becuase it means the relationship is optional. 
+
+		- Composition is the most coupling relationship. To indicate that it’s a composite relationship, we give a colored diamond and 1..*. The class must have an attribute of that attribute. Which means, the attribute must be set and not be null. It must habe at least one present! So this is probably used when we need an attribute always  
+
+- Generalization with Inheritance in Java and UML
+
+	- Inheritance in Java can be achieved in several ways. With the extends keyword, we can make objects inherit all the attributes and methods.
+
+		- I heard that there are a lot of problems with the ‘extends’ keyword. Wonder why.
+
+		- Remember, the ‘abstract’ keyword makes the class not instantiate. So it’s just a class that gives you the most generalized form.
+
+	- The thing is, when you make a super class, you have to know what you’re trying to achieve. If the child class really needs to actually needs Generalization. The key is, not inheritance, but generalization. You have to know when you’re actually going to generalize your software component.
+
+	- Now, to express inheritance in UML, all you have to do is draw an arrow standing up from the child to the parent class. 
+
+- Generalization with Interfaces in Java and UML
+
+	- Interfaces. These are just there for you to define behaviors only. This will let you define only behaviors, and then, it will make your object be able to do polymorphism. 
+
+		- Polymorphism, something that can be A can be B. If classes inherit or implement the interfaces, then it will be able to run the behaviors. 
+
+		- I think we need to know why interfaces came out and how we can understand to use them more. When to use abstract classes and when to use interfaces.
+
+	- To express interfaces in UML, the class points to the interface with a spotted arrow(is this right?). Then it indicates that that class implements that interface.
+
+### Assignments
+
+### Review
+
 ## Week 3
 
+### Design Principles
+
+- Coupling and Cohesion
+
+	- You need to know what the difference between coupling and cohesion.
+
+		- Coupling is the relationship between modules.
+
+		- Cohesion is the relationship inside the module.
+
+	- Coupling can be distinguished by loosely and tightly coupled.
+
+		- There’s a great metaphor with LEGO and puzzle pieces to explain coupling. It’s mostly about how it can get connected with all the other modules.
+
+		- LEGO’s can be connected with mostly anything! Well it does sometimes have specific needs but still, mostly they’re loosely coupled.
+
+		- On the other hand, puzzle pieces can only be connected with a specific one. So it’s tightly coupled because it can only be connected with one or a few.
+
+	- Cohesion can be distinguished by high and low cohesion.
+
+		- This mostly tells you about the number of responsibility that the module has.
+
+		- If it has a single responsibility, then it has high cohesion. If it has a lot of responsibilities, and the responsibility is not clear, then it has low cohesion.
+
+- Separation of Concerns
+
+	- What I understood about this is, dependency injection. Encapsulating the behaviors and attributes into classes. 
+
+		- Also, when you put in dependencies, you put in interfaces. So when you want to have a different type of attribute, all you have to do is inject the right object that has implemented the interface! 
+
+		- All this is actually separating the right things. The concerns, which is really concerns, that must be encapsulated into their own behaviors and attributes. 
+
+	- I think dependency injection is mostly what I could think over here. But that’s just an example in this lecture. I think there will be a broader set of examples with separation of concerns since it’s a concept. There should be more to find out. But really, the basic part of this concept is, separating the classes behavior and attributes so it represents its own purpose and responsibility.
+
+- Information Hiding
+
+	- It’s a really important concept in the world of encapsulation. You need to hide and reveal what you want to the users.
+
+		- The user shouldn’t know the implementations or change it. They should just know how to use the class. Whether getting the value of the attributes, or invoking a specific behavior. 
+
+		- To control the hide and reveal, we can use access modifiers in Java. Public, protected, default and private. They all have their own levels, and we can use them to reveal or hide the information in our classes.
+
+- Conceptual Integrity
+
+	- This lecture was about being consistent. All the people who are working together should have a similar concept of thinking. 
+
+		- Having code reviews, and making coding standards would be a great way to have conceptual integrity. Data integrity. Different thing but I think you should know the differences.
+
+	- The code that everyone writes should be consistent and they should look and feel the same as like as one person wrote the whole entire program. In that way, people who come in new, will be able to understand the code much easier. 
+
+	- Remember, being consistent about the concept! That’s the important thing to learn in this lecture.
+
+### Generalization Principles
+
+- Inheritance Issues
+
+	- The thing that I learned from cypher when I came to my new job. There, he says that “What would you like to destroy in the java language?”. And the answer is ‘extends’. People ought to use the extends keyword with no thought.
+
+		- The though is, they use it for only refactoring out common attributes and behaviors. A superclass and a subclass, there’s that for a reason. Not for just refactoring out repeated code. Subclasses must have all the responsibilities as the super class and also has its own specific responsibility. Otherwise, you don’t need inheritance for that class.
+
+	- The SOLID -> L -> Liscov whatever principle is in this. The mean thing about this is, you have to make your subclasses have all the responsibilities from the superclass and have its own special needs.
+
+### Modeling Behavior
+
+- UML Sequence Diagram
+
+- UML State Diagram
+
+- These two chapters are about writing sequence and state diagrams on UML. I’ve mostly read these from other people. Sequence is really as it is, if there is a certain task, the diagram will show the start to the end of the behaviors of the objects. 
+
+	- On the other hand, state diagrams represent the state changes of the objects. Beware, the objects must have state. The state name, the activity that changes the name and etc. These are essential to represent a state and the change of the state of the object.
+
+### Model Checking
+
+- Model Checking
+
+	- What I learned from here is mostly testing. Verifying what you designed is a really important thing. Before you start development, you need to make sure all the concepts and state flows are right. If you don’t get it right, then there will be a serious problem when you start development. 
+
+	- So how do you check your model? Mostly it’s simulation and finding all the edge cases by yourself. Where you just keep testing the states and the changes of the states. See if that value of the state gets changed in a non observable way. 
+
+		- We can use the state model to examine the validity of the model. Modeling Phase, running phase, and the analysis phase. It’s mostly just checking with the mind, actually running it, and fixing or refactoring the flaws.
+
 ## Week 4
+
+### Capstone Challenge
 
