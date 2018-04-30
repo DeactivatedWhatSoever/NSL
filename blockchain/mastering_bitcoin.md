@@ -276,35 +276,171 @@
 
 ### Introduction
 
+- In the introduction paragraph, we mostly look at how cryptography is used in bitcoin. I didn’t know that cryptography isn’t the key in cryptocurrency since the data that is transferred around isn’t encrypted. 
+
+	- Cryptography inside cryptocurrency, the most important factor of this is, representing that the bitcoin is the property of the user’s. That’s where the ‘wallet’ software comes in. We only put in the transaction data in the blockchain and The Who and where representation is mostly the key thing. That’s where cryptography is mostly used. 
+
+	- We use a private key (secret) to make a public key. The public key represents the bitcoin address, and the private key represents whether that bitcoin is the users or not. 
+
+	- In this chapter, we’ll get to see the maths inside cryptography and how it applies to bitcoin. See the various encoding formats to represent the private, public, address, and script addresses. Lastly, we look at the advanced use of public and private keys.
+
 - Public Key Cryptography and Cryptocurrency
+
+	- In cryptography, the most important thing is, encrypting the thing fast and making that thing impossible to decrypt. The point is, encrypt fast, decrypt slow. 
+
+	- Well the public key cryptography made a lot of mathematical discoveries like prime number exponentiation and elliptic curve multiplication. Bitcoin uses elliptic curve multiplication. 
+
+		- Check what those things are man. Especially elliptic curve multiplication.
+
+	- In bitcoin, when you do a transaction, the the wallet makes a public key from the private key. The keys have a mathematical relation and the public key can confirm the signature that is made from the private key. So the public key can validate the signature. These two things can be revealed in the bitcoin network, so the people in the network can use the signature and public key to validate the transaction.
 
 - Private and Public Keys
 
+	- Private Key -> Elliptic Curve Multiplication -> Public Key -> Hashing Function -> Bitcoin Address
+
+		- Remember, all the steps cannot be reversed. You can’t decrypt a bitcoin address to the public key, and can’t decrypt the public key to the private key.
+
+	- Why Asymmetric Cryptography = Public/Private Keys
+
+		- The private key is actually private to the person, but the public stuff, which is the public key and the signature can be verified whether its valid or not! By anyone! That’s the main reason the the bitcoin network used this. So that means, the confirmation engine confirms the signature and the public key with this? Oh my god, if it really is that, then I am mind blown!
+
 - Private Keys
+
+	- To generate a private key, you need to choose a random number between 1 and 2^256 - 1. Pretty cool that the SHA-256 means Secure Hash Algorithm 256 bits. A number that is 256 bits. That’s the key of this algorithm. If it goes to 512, it’ll have way more possibilities of the random number.
+
+	- So they say, the SHA256 is just a cryptographic function. One way ticket man, and it’s not encryption. Something that’s an encryption is, that can be decrypted right?
+
+		- Have a go and understand how the SHA-256 makes ‘fixed’ size outputs.
+
+		- [SHA-256 JavaScript Implementation](https://www.movable-type.co.uk/scripts/sha256.html)
+
+	- So the private key is a really large random number. 1~2^256. I wonder how they validate that this key is the same with another guy? Like, for instance, if the private key is 1, is it represented different from the other guys who have 1?
+
+		- [So if a private key is a random number, it means it can collide right? ](https://bitcoin.stackexchange.com/questions/7724/what-happens-if-your-bitcoin-client-generates-an-address-identical-to-another-pe)
+
+		- [Got it. So the RSA or ECDSA makes the random number ](https://en.bitcoin.it/wiki/Private_key)
+
+	- Remember, you have to know better about asymmetric cryptography algorithms like RSA and ECDSA. Bitcoin uses ECDSA and SSH uses RSA I think.
 
 - Public Keys
 
+	- It’s calculated from the private key by using the Elliptic Curve Cryptography function. K(Public Key) = k(Private Key) * G(Constant, generator point??) 
+
+		- To understand the generation of the public key and what it actually can do, we need to know the transferee, the hash function!
+
 - Elliptic Curve Cryptography Explained
+
+	- Dude, I didn’t understand a thing when I read down the passage. But the thing that I got into my head is, how to draw the graph. P3 = P1 + P2 -> You’ve gotta get this on. Oh they also say something about the point of infinity.
+
+		- https://www.youtube.com/watch?v=Aq3a-_O2NcI
+
+		- https://www.youtube.com/watch?v=dCvB-mhkT0w
+
+		- Searched ECDSA on youtube. 
 
 - Generating a Public Key
 
+	- K(Public Key) = k(Private Key) * G(Generator Point in the secp256k1) 
+
+		- This math only works in one way and that means the opposite doesn’t work. You can’t make the Private key by just dividing the G to the K.
+
+	- Bitcoin uses the OpenSSL cryptographic library to do the maths. The ECDSA function is EC_POINT_mul()
+
+	- If you want to know the internals and prove how this algorithm is a one way ticket, then you should go and study it all more. And find out the other asymmetric cryptography algorithms. Whether there are more out there and why they are used in what situations.
+
+		- If you know these kind of stuff, like just the 10,000 feet view, then you can find out what to use what on where. That’ll be the best part for you as an engineer. If you want to make a better algorithm, that’ll come in when you want to do science. 
+
 ### Bitcoin Addresses
+
+- The bitcoin address is not identical to the public key. The bitcoin address is derived from the public key. The formula for turning the public key into the bitcoin address is: A(Address) = RIPEMD160(SHA256(K(Public Key))). After, you have to make this 20 bytes / 160 bits number into a human readable String. Which we can get some help from encoding! Base58Check Encoding. This encodes the address into a String that has a base of 58 characters.
+
+	- This bitcoin changing hash function is used in a lot of places in bitcoin. The address, script address, PoW algorithm and etc.
 
 - Base58 and Base58 Check Encoding
 
+	- I got a lot of information over here. Got to know what the ‘base’ means in all this base 64, 62, 58 stuff. The base is actually telling you whether how many character sets are you going to use to represent the numerical stuff. If the base is 10, we will get 1,2,3,4,5,6,7,8,9 to represent all the numbers. If we go 16(Hex) then we’ll get a,b,c,d,e plus the Base 10. 
+
+	- Since binary data that is attached on emails, we need to be able to represent all that data when we send it! That’s when Base64 comes in and it encodes the binary into a String that can get transferred and human readable. If the binary file is bigger and bigger, that means the Base64 String will get bigger and bigger. Well this is pretty cool. I think Base 62 and 58 came out to get some representations of themselves. 
+
+		- Base 58 excludes characters that can be identical discarding their fonts like l, I, o, and 0. These letters and number will be excluded from the character set.
+
+	- It’s so cool that I got to understand this stuff. I’ve always tried to understand what this is for but I never got the chance to actually search it in the internet. Which sucks. But still, I got it. 
+
+		- Base 58 Alphabet: 123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz
+
+	- So how does the bitcoin address get encoded? It gets encoded by the almighty Base58Check encoding method. 
+
+		- How do we find out that the Base58 encoded string is valid or not? That’s why we use the Base58Check encoding technique. First we get the payload which will be the bitcoin address or something else. Then we put a version prefix in front of the payload. After that, we make a validator checksum. The checksum is filled with a hash of a hash. SHA256(SHA256(VersionPrefix + Payload)) = Checksum. After that we add all them up and Base58 Encode it. There we have it. The result of that is a Base58Check encoded string.
+
+		- Version Prefix: We have a chart that shows what kind of prefixes there are. Testnet address, pay address, etc. Check it out when you really need them.
+
 - Key Formats
 
+	- Private key formats
+
+		- There are a few private key formats. The raw format is 32 bytes. Bit? Which is binary. Also can be presented in Hex, WIF, and WIF-compressed. WIF and WIF-compressed is a Base 58 Check Encoded thing. So it has a version prefix.
+
+	- Decode from Base58Check
+
+		- From now on, it’s all about using the functions of the ‘bx’ library. Which I didn’t have when I was studying this. Couldn’t bother to actually go install this stuff since it won’t be that much of something to actually put in my head. All I need to know is to decode, encode, and that’s it.
+
+	- Encode from hex to Base58Check
+
+	- Encode from hex (compressed key) to Base58Check
+
+	- Public key formats
+
+		- Public keys are a point of the elliptic curve! It’s just one of them. 
+
+		- The public key can be compressed or not. 
+
+	- Compressed public keys
+
+		- This is a critical thing in the blockchain. Everything must be compressed! Because the blockchain will get bigger and bigger. I wonder if there could be stuff like sharding in the future! Whether to make the blockchain small in ‘weight’. The size of the binary. 
+
+		- They compressed the public key by using the mathematical stuff. The ECDSA has a formula, so you only need to know the x value. That makes the public key half in size! We can use these kinds of stuff to give the calculation some weight and make the weight of the blockchain lighter.
+
+		- The compressed and uncompressed bitcoin addresses are different from each other. But they are still valid. It’s pretty much cool how all of them 
+
+	- Compressed private keys
+
+		- Funny story hear. Actually, compressed private keys is actually a misnomer. The compressed version is actually heavier than the uncompressed one lol. Because it has a byte more to indicate that this is a compressed private key. What it means is, whether it’s compressed or uncompressed, compressed or uncompressed public keys can be derived from that private key. It’s because of the ‘indication’ that these came out.
+
 ### Implementing Keys and Addresses in Python
+
+- I forked the library that Vbuterin made. It’s pretty cool for a guy to make the client in python in those early ages. If I could go back in time, I would go right away and join the blockchain community when I get my first access into a computer. 
+
+- Forked the library that Vbuterin made and put the examples in the examples directory. I had to do this!
+
+- Did an example of the whole private key generation to bitcoin address transformation. It was a long journey and it wasn’t easy. Also looked at how the math works in making public keys. Compressed and uncompressed!
 
 ### Advanced Keys and Addresses
 
 - Encrypted Private Keys (BIP-38)
 
+	- What I think when I read this paragraph is that the hardest thing for normal users to manage is the private key. How is it going to be ‘safe’? If you have a backup, which is hard for normal users to actually make anyway, that backup can get stolen from anywhere! So people thought of encrypting the private keys. 
+
+	- Which people say isn’t really easy either. There’s a hashing algorithm called BIP-38 which is made under the standard of AES (Advanced Encryption Standard) made by NIST. The payload is the private key and a passphrase which is very long and the user must remember it! Then it will get encrypted and can be decrypt with the passphrase. It also has a prefix of 6P when it’s encrypted by BIP-38
+
 - Pay-to-Script Hash (P2SH) and Multisig Addresses
+
+	- The original bitcoin address is called a pay-to-public-key-hash (P2PKH). Which doesn’t have any additional features when sending a transaction. All you do is ‘send’. People wanted more and wanted features when sending transactions. Like putting in an actual ‘script’. It’s all the same except that the payload is now the script that gets hashed. 
+
+	- An example of the implementation of the P2SH is the multi signature addresses. For example, you can let a wallet make a transaction and get signed by multiple people! Only when the multiple people’s signature are obtained, then they can make a transaction. 
 
 - Vanity Addresses
 
+	- To make it simple, it’s just an address that has special characters that the person decides. For example, having “1Kid” in front of the address. There are vanity pools that creates these kinds of addresses for you. Lending the computing power to find the addresses lol. 
+
+	- Okay, here comes the security problem. Attackers tend to hack the website and display their addresses instead of the owner’s. But if they make a vanity address that has a lot of characters, it won’t be easy for the attacker to make their own vanity address since they’d have to pay way more for that particular address. It can be very expensive, but cheap. 
+
+		- I think the best way is just creating new addresses for the people who need the address. A public address floating around the site won’t be nice if you just think about it like that. Maybe the best way could be hosting it on GitHub? What the attacker does a CDN attack and makes everyone have the site of the attackers? Well don’t know about that man. I don’t know if vanity addresses are for security. It’s just for the human mind I think.
+
 - Paper Wallets
+
+	- [http://bitaddress.org](http://bitaddress.org/)/ -> The only thing that you should get from over here man! Making hard and solid safes is the best way! 
+
+	- I think you should have a go on making your own solid wallets. Make a paper wallet and pass em around to everyone. That’ll be really fun!
 
 ## Wallets
 
