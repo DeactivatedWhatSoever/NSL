@@ -101,17 +101,61 @@
 
 - Template Method Pattern
 
+	- First, you need to know what a behavioral pattern is. I need to know what it really is! 
+
+		- So the behavioral patterns actually solve how to run a behavior in software component.
+
+	- Superclass, template methods. Template methods are the methods that has similar functionality with some other classes.
+
+	- I think that this pattern is used when we have a main super class and subclasses that have a lot of common behavior. I think it’s just plain inheritance and the world ‘template’ explains it all. A superclass that is the template, and all the subclasses will just use the template. Nothing really special.
+
 - Chain of Responsibility Pattern
+
+	- Great thing is, I’ve experienced this pattern and didn’t know what it was lol. The chain of responsibility, HTTPInterceptor, and Filter. Just handling the request step by step and see if one of the handlers can actually handle it. If it can’t well then it’ll raise an exception in the end or just bypass it with no handling. 
+
+		- The most important part of this is, if the handler has various behaviors on it, it won’t be unified and the request won’t be able to be handled in some cases. To avoid this, we use the template pattern to make the behaviors unified for all the handlers. 
 
 - State Pattern
 
-- Undo/Redo As a Pattern
+	- The almighty state pattern that I’ve heard of and saw. If you just think about it, it’s actually giving an object a state. A state enum and you can implement some behaviors according to the state of the object.
+
+		- If you just use if-else clauses and do the behavior in there, it’ll be way hard to actually do something  with the desired state and when you need to add a state, it’ll be really dirty to just add an else if. 
+
+		- To solve the problem above, we use interfaces. We make a state interface that has the behaviors of all the states. And then implement the states and inject them into the object. The object will need to be instantiated with all the states implemented by the behavior. 
 
 - Command Pattern
 
+	- The command pattern is used in implementing the redo/undo feature of text editing or any other software component that needs that feature. 
+
+	- There are four components in this pattern. A Client that will ask the Invoker to do a Command and the Receiver will get the Command from the Invoker and invoke the method.
+
+		- For an example, you can remember the restaurant example. A client calls the waiter and the client gives an order. The order will go into the chief and the chief will invoke the order.
+
+	- A transaction system is a great example for using this pattern. Cool.
+
 - Mediator Pattern
 
+	- Someone in the middle. That’ll solve your problems behind someone else!
+
+	- If you have a lot of components that are interacting be themselves and getting complicated by having chains when communicating, it’ll be best to decouple the communication to a mediator. This actually centralizes the behaviors to the mediator. 
+
+		- I’m just thinking, we did decouple the ‘communication’ but what happens if we have too many objects that are communicating with the mediator? Well of course we’ll be able to make multiple mediators for the specific objects that actually need them. But what about mediators for mediators? It gets decoupled but I think it’s getting more dependencies for each and all.
+
+		- Yes, my concern was accurate. But it’s a trade-off. If you want code in a centralized place, and if that code becomes real big, it won’t be easy to debug, but easy to find. Centralization and decoupling should be something that we should care about.
+
+	- The best thing to actually use these patterns are for UI components. When I keep on seeing the examples, most of them are for UI. So I should find some examples that can be used in the server side. 
+
+		- A dialog would be the mediator, and the buttons, checkboxes, all those UI components will be the colleagues that communicate with the mediator.
+
+	- This pattern could also need to have the observer pattern to notify the objects to communicate.
+
 - Observer Pattern
+
+	- The observer pattern. The ‘observers’ are actually the guys that are just looking at the ‘subject’. The observers will need to be able to subscribe to the subject and unsubscribe. When the subject is updated, all of the observers will need to be notified.
+
+		- The observer pattern done right in reactive programming. I wonder, but when I saw the website, it sure had a lot of functionality in the observable stuff. Subscribing to a thread, listener, etc. Since I got the understanding, I think I can now know what it exactly means.
+
+	- The subject can have multiple observers so most of the time the subject will have a list. It should loop through the subscribed objects and update all of them when it needs to.
 
 ## Week 3
 
