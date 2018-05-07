@@ -163,27 +163,123 @@
 
 - MVC Pattern
 
+	- Looking at the MVC pattern without Spring framework. Or in a perspective of an REST API. The view has the boundary objects and the objects that are relevant of the view. Like buttons, click listeners and etc. So an Activity, Fragment is actually the ‘view’ part. 
+
+	- The Model is actually the backend of the program. It’ll have most of the logic that needs to do by manipulating the ‘control’ object. The control object mostly has the information about the application’s state and the user and etc. Entities they are. 
+
+		- So Service will actually be the model in Spring framework. Which got to me now. They just use java beans for models, boundary objects over there, and you use models like service, repository.
+
+	- The Controller is the guy that glues these two. Manipulating the model and view to their rightful state. Updating the model and when the model updates, the view will know since it’s observing the models. The controller will have some presentation logic if needed, but most of the time it won’t be that complex.
+
+		- Think outside the box. Just try to understand the most simple implementation of an MVC pattern. The model is the backend, the view is the frontend, and the controller is the guy that references both and glues the result. Of course it’ll have to return the things between each other.
+
 ### Design Principles Underlying Design Patterns
 
 - Liskov Subsitution Principle
 
+	- This principle is the most important thing that you have to know when you do inheritance. Classes, and inheritance, one of the most important things that you need to know in OOP.
+
+	- This principle indicates whether the use of inheritance in your code is valid. 
+
+		- How can you know if this inheritance is valid? Well the first and most important, see if your parent class can substitute your child class. And also, check whether if your child can’t substitute your parent. If your child class can substitute your parent, that means you don’t need inheritance. You just need your parent class.
+
+	- There are four guidelines in inheritance.
+
+		- Your subclass should not strengthen whether it can get called or not. The child should be able to do everything of what the parent class do. If a child can’t sort of invoke a parent method, then that violates this principle.
+
+		- The subclass cannot make the parent classes behavior weak. You can only strengthen the function of the behavior. Or specialize it.
+
+		- Leave the things that are immutable in your parent class. If you need your own, then just declare it in your subclass.
+
+		- The parent classes behaviors must be the same with the Childs behaviors. If the child overrides the parents method and it does some other behavior, this principle is violated. Remember, you can only strengthen the function of your parents class in your Childs class.
+
 - Open/Closed Principle
+
+	- This is pretty easy to understand but hard to actually apply. The open part is, that code is open to extension. The close part is, the code is closed to change. Code shouldn’t be able to be changed easily and should be easy to extend.
+
+	- The reason why it should be closed for change is, if a working system gets changed heavily, it will be so hard to test and hard to actually deploy it. Everyone in the company won’t be able to go home for a while and a lot of problems will occur.
+
+	- So we rather extend the program. If we want a new feature, we find a way and try to extend the program from there. If we just keep extending the program, we shouldn’t need to change the original behavior of the program. If it needs a whole new change, why not just make a new program! 
 
 - Dependency Inversion Principle
 
+	- Dependency must be as loose as possible. There shouldn’t be a lot of dependency in the program. But the sad thing is, dependency is essential. And it could be a good thing.
+
+	- But the thing is, we need to manage these dependencies as best as we can. The best way to make them manageable is, making the dependents depend on high level abstraction.
+
+		- What this means is, the dependent needs to depend on higher level abstractions because thats a way to not change code in a lot of places. Because, if we just inject a dependency that is a subclass of that abstraction, we can actually change the implementation without changing the real implementation. We just need to change the injection of the dependency and that’s it.
+
+		- Always think and try to use the most highest level of all. If it’s too high then it won’t might have the behaviors that you really need. Then you go down the level that actually has. 
+
 - Composing Objects Principle
+
+	- This principle wasn’t easy to understand on the high level. But what I got is, composing over inheritance. 
+
+		- https://en.wikipedia.org/wiki/Composition_over_inheritance
+
+		- There are benefits when you use composition over inheritance. Sometimes writing software with using inheritance could be better. The thing is, to understand this principle more deeply, you have to know the structural design patterns a bit better. Such as composite and decorator. These make software structures better with behaviors.
+
+	- Come back to this one when you get to know composition vs inheritance.
 
 - Interface Segregation Principle
 
+	- Interface segregation, to be easy, try and divide the behaviors that you need and don’t! A class can implement multiple interfaces. This is the key part of Java. If a class doesn’t need some behaviors, then it should be divided. 
+
+	- This is a really easy one to understand and apply. You can think of the admin interfaces and just read interfaces for normal users. 
+
 - Principle of Least Knowledge
+
+	- You need to know about the Law of Demeter. It has about four rules. And the most important thing to remember over here is that an object should not ‘reach through’ another object. 
+
+		- The Law of Demeter says something about local objects. 
+
+		- An object as an instance variable.
+
+		- An object that is returned from a method defined in the current context.
+
+		- A method that has a parameter of an object.
+
+		- An object that is instantiated in the method of that current context.
+
+	- With the four rules, if an object is reaching out for an object, that means it’s violating the Law of Demeter. Try to make the object know least as possible.
 
 ### Anto-Patterns & Code Smells
 
-- Stories of Bad Coding
-
 - Code Smells - 1
 
+	- The code smells in part one and obviously part two are from the book ‘Refactoring’ by Martin Fouler. 
+
+		- Yep, you need to refactor your code when you have to change your code. If you try to refactor it when the code is completed, it won’t be easy and you won’t really have any means to actually refactor it.
+
+	- The first one was about comments. People tend to write no comments, or write comments that actually tell you where to change. That means the design isn’t good and you have to try and find all the references the actually change.
+
+		- For this, an example of this comment thing is from the early ages of Java. When Java didn’t have generics, people had to write a lot of the classes and needed to say where to actually change. These kinds of stuff comes from when languages don’t support some sort of design pattern or principle.
+
+	- And here comes the most famous saying, DRY. Don’t repeat yourself. When you find code that is getting duplicated, you need to find a way to make it not duplicated. And well, then you try and refactor the code you have written.
+
+	- God classes, god methods. This indicates of classes or methods that are so big! When your class or method starts to grow big, you have to find a way to separate the functionality and divide them into other parts.
+
 - Code Smells - 2
+
+	- Mostly just analogies but they must be in the ‘Refactoring’ book. I think we can find code smells over there and understand it more effectively. Also apply those! At least try and do the code smell part 1.
+
+	- Shotgun Surgery
+
+	- Feature Frey
+
+	- Inappropriate Intimicity
+
+	- Law of Demeter
+
+	- Message Chains
+
+	- Primitive Obsession
+
+	- Switch Statements
+
+	- We might need this someday
+
+	- Refused Bequest
 
 ## Week 4
 
