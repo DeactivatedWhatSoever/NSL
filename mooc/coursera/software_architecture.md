@@ -191,7 +191,15 @@
 
 - Quality Attributes
 
+	- Woah cool, all this stuff is made from CMU! Can’t believe that CMU did that stuff. 
+
+	- [White paper](https://resources.sei.cmu.edu/library/asset-view.cfm?assetid=12927)
+
 - Analyzing and Evaluating an Architecture
+
+	- I think this will be way better to actually read the white paper and read a book about it. I think I’ll be able to learn the quality attributes of architecture and how to see whether the architecture is really architected properly.
+
+	- Oh and the reason that this part has not much content or thoughts is, the subscription finished right before when I finished week 2.
 
 ### Product Architecture
 
