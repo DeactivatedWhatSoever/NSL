@@ -116,35 +116,109 @@
 
 ### From External Iteration to Internal Iteration
 
+- Can’t believe streams are added to the Collections API. I think Stream is a connector between the Collection and the Iterator right?
+
+- Dang, didn’t know Java’s for loop actually calls the iterator and iterates with hasNext() and next()! I am shocked! Java’s a lie!
+
+	- Oh yeah, they call iterating with for, while, do, and that stuff means ‘External Iteration’.
+
+	- Iterator ... welcome to the external iteration world people!
+
+- Now for Stream! When you call stream(), it doesn’t affect the original collection. You do the filtering, map, counting etc on it and the contents of the ‘stream’ will be changed. Which is functional, making the original collection ‘immutable’. 
+
+	- This is ‘Internal Iteration’ people! Well, we can do more that that stuff with streams though. It’s pretty cool to have them. A key thing that you have to know is immutability.
+
 ### What’s Actually Going on
+
+- You have to understand eager and lazy evaluation. 
+
+	- Eager evaluation is something when the function returns another stream! Which means, a final value isn’t evaluated. Collect will be an example of eager, but the others like filter, map, those kind of stuff would be lazy evaluation.
 
 ### Common Stream Operations
 
 - collect(toList())
 
+	- Generates a list from the stream! I told you! It was eager!!! Oh and this dude can do toSet and stuff. I’m sure there will be a lot more argument values available. 
+
 - map
+
+	- Dude ... this doesn’t do the thing that filter does god damn it! You totally got it wrong. Map converts a value to another type! It produces another stream of new values.
+
+	- If a for loop is adding some stuff to a list, go with map.
 
 - filter
 
+	- This is the function that really ‘filters’ the god damn stuff. If the condition is true, the element will be included in the stream!
+
+	- If a for loop just has an if statement, just go for filter.
+
 - flatMap
+
+	- Flatten a list of lists. The main purpose is that. So when you have a stream that has a stream inside, just flat it up with flatMap.
 
 - Max and min
 
+	- Comaprator.comparing -> This is the key over here. Give the element that is the key of comparing. It’ll find you your max and min!
+
 - A Common Pattern Appears
+
+	- Think of the ‘sum’ operation while looping!  Object accumulator = initialValue; for(Object element : collection) {  
+	      accumulator = combine(accumulator, element);  
+	  }
+
+	- The common pattern is used all the time like the one above. 
 
 - reduce
 
+	- To fix this common pattern and make it abstract, we use something called reduce. 
+
+		- I see. This is reduction. Reducing a values of lists into one value. That is what reduction is. Reducing it to one value! Got it.
+
+	- Go and find about mapReduce. See if it’s something that is involved with the ‘reduce’ over here.
+
 - Putting Operations Together
+
+	- Well this is just an example of using all the map, collect, and filter stuff. I actually have used them in my projects lately, but the most important thing that I learned about was the map dude. Also flapMap that I have never used once.
 
 ### Refactoring Legacy Code
 
+- Best thing to think is, changing the for loops. External to internal dude!
+
+- We should avoid ‘nested’ stream operations. Try to make everything in depth one!
+
+	- Making their depths smaller is best with using flatMap. I think I should find more examples on using flatMap stuff. 
+
+- Oh, when you refactor the legacy code with Java 8 stuff, make sure you write unit tests with them. Legacy code will mostly have no tests. 
+
 ### Multiple Stream Calls
+
+- It’s not efficient when you do multiple stream calls since you have to do eager operations on each of them. It won’t make the entirely parallel. 
+
+- If you don’t chain as much as you can, you have to create some useless local variables and that will make your code dirty. 
+
+- Oh yeah, too much boilerplate!
 
 ### Higher-Order Functions
 
+- It’s a very important thing in functional programming, passing around functions(behavior) and returning functions(behavior). These types of functions are called higher-order functions. So does that mean the other functions are lower-order functions?
+
+	- If the method signature has a FunctionalInterface, as in parameter or return type, it’s just a higher-order function!
+
 ### Good Use of Lambda Expressions
 
+- Capture values rather than capturing values? Don’t get what this means.
+
+- Whenever using higher-order functions on the Stream interface, you have to make sure not to have side effects.
+
 ### Key Points
+
+- Internal iteration is a way of iterating over a collection that delegates more control over the iteration to the collection. 
+
+- A Stream is the internal iteration analogue of an Iterator.
+
+	- Yep, since the Iterator is an external iteration!
+
+- Many common operations on collections can be performed by combining methods on Stream with lambda expressions.
 
 ### Exercises
 
