@@ -444,11 +444,147 @@
 
 ## Wallets
 
+### Wallet Technology Overview
+
+- To make a statement of what a wallet is, you can think of two things. The user interface to actually withdraw and deposit bitcoins. The other would be a data structure to store the user’s keys. This is the main overview, but we’ll be looking at the second view of a wallet.
+
+- The wallets actually don’t ‘store’ the bitcoins. The coins are actually stored in the blockchain by recording the transaction output. Actually referenced. So the wallet that has the private key and claim that the transaction output is mine and it can know how much the user has.
+
+- Nondeterministic (Random) Wallets
+
+	- Just a Bunch Of Keys(JBOK) Wallet. These don’t have a seed. It’s actually just a random value. If it’s completely random, the generated keys don’t have a relationship.
+
+	- So if everything is random, that means it’ll have to create a lot of private keys. That’ll sure make a big problem because when you generate a key, you have to backup all of those. If you did some transactions with one of the generated keys, it won’t be easy to actually generate. 
+
+	- Okay, this dude is only used for test usage. It’s strongly discouraged for it’s unfriendly usability. There’s a principle called `avoiding address reuse`. 
+
+		- You should avoid address reuse because you’ll have less anonymity. Hackers or people in the internet could track down your transactions and what you spend on. So making a new address when you need to make a transaction is a great way to defend your anonymity. Remember, bitcoin is not completely anonymous.
+
+- Deterministic (Seeded) Wallets
+
+	- The wallet actually contains a seed. This means that the generated values have a relationship. Derived from a seed! The seed is called a master key? I guess.
+
+	- The keys that are derived from the seed will be easy to backup since they are all derived from just a seed(master key). I’m not sure how this is possible since the private keys will actually be different and they will have different public keys and addresses.
+
+		- Ahh so the master key generates the keys and there’s a way to get the private keys again eh? If that’s possible, then this is a great method to have multiple keys. But the problem is, security. If the master key is stolen, then you can get all the private keys. Dame!
+
+- HD Wallets (BIP-32/BIP-44)
+
+	- A derivation method of deterministic wallets. Hierarchical deterministic wallet -> has a tree-like structure. The seed is a tree-like structure? Lets find out.
+
+	- There are two strong advantages of deterministic wallets over nondeterministic wallets. The first one would be that it can generate unlimited number of keys and they are structured, also they an be derived from the master key. The second advantage would be that you don’t need the actual private key to make public keys. So you can just make transactions on any insecure server or any environment. 
+
+		- I’m not sure how you can just make public keys without the private keys. Is that possible? Can the master key just create the public key like that? In anyway, to make a transaction, it’ll need the private key to confirm whether it is paired with the public key.
+
+		- But to think of it again, the public key can be created by anything right? Well if the confirmation is just checking whether the public key is valid or not. Yes I think I don’t know the internals and don’t understand how the wallet can just create public keys without the wallet. This can only be found in the real code. Let’s check it out sometime.
+
+- Seeds and Mnemonic Codes (BIP-39)
+
+	- You see all these BIP’s in here. They stand for Bitcoin Improvement Proposal. This is actually cool since people actually make a proposal of a enhancement of the bitcoin protocol. And people who really want to do that task will come together and start top implement it. Pretty much driven from the community and the main committers of the project.
+
+	- The seeds that get created are actually a sequence of words. This proposal was made to make people able to export or import wallets much more easier because of the seed is just a sequence of words and readable, which is called mnemonic. 
+
+- Wallet Best Practices
+
+	- There are some common standards and made up specific standards for wallets. These best practices are:
+
+	- Mnemonic code words, based on BIP-39
+
+	- HD wallets, based on BIP-32
+
+	- Multipurpose HD wallet structure, based on BIP-43
+
+	- Multicurrency and multiaccount wallets, based on BIP-44
+
+	- These proposals are may be obsolete at the moment since they could’ve changed by now. Or there may be way more standards to keep. 
+
+- Using a Bitcoin Wallet
+
+	- Well there’s a software wallet and a hardware wallet. It’s pretty cool how the hardware wallet just makes a mnemonic and you can just make a paper backup for it. Something in real life or you could just memorize everything. That’ll be the best way though, but to memorize ... 
+
+### Wallet Technology Details
+
+- Mnemonic Code Words (BIP-39)
+
+	- To get the seed, we made a great proposal that actually makes humans memorize the seed.   It’s a bunch of random words. The important part is that it’s ‘random’. Readable, and memorizable. 
+
+	- Generating mnemonic words
+
+		- We’ll find out about the actual generation of the mnemonic words. The example will be a 128-bit entropy/12-word example.
+
+		- 1. Generate Entropy (128bits)
+
+			- You should really know what an entropy is. Well in the dictionary it says, something that you can’t predict. Unpredictableness? It’s not a word but it’s a measurement of predictiveness.   If the entropy is high, that means you can’t guess the thing that’s going to come out. If the entropy is low, it’ll be predictable. So if the seed is like one to ten, then low entropy. Got it.
+
+		- 2. SHA256 the first 4 bits and make a checksum.
+
+		- 3. Split 132-bits into 12 segments of 11-bits each.
+
+		- 4. Get the world list and map them
+
+	- From mnemonic to seed
+
+		- A seed, simply put would be a random kickoff. The thing that you can create random ‘stuff’ from. Seed = randomness of the thing that you are trying to make random.
+
+		- PBKDF2(Mnemonics + Salt) = 512-bit Seed
+
+		- The seed will be used to make private keys!
+
+		- Okay, you can also pass a passphrase. So it’ll actually be another secret what actually the person can remember.
+
+	- Working with mnemonic codes
+
+		- There’s a lot of libraries out there. Python-mnemonic, bitcoinjs/bip39, libbitcoin/mnemonic etc. 
+
+- Creating an HD Wallet from the Seed
+
+	- What the hell is an HD wallet anyways. Well the book says that I can make one from the seed by taking these steps: 1. Cryptographically secure pseudo-random number generator. Get number! 2. Make the number into mnemonic code words 3. Then you’ll get the root seed from it. It’ll be 128, 256, or 512 bits.  4. Hash it with the HMAC-SHA512 and you’ll get a 512 bits output. You can’t reverse it! 5. Left 256 bits: Master Private Key. You can get the Master Public Key from the private key so no worries. 6. Right 256 bits: Master Chain Code
+
+	- Private child key derivation
+
+		- PCK. Derive the child key from the parent key. You’ll need a parent private or public key (ECDSA uncompressed key), seed called a chain code (256 bits), an index number (32 bits).
+
+		- You can make infinite number of children. Which means, you have infinite numbers of private keys with one master key!
+
+	- Using derived child keys
+
+		- Well , the child keys can be used as a public key and a bitcoin address. That’s all when you use it 'alone'.
+
+	- Extended keys
+
+		- The chain and private key are the essential ingredients on making children. So that is called a extended keys.
+
+	- Public child key derivation
+
+		- You can derive a child keys from the parent public keys. 
+
+- Using an Extended Public Key on a Web Store
+
+	- Cool, these kinds of wallets, making sooo many bitcoin addresses will be doable since of the seeding and stuff that you learned from the sections above. 
+
+	- Hardened child key derivation
+
+		- Okay how is this hardened? We’ll find out next time when you actually get the curiosity of how HD wallets create private, public keys and bitcoin addresses.
+
+	- Index numbers for normal and hardened derivation
+
+	- HD Wallet key identifier (path)
+
+	- Navigating the HD wallet tree structure
+
+	- I think you should learn about HD wallets again of how it generates private and public keys and bitcoin addresses. You need to be able to make an address for each transaction which will be good for customers that are willing to pay.
+
+		- I think this kind of wallet will be best used for people who need a company bank account. It’s pretty much that. Would this type of wallet be good for personal usage? I’m not sure of that but oh well, it pretty much will be.
+
+## Transactions
+
 ### Introduction
 
 ### Transactions In Detail
 
 - Transactions - Behind the Scenes
+
+	- 
 
 ### Transaction Outputs and Inputs
 
