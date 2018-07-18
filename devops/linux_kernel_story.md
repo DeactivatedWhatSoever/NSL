@@ -3,211 +3,289 @@
 
 ## 시스템 구성 정보 확인하기
 
-- 커널 정보 확인하기
+### 커널 정보 확인하기
 
-- CPU 정보 확인하기
+- 생각을 해보면, 내가 딱 컴퓨터에 ssh 해서 접속했을 때 알아야 할 정보들이 있다. 커널 버젼, 커널 파라미터, 그리고 무슨 하드웨어인지, CPU, RAM 관련된 정보들을 알아야 해당 장비들이 이 커널로 돌아가도 충분한지 잘 알 수 있다. 
 
-- 메모리 정보 확인하기
+	- 내 컴퓨터는 내가 알아야 하지! 어떤 녀석인지 아는 게 시작이다.
 
-- 디스크 정보 확인하기
+- uname: 커널 정보를 볼 수 있는 명령어.
 
-- 네트워크 정보 확인하기
+	- 여러 가지 파라미터가 있는데, 다 보고 싶으면 -a 를 넣어주면 된다. 어떤 커널을 쓰는지 알려준다.
 
-- 요약
+- dmesg: 커널 파라미터, 커널이 뜰 때에 대한 모든 드라이버 로깅, 기타 등등 대부분의 시작을 할 때의 대한 로깅을 한다고 함. 정보가 굉장히 많을 듯.
+
+	- Mac 에서는 kernel 관련된 게 안 나오네 ㅠ.
+
+	- dmesg뿐만 아니라 /proc 파일에 있는 애들을 통해서 알 수 있는 정보들이다. 하지만 역시 Mac 에서는 확인이 불가능하네 ... 나중에 검색해서 봐보자.
+
+	- Crashkernel -> 여기 안에 커널 패닉이 일어났을 때 필요한 디버깅 정보를 담겨준다고 한다. 나중에 커널 패닉때문에 컴터가 이상해지거나 그러면 꼭 확인해봐야겠다. 끝까지 원인을 찾아서 해결해보자!
+
+	- 이거 공부하니까 진짜 신나네 :) 하여간, intel_idle.max_cstate라는 게 있는데, 커널 파라미터다. CPU 코어가 일이 없을 때 잠들게 해주는 기능을 하는데, 서버 입장에서는 무조건 다 켜져있는 게 더 이득을 확률이 높다. 왜냐하면 트래픽이 갑자기 들어왔을 때 그거를 받아내기 용이해서다.
+
+		- 사실 커널 파라미터는 이것 말고도 굉장히 많을테니, 또 뭐가 있는지 꼭 확인해보자.
+
+		- 참고로 BIOS 에서 끄면 Intel Module 이 알아서 다시 켜준다는 현상이 있어서, 커널 파라미터로 아예 잡아버리면 완전히 꺼진다고 한다. 한 마디로 커널 파라미터가 가장 높은 설정으로 생각하면 될듯하다.
+
+- 추가적으로 커널의 컴파일 옵션에 따라서 사용할 수 있는 기능이 다르다고 한다. 그래서 꼭 확인을 해봐야한다.
+
+	- CONFIG_FUNCTION_TRACER=y 가 되야 커널 함수 레벨의 추적이 가능해진다.
+
+### CPU 정보 확인하기
+
+- dmidecode: 해당 명령어는 하드웨어의 정보를 확인할 수 있다. 메뉴얼을 보면 bios, system, baseboard, chassis, processor, memory,. Cache, connector, slot와 같은 것들이 있음. 
+
+- CPU에 대한 정보를 알고 싶다면, bios, system, processor에 대해서 보면 된다. 
+
+- 추가적으로 lscpu, cat /proc/cpuinfo 와 같은 명령어로 볼 수 있다.
+
+	- lscpu는 NUMA에 대한 정보도 포함해서 보여준다.
+
+- 모델명이 뭐고, 소캣이 몇 개 있고, 코어가 몇 개읹, 스레드가 몇 개 있는지, 기타 등등의 모든 정보들을 볼 수 있어야 한다.
+
+### 메모리 정보 확인하기
+
+- dmidecode -t memory를 통해서 정보를 확인할 수 있다.
+
+- dmidecode -t memory | grep -I size 떄리면, No Module Installed 가 나온다면, 그 부분에는 메모리가 없다는 것이다.
+
+- free -m을 통해서 얼마가 사용되고 있는지 알 수 있다. 그래서 free -m 의 합과 dmidecode -it memory 의 합이 같아야 제대로 인식되고 있다고 판단할 수 있다.
+
+- 물론 이런거는 서버를 사기 이전에 모든거를 알게 되겠지만, 지금 나처럼 서버를 후에 알게 된 상황이라면 굉장히 유용한 정보다.
+
+- Physical Memory Array: 한 CPU 소캣이 할당된 메모리 그룹 Memory Device: 실제로 꽂혀있는 메모리
+
+### 디스크 정보 확인하기
+
+- df: 기본적으로 이 명령어로 다 볼 수 있지만, 중요한 것은 진짜 디스크의 모든 정보를 볼 줄 알아야 한다는 것이다.
+
+	- 우선은 컨트롤러가 어디 제조사인지 알아야하는데, 그 정보는 lsmod라는 명령어를 통해서 알 수 있다.
+
+	- smartctrl: 이 명령어를 통해서 디스크의 자세한 정보들을 알 수 있다. 
+
+	- Smartmoxntools -> This is the dude that I’m looking for.
+
+- vda, hda, sda 에 대해서도 알아야 한다.
+
+	- vda: 하이퍼바이저들이 쓰는 디스크 방식이다
+
+	- hda: IDE 방식의 컨트롤러, 보통 개인용 컴퓨터에 들어간다.
+
+	- sda: SCSI, SATA, SAS와 같은 하드 디스크들을 표시
+
+### 네트워크 정보 확인하기
+
+- lspci: 이 명령어를 통해서 Ethernet, 네트워크 카드에 대해서 알 수 있다. ether만 보고싶다면 grep -I ether 떄리면 된다.
+
+- 전체적으로 커널 버젼, 펌웨어 버젼에 따라서 버그가 있는지, 약점이 있는지, 알 수 있어서, 이 모든것을 관리하기 위해서 알아놔야 한다고 본다.
+
+	- 해당 제품들에 대한 news를 계속 알고 있고, 무언가가 터졌을 때 바로 펌웨어를 업데이트 한다던지, 그럴 수 있지 않을까 생각한다.
+
+- ethtool: 해당 명령어를 통해서 ifconfig에 있는 네트워크 관련된 애들에 대한 자세한 정보를 얻을 수 있다.
+
+	- -g: Ring Buffer에 대한 정보를 얻을 수 있다. 이는 네트워크 카드가 선으로부터 얻은 데이터의 버퍼 공간을 말한다. 이를 잘 튜닝함으로써 성능 최적화를 할 수 있다. Maximum과 Current의 숫자를 맞춰야 한다.
+
+	- -k: 지금 사용중인 네트워크 카드의 성능 최적화 옵션을 볼 수 있다.
+
+	- -i: 지금 사용중인 네트워크 카드의 커널 드라이버 버젼과 펌웨어 버젼을 알 수 있다. 역시나 문제가 생겼을 때 가장 먼저 봐야할 것! 내가 직접적으로 패치를 할 수 있는 상황이라면 상관 없지만, 기다려야 하는 상황이라면 버젼이라도 최대한 빨리 올려야한다고 생각.
+
+	- 참고로 모두 대문자로 하게 되면, 해당 값을 바꿀 수 있게 해주는 옵션이다.
+
+### 요약
 
 ## top을 통해 살펴보는 프로세스 정보들
 
-- 시스템의 상태 살피기
+### 시스템의 상태 살피기
 
-- VIRT, RES, SHR ..?
+### VIRT, RES, SHR ..?
 
-- 프로세스의 상태 보기
+### 프로세스의 상태 보기
 
-- 프로세스의 우선순위
+### 프로세스의 우선순위
 
-- 요약
+### 요약
 
 ## Load Average와 시스템 부하
 
-- Load Average의 정의
+### Load Average의 정의
 
-- Load Average 계산 과정
+### Load Average 계산 과정
 
-- CPU Bound vs I/O Bound
+### CPU Bound vs I/O Bound
 
-- vmstat으로 부하의 정체 확인하기
+### vmstat으로 부하의 정체 확인하기
 
-- Load Average가 시스템에 끼치는 영향
+### Load Average가 시스템에 끼치는 영향
 
-- Case Study - OS 버전과 Load Average
+### Case Study - OS 버전과 Load Average
 
-- 요약
+### 요약
 
 ## free 명령이 숨기고 있는 것들
 
-- 메모리 사용량 확인하기
+### 메모리 사용량 확인하기
 
-- buffers와 cached 영역
+### buffers와 cached 영역
 
-- /proc/meminfo 읽기
+### /proc/meminfo 읽기
 
-- Slab 메모리 영역
+### Slab 메모리 영역
 
-- Case Study - Slab 메모리 누수
+### Case Study - Slab 메모리 누수
 
-- 요약
+### 요약
 
 ## Swap, 메모리 증설의 포인트
 
-- Swap 영역
+### Swap 영역
 
-- 버디 시스템
+### 버디 시스템
 
-- 메모리 재할당 과정
+### 메모리 재할당 과정
 
-- Vm.swappiness와 vm.vfs_cache_pressure
+### Vm.swappiness와 vm.vfs_cache_pressure
 
-- 메모리 증설의 포인트
+### 메모리 증설의 포인트
 
-- Case Study - gdb를 이용해서 메모리 누수 잡기
+### Case Study - gdb를 이용해서 메모리 누수 잡기
 
-- 요약
+### 요약
 
 ## NUMA, 메모리 관리의 새로운 세계
 
-- NUMA 아키텍처
+### NUMA 아키텍처
 
-- 리눅스에서의 NUMA 확인
+### 리눅스에서의 NUMA 확인
 
-- 메모리 할당 정책별 특징
+### 메모리 할당 정책별 특징
 
-- Nomad를 이용한 메모리 할당 관리
+### Nomad를 이용한 메모리 할당 관리
 
-- Vm.zone_reclaim_mode 커널 파라미터
+### Vm.zone_reclaim_mode 커널 파라미터
 
-- NUMA 아키텍처의 메모리 할당 정책과 워크로드
+### NUMA 아키텍처의 메모리 할당 정책과 워크로드
 
-- 요약
+### 요약
 
 ## TIME_WAIT 소켓이 서비스에 미치는 영향
 
-- TCP 통신 과정
+### TCP 통신 과정
 
-- TIME_WAIT 소켓의 문제점
+### TIME_WAIT 소켓의 문제점
 
-- 클라이언트에서의 TIM_WAIT
+### 클라이언트에서의 TIM_WAIT
 
-- Net.ipv4.tcp_tw_reuse
+### Net.ipv4.tcp_tw_reuse
 
-- ConnectionPool 방식 사용하기
+### ConnectionPool 방식 사용하기
 
-- 서버 입장에서의 TIME_WAIT 소켓
+### 서버 입장에서의 TIME_WAIT 소켓
 
-- net.ipv4.tcp_tw_recycle
+### net.ipv4.tcp_tw_recycle
 
-- Keepalive 사용하기
+### Keepalive 사용하기
 
-- TIME_WAIT 상태의 존재 이유
+### TIME_WAIT 상태의 존재 이유
 
-- Case Study - nginx upstream에서 발생하는 TIME_WAIT
+### Case Study - nginx upstream에서 발생하는 TIME_WAIT
 
-- 요약
+### 요약
 
 ## TCP Keepalive를 이용한 세션 유지
 
-- TCP Keepalive란
+### TCP Keepalive란
 
-- TCP Keepalive의 파라미터들
+### TCP Keepalive의 파라미터들
 
-- TCP Keepalive와 좀비 커넥션
+### TCP Keepalive와 좀비 커넥션
 
-- TCP Keepalive와 HTTP Keepalive
+### TCP Keepalive와 HTTP Keepalive
 
-- Case Study - MQ 서버와 로드 밸런서
+### Case Study - MQ 서버와 로드 밸런서
 
-- 요약
+### 요약
 
 ## TCP 재전송과 타임아웃
 
-- TCP 재전송과 RTO
+### TCP 재전송과 RTO
 
-- 재전송을 결정하는 커널 파라미터
+### 재전송을 결정하는 커널 파라미터
 
-- 재전송 추적하기
+### 재전송 추적하기
 
-- RTO_MIN 값 변경하기
+### RTO_MIN 값 변경하기
 
-- 애플리케이션 타임아웃
+### 애플리케이션 타임아웃
 
-- 요약
+### 요약
 
 ## dirty page가 I/O에 끼치는 영향
 
-- dirty page란
+### dirty page란
 
-- dirty page 관련 커널 파라미터
+### dirty page 관련 커널 파라미터
 
-- 백그라운드 동기화
+### 백그라운드 동기화
 
-- dirty page 설정과 I/O 패턴
+### dirty page 설정과 I/O 패턴
 
-- 요약
+### 요약
 
 ## I/O 작업이 지나가는 관문, I/O 스케줄러
 
-- I/O 스케줄러의 필요성
+### I/O 스케줄러의 필요성
 
-- I/O 스케줄러 설정
+### I/O 스케줄러 설정
 
-- Cfq I/O 스케줄러
+### Cfq I/O 스케줄러
 
-- Deadline I/O 스케줄러
+### Deadline I/O 스케줄러
 
-- Noop I/O 스케줄러
+### Noop I/O 스케줄러
 
-- cfq와 deadline의 성능 테스트
+### cfq와 deadline의 성능 테스트
 
-- I/O 워크로드 살펴보기
+### I/O 워크로드 살펴보기
 
-- 요약
+### 요약
 
 ## 애플리케이션 성능 측정과 튜닝
 
-- 애플리케이션 만들기
+### 애플리케이션 만들기
 
-- 성능 테스트 시작
+### 성능 테스트 시작
 
-- CPU 성능 최적화하기
+### CPU 성능 최적화하기
 
-- 네트워크 소켓 최적화하기
+### 네트워크 소켓 최적화하기
 
-- nginx를 통해 reverse proxy 설정하기
+### nginx를 통해 reverse proxy 설정하기
 
-- 요약
+### 요약
 
 ## 커널 디버깅을 위한 커널 컴파일
 
-- 커널 소스 컴파일하기
+### 커널 소스 컴파일하기
 
-- printk() 함수 추가하기
+### printk() 함수 추가하기
 
-- printk() 함수로 Load Average 계산 과정 살펴보기
+### printk() 함수로 Load Average 계산 과정 살펴보기
 
-- 요약
+### 요약
 
 ## strace를 통한 애플리케이션 분석
 
-- strace의 기본 사용법
+### strace의 기본 사용법
 
-- Hostname 명령 분석하기
+### Hostname 명령 분석하기
 
-- 요약
+### 요약
 
 ## tcmpdump와 와이어샤크를 통한 TCP 패킷 분석
 
-- tcpdump의 사용법
+### tcpdump의 사용법
 
-- 와이어샤크 사용법
+### 와이어샤크 사용법
 
-- 요약
+### 요약
 
