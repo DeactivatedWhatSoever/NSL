@@ -1,67 +1,113 @@
 # Scala Official Documentation
 
 
-- Introduction
+## Introduction
 
-- Basics
+### Welcome to the tour
 
-- Unified Types
+- Well you should just go and read the Scala Programming Language book that everyone has lol. But I’m not really sure whether to put in a lot of time into this language. But yeah, I think you’ll be processing a lot of data. Look at all those machines .... 
 
-- Classes
+- And also, when you’re fiddling with financial data, I bet you’ll have to process a lot. Even when you do sentinel analysis, you’ll have to crawl a hell lot of text.
 
-- Traits
+### What is Scala?
 
-- Class Composition with Mixins
+- Scalable Language. That’s what Scala is. Does it mean in concurrency? Throughput? Or low memory consumption plus efficient memory usage? Type-safe, multi-paradigm. OOP + FP.
 
-- Higher-order Functions
+### Scala is object-oriented
 
-- Nested Methods
+- Every value is an object. Classes and traits. Traits came out over here. Which means there’s no interfaces. Well the internet says it’s pretty much the same with Java 8 interfaces. They say something about mixii-based composition and that’ll make a clean replacement for multiple inheritance.
 
-- Multiple Parameter Lists (Currying)
+- Okay, while you’re actually learning OOP over here, well, a refresher, you should go and see what Cypher told you about the ‘extends’ keyword. How it actually destroyed a lot of people’s code. 
 
-- Case Classes
+### Scala is functional
 
-- Pattern Matching
+- Every function is a value. Well, this means functions are treated as an object. Because everything value is an object, then every function is a value, every function is an object!
 
-- Singleton Objects
+- There’s a lot of FP stuff, such as higher-order functions, nested functions (decorators), currying, case classes, pattern matching, singleton ‘objects’(Only functions). 
 
-- Regular Expression Patterns
+### Scala is statically typed
 
-- Extractor Objects
+- It’s pretty cool that Scala tried to make pure OOP by not using the primitive types in Java. So in Scala, the primitive types are boxed types and when it compiles, the compiler will tell whether the type will be boxed or unboxed in java byte code.
 
-- For Comprehensions
+- Still, it supports generic classes, variance annotations, upper and lower type bounds, inner classes and abstract types as object members, compound types, explicitly typed self references, implicit parameters and conversions, polymorphic methods, type inference
 
-- Generic Classes
+	- Yeah, you should go find about dynamic typing vs type inference.
 
-- Variances
+	- Type inference: the user doesn’t need to annotate code with TMI. Which means, you don’t need to declare the type explicitly.
 
-- Upper Type Bounds
+### Scala is extensible
 
-- Lower Type Bounds
+- Can’t believe that this language is extensible like just creating extensions in a form of libraries. That’ll be really cool if you actually know all the internal stuff. Like, if you want something from Python, you could just implement it in Scala. Well I bet other people would have done this. But not a lot.
 
-- Inner Classes
+- Implicit classes, String interpolation are pretty much good examples to look at.
 
-- Compound Types
+### Scala interoperates
 
-- Self-type
+- Scala can compile into Java. It has the same compilation model. All the other stuff like Java specific language functions will be compiled as close as possible. This means, that Scala can use Java libraries. This is what it means by ‘interoperates’.
 
-- Implicit Parameters
+### Enjoy the tour!
 
-- Implicit Conversions
+- Let’s get it!
 
-- Polymorphic Methods
+## Basics
 
-- Type Inference
+## Unified Types
 
-- Operators
+## Classes
 
-- By-name Parameters
+## Traits
 
-- Annotations
+## Class Composition with Mixins
 
-- Default Parameter Values
+## Higher-order Functions
 
-- Named Arguments
+## Nested Methods
 
-- Packages and Imports
+## Multiple Parameter Lists (Currying)
+
+## Case Classes
+
+## Pattern Matching
+
+## Singleton Objects
+
+## Regular Expression Patterns
+
+## Extractor Objects
+
+## For Comprehensions
+
+## Generic Classes
+
+## Variances
+
+## Upper Type Bounds
+
+## Lower Type Bounds
+
+## Inner Classes
+
+## Compound Types
+
+## Self-type
+
+## Implicit Parameters
+
+## Implicit Conversions
+
+## Polymorphic Methods
+
+## Type Inference
+
+## Operators
+
+## By-name Parameters
+
+## Annotations
+
+## Default Parameter Values
+
+## Named Arguments
+
+## Packages and Imports
 
