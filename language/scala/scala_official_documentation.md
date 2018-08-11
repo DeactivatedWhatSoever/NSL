@@ -51,6 +51,93 @@
 
 ## Basics
 
+### Trying Scala in the Browser
+
+- [You can try Scala over here](https://scalafiddle.io/)
+
+### Expressions
+
+- Well it’s mostly the same for all other languages. Println -> Print with a new line. Just the same.
+
+- Values are expressed with the ‘val’ keyword. It can’t be changed, and if a value is assigned to a new value, Scala won’t compile. Something like the final keyword except very strict I guess. But anyways, the important thing about this is, immutable can be achieved really easily. Since it’s a FP language, most of the time we’ll try to make a value instead of a variable. 
+
+	- Value’s or variables can be inferred. Which means type inference, the compiler actually guesses the value’s type by itself. But you can explicitly state the type. For example, val x: Int = 1 + 1 -> a colon with the type specified, that’s explicit typing I guess?
+
+- Variables. An example, var x = 1 + 1. You can reassign these dudes.
+
+	- Also explicit typing is the same as values.
+
+### Blocks
+
+- Something that I couldn’t really get. Well, from Ruby lol. I couldn’t really understand the concept of blocks. So it’s actually a lambda expression I guess? Not really sure about this part, but lets get this in my head.
+
+- {} -> This is a block, but the thing is, the last line seems to get evaluated and get ‘returned’ in Scala. So in everything, like functions, you don’t really write down what to return explicitly. The compiler just thinks that you’ll return the thing that’s evaluated at the end.
+
+- So, if you want to combine a lot of expressions, you use a block and group them inside {}. 
+
+### Functions
+
+- Functions are expressions that take parameters!
+
+- So, anonymous functions, which obviously are lambdas, can be made. So it’s different with blocks. If you can just make a function with no arguments, why bother to make a block? Don’t really get it but I think they’ll be in use some day.
+
+- Well anyways, lets think of another thing about functions. So, how can you use lambdas in Scala? Just (x: Int) => x + 1 won’t do the whole job right? How to actually use them? Ahh ... I see, so when you want to pass in behavior, you just use lambdas. But if you want to reuse that lambda, then you have to name it. Which would become a function. I guess this is getting natural.
+
+	- If you sort of wrap the lambda, you can call it! With parenthesis.
+
+### Methods
+
+- I didn’t really understood the difference between functions and methods. But really, you can just think that methods are just inside a class. That’s all. But what about Java? You have to put a function inside a class. Doesn’t that mean a function is a method in Java?
+
+- I guess that methods are different from functions. Functions are actually declared inside all the methods and classes. So, behavior. That’s what defines a function. It takes arguments and gives a result or doesn’t do anything. But methods, you have to declare it with the def keyword, give arguments, a return type, and a body. That’s a method in this world.
+
+	- Well functions actually don’t declare a return type. Which is pretty funny lol. I wonder if you can though.
+
+- I get it. So in Scala, you have to give an assignment to methods, functions, values, variables, all that stuff. If any of those assignments need more than one line of expressions, then you can assign them as a block. And the block will return the last expression.
+
+	- Yep, Scala does have a ‘return’ keyword, but it’s rarely used.
+
+### Classes
+
+- Well, it’s obvious. Just a class keyword and kabaam! You got a class. But what’s different in Scala is, that you can give constructor parameters with a parenthesis on the class name. class Test(param1, param2) {} -> Just like this. Which is pretty much very convenient. But I bet that it can give default values. 
+
+	- Oh, and ‘Unit’ comes out over here. Unit is the same thing as void in Java and C. Since Scala expressions must have a value, Unit came out for representing ‘None, null, nil’ or what so ever. So returning nothing as a value. 
+
+	- It’s actually a singleton object!
+
+- There’ll be extra explanation later. So don’t worry!
+
+### Case Classes
+
+- Okay, case classes are somewhat new in Scala. And I don’t really know the use cases and why they put it in. I’m not really sure but they say that I’m gonna love it?
+
+- Well case classes don’t need the ‘new’ keyword to instantiate it. It’s actually an immutable value. So it means it doesn’t make ‘new’ objects, and there’s only one of those? If they have different values, the reference will be different I guess. But the important thing is, when you compare them, they compare the value, not the reference hash code.
+
+### Objects
+
+- Scala actually supports singleton objects. This design pattern was made to be the most common pattern. It also gave us some problems about concurrency. When two threads on the same time tries to make an object. Which is pretty cool. 
+
+- Well anyways, these are singletons of their own classes. It gets defined by the ‘object’ keyword. Wonder how it works and stuff. 
+
+### Traits
+
+- Traits are types containing certain fields and methods. They can have default methods too!
+
+- You can extend them with the ‘extends’ keyword.
+
+- Traits can extend multiple traits. Multiple inheritance! Duh!
+
+### Main Method
+
+- object Main {  
+    def main(args: Array[String]): Unit =  
+      println("Hello, Scala developer!")  
+  }
+
+- Yep, since the JVM needs an entry point, it needs a main function that takes in an array of strings. And yes, it’s a convention over here right? But does the object name should be Main? Why not other dudes? 
+
+	- Yeah, you can name the class whatever you want. Except, the program must have once main method just the same as a Java program.
+
 ## Unified Types
 
 ## Classes
