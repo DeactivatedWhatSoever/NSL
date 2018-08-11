@@ -140,6 +140,32 @@
 
 ## Unified Types
 
+### [The overall type hierarchy!](https://docs.scala-lang.org/resources/images/tour/unified-types-diagram.svg)
+
+- As you can see, the most top level ‘thing’ is Any. AnyVal & AnyRef are the next. I wonder if there’s only ‘List’ for the Object stuff. So the value stuff is made from Scala. 
+
+- There’s a Null in the AnyRef and Nothing is on the most bottom.
+
+	- Unit? I saw Nil and stuff but I wonder where those come from lol
+
+### Scala Type Hierarchy
+
+- So, well, Scala’s type system is pretty much the same with Kotlin. Didn’t know that they had a type like that. Damn lol. 
+
+- Any, AnyRef, AnyVal. The stuff that user defines will mostly be under AnyRef. Since we define objects, classes, traits, etc.
+
+### Type Casting
+
+- Casting types is unidirectional. You can’t make a Float into a Long. Well, I guess there will be some other method that you can make it into. 
+
+- Be careful when you cast the values!
+
+### Nothing and Null
+
+- Nothing is a subtype of ‘all’ types. This lets you signal a non-termination of a program. Like an infinite loop, program exit, throwing an exception, etc. 
+
+- Null, should not be used at all in Scala. It’s just pretty much a way to cooperate with other JVM languages. We’ll get a way to express null values later on.
+
 ## Classes
 
 ## Traits
