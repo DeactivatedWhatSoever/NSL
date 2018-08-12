@@ -234,6 +234,34 @@
 
 ## Higher-order Functions
 
+### So exactly, what is a higher order function? Well In my memory, I know them as, functions that can return, pass as a parameter. Functions that return, and can get injected by a function. Those are higher-order functions.
+
+- For this to happen, the language must make functions as first-class values. Which means, values like Int, Long, all that stuff, they are on the same level, the same hierarchy. Then they’ll be able to be passed and returned around I guess.
+
+### I saw something cool in Scala. The `_` dude. The underline can sure do a lot of things. It can represent a variable name inside a function. It can just make the function arguments disappear! 
+
+- For an example, lets get it! // x => x * 2, the type can get inferred because of the salaries list.  
+  val newSalaries = salaries.map(x => x * 2) // Well, since we only expect only one variable, then we can just use the `_` operator to just do all of the fuss for us.  
+  val newSalaries = salaries.map(_ * 2)
+
+### Coercing methods into functions
+
+- Coercing == Forcing methods into functions. Hmm ... How to make methods to functions? Lets find out.
+
+- This means, methods can be passed as parameters of just functions. I bet they can get returned eh? Well anyways, you just pass in a method as a higher-order function’s parameter! And you’re done.
+
+### Functions that accept functions
+
+- Well, you can destroy redundant behavior since functions can accept functions. We’ve seen a lot of examples, all you need to do is do it yourself :)
+
+### Functions that return functions
+
+- I’ll give you an example of how to return a function in Scala! 
+
+	- `def urlBuilder(ssl: Boolean, doman: String): (String, String) => String = { // Block, last line: (endpoint: String, query: String) => // blah blah blah }
+
+- It’s cool that you can just return lambdas like this. I love it that I’m understanding functional programming.
+
 ## Nested Methods
 
 ## Multiple Parameter Lists (Currying)
