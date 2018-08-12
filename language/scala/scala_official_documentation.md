@@ -220,6 +220,18 @@
 
 ## Class Composition with Mixins
 
+### Mixins are traits which are used to compose a class. Okay, I really don’t get the word ‘composite’ or, compose, or whatever. I only get the word compose as making music or that stuff lol.
+
+- Composite -> This says that it’s a fusion of something. So mixins are used for adding up classes? Right? Made up of various parts or elements. A class can be one class, but it can have way more parts! I get what compose, composition, composite means now.
+
+### So a class can only have one super type. But it can have many mixins which are traits. `extends A with B, C, D` etc.
+
+### Dang, there can be so much syntax sugar inside Scala. It will take a long road to get use to all of this. This is why I didn’t like Ruby lol. I liked Python because it didn’t have ‘too’ much syntax sugar. 
+
+### So traits can extend abstract classes, and all of that stuff. A class can extend from an abstract class, another class, and with the ‘with’ keyword, you can add more traits. 
+
+- If it’s like this, I bet the diamond problem will occur if you just put in this and that. Like everyone said, the evil ‘extends’ keyword that doesn’t try to keep the Liskov’s substitution principle will fall.
+
 ## Higher-order Functions
 
 ## Nested Methods
