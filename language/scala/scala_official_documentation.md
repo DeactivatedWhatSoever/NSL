@@ -168,6 +168,36 @@
 
 ## Classes
 
+### Defining a class
+
+- Dang, didn’t know classes can contain methods, values, variables, types, objects, traits, and classes! It can even have traits inside of them! I wonder why they gave that much freedom. Is it really necessary? Don’t really know.
+
+- Dang ... So the minimum of a class can be just `class User` and then you can just initiate it? Well if you don’t put any constructors in it, you can just make a new instance without putting the parenthesis.
+
+### Constructors
+
+- Woah, I knew Scala would have default values! I wonder that’s the same with methods and functions. Default values! Anyways, let’s check it out.
+
+- This is how you define constructors! `class Point(var x: Int = 0, var y: Int = 0) { // Block! }
+
+- Also, you can name the parameter! Like (x=2, y=2)! Hmm same thing with Python and stuff. This is way better than Java making a ton load of constructor methods lol.
+
+- Oh yeah, the documentation says it’s better to use named parameters instead of injecting the parameter values in ‘order’. Because of clarity. The people who use the method can just know what the parameter does and what it actually needs. I think that’s pretty much the right way to think about it. I get it.
+
+### Private Members and Getter/Setter Syntax
+
+- Okay, this part is pretty hard because I’ve never seen any language make getter/setter syntax for them! Well, I should make a good example over here.
+
+- Okay, first things first. People normally won’t define private variables or values inside the class. They give it as constructor values. Okay, we two ways of putting in values with the constructor.
+
+	- `class Point(val/var x: Int, val/var y: Int) { // Block }` -> This way, the parameters are public.
+
+	- `class Point(x: Int, y: Int) { // Block }` -> This way, the parameters are private. And they’re not variables. They’re ‘values’. You have to know the differences and stuff.
+
+	- The problem is, how do you put in protected variables and stuff? We’ll get to that in the future I hope.
+
+- Okay, finally, for the getter/setter syntax.  // Remember, the _x is the private variable! And of course, only variables can have setters because they are immutable. `def x = _x` -> Getter syntax `def x_= (newValue: Int): Unit = { // Block }` -> Setter syntax
+
 ## Traits
 
 ## Class Composition with Mixins
