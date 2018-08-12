@@ -288,6 +288,24 @@
 
 ## Case Classes
 
+### Defining a case class
+
+- Defining a case class is easy. `case class Book` and you’re done. Case classes are best for pattern matching by ‘type’. You’ll see this on the Pattern Matching section.
+
+- Case classes don’t need a new keyword. When you instantiate it, a method called `apply` gets called and will do the object construction for you.
+
+- Don’t forget, the constructor variables you put in will be a public value.
+
+- Oh, you can use var for a constructor variable, but this is discouraged since we want ‘immutable’ cases.
+
+### Comparison
+
+- Case classes don’t compare them by reference. They are compared by value. So if all the values of the constructors variables are the same, then it’s true!
+
+### Copying
+
+- There’s a shallow copy method called `copy`. If you want to copy the values just use it!
+
 ## Pattern Matching
 
 ## Singleton Objects
