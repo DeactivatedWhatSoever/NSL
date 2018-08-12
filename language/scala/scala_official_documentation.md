@@ -272,6 +272,20 @@
 
 ## Multiple Parameter Lists (Currying)
 
+### Currying, I didn’t really get it but, I heard that this is splitting up arguments into one. 
+
+- [In mathematics and computer science, currying is the technique of translating the evaluation of a function that takes multiple arguments (or a tuple of arguments) into evaluating a sequence of functions, each with a single argument. Currying is related to, but not the same as, partial application.](https://en.wikipedia.org/wiki/Currying)
+
+### So, Scala lets you do currying by giving the ability to make multiple parameter lists.
+
+- I think a parameter list is a tuple.
+
+### Okay, I totally don’t get a lot of the material over here. Which is pretty sad man! Well anyways, I don’t really get the foldRight or foldLeft thing. And Scala has a special operator `:/` which is foldLeft, and `:\` which is foldRight. Dang, this sure ain’t easy to understand.
+
+- [You can get some information over here](https://www.scala-lang.org/api/2.12.1/scala/collection/TraversableOnce.html)
+
+### You can define implicit parameters with the `implicit` keyword. For example, `def execute(arg: Int)(implicit ec: ExecutionContext)`
+
 ## Case Classes
 
 ## Pattern Matching
