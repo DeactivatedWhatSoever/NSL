@@ -200,6 +200,24 @@
 
 ## Traits
 
+### Defining a trait
+
+- You need to know what a trait really is. It’s mostly the same with Java 8 interfaces. You can declare fields and abstract/default methods. Remember, since these can’t be instantiated, you can’t give them parameters.
+
+- Define! `trait Iterator[A] { //Block }` -> The thing that you have to focus on is the brackets. The brackets mean of the type, I mean, ‘generic’ type.
+
+### Using traits
+
+- When you use a trait, you have to use the ‘extends’ keyword. That means, you can’t extend an abstract class and a trait right? I think I’ll have to put this in my mind and see whether it’s possible or not. Only traits are aloud to get extended multiply?
+
+- Oh yeah, the main thing to remember is, you use traits with the ‘extends’ keyword, and you use the ‘override’ keyword to implement abstract members. 
+
+### Subtyping
+
+- Well this is just an example of polymorphism. Where you can put in subtypes of the trait inside a array list and that kind of stuff lol.
+
+- Not to worry on this bit, because it’s pretty much obvious and you can see it from everywhere.
+
 ## Class Composition with Mixins
 
 ## Higher-order Functions
