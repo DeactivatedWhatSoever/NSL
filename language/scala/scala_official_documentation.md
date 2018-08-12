@@ -264,6 +264,12 @@
 
 ## Nested Methods
 
+### You can nest methods! Which means you can define functions inside a function. Well, to be more precise, methods in methods. 
+
+### For an example `def factorial(x: Int): Int = { def fact(x: Int): Int = { } }
+
+### Nothing really special, just the same old thang lol.
+
 ## Multiple Parameter Lists (Currying)
 
 ## Case Classes
