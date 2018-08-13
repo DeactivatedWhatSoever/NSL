@@ -344,6 +344,22 @@
 
 ## Singleton Objects
 
+### Defining a singleton object
+
+- These objects are really cool. They’re singleton! The objects guarantee to be exactly one. I wonder whether if a lot of threads create the singleton object at once ... Anyways, the object is instantiated lazily.
+
+- `object logger` -> That’s all
+
+### Companion objects
+
+- So a singleton class, a normal class, and a case class can have same names. I’m not sure whether when or where to use these kind of objects. These so called companion objects.
+
+- Oh yes, if you want to use this sort of class, you must define the classes in the same file. Which would have the same name for each and all classes.
+
+### Notes for Java programmers
+
+- `static` members in Java are modeled as ordinary members of a companion object in Scala.
+
 ## Regular Expression Patterns
 
 ## Extractor Objects
