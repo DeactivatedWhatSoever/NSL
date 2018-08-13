@@ -308,6 +308,40 @@
 
 ## Pattern Matching
 
+### Pattern matching is a mechanism for checking a value against a pattern.
+
+- Yep, a powerful `switch` statement!
+
+### Syntax
+
+- {variable} match {     case {variableCase} => “return”     case _ => “other cases” }  It’s pretty much it. And also, it always returns the cases. Remember that the `_` is like a default in a switch case and an else in an if/else clause.
+
+### Matching on case classes
+
+- It’s cool that you can use ‘types’ with cases! In java it wouldn’t work with the old switch!
+
+- This is where ‘case classes’ come in. You make an abstract class and extend all of them with the case classes. Then you’ll be able to match the pattern by type. Which is so cool! I think I’ll get to love this, but I’ll have to find some great use cases for it lol.
+
+### Pattern guards
+
+- If the variable that you want to match has a case, you can also give an if clause! Now this is pretty pretty cool. So you can put in extra guarding and stuff.
+
+### Matching on type only
+
+- You can match with type only.  For example, `device match { case p: Phone => p.screenOff }` -> etc.
+
+### Sealed classes
+
+- Sealed classes. All subtypes must be declared in the same file. This assures that all subtypes are Known. 
+
+- Hmm, I think this will come useful when there’s classes that should be only in this local context.
+
+### Notes
+
+- It’s cool that there’s an opposite to the apply method. The apply method sets the arguments passed, but the unapply method passes back the arguments. So it’s great for pattern matching.
+
+- [Read about Extractor Objects](https://docs.scala-lang.org/tour/extractor-objects.html)
+
 ## Singleton Objects
 
 ## Regular Expression Patterns
