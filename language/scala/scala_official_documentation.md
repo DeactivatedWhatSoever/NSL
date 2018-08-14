@@ -362,6 +362,10 @@
 
 ## Regular Expression Patterns
 
+### Well Scala has a built in thing for regex! Which is pretty cool for me because I didn’t really get to see this stuff in Java. Well I did see it in Ruby though! 
+
+### Anyways, to make a regex, it’s really easy and intuitive.  `val numberPattern: Regex = “[0-9]”.r` -> Remember, the `.r` is what that defines the regex!
+
 ## Extractor Objects
 
 ## For Comprehensions
