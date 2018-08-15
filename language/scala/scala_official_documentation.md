@@ -368,6 +368,16 @@
 
 ## Extractor Objects
 
+### Mostly objects just have an `apply` method. This method is for object creation. On the other hand, there’s some objects that have a method called `unapply`. These are called `Extractor Objects`. The `unapply` method gives back the arguments.
+
+- These types of objects are mostly used in pattern matching and partial functions.
+
+- Haven’t heard of partial functions yet, but I hope this tutorial gives the ideas!
+
+### `val name = CustomerID.unapply(customer2ID).get` -> This is a way to assign a value. But why ... Why this way?
+
+### By the way, when you want to return values inside the `unapply` method, use either a boolean value when checking, but if you want to return an object of some sort, then give it as an optional!
+
 ## For Comprehensions
 
 ## Generic Classes
