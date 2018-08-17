@@ -380,6 +380,15 @@
 
 ## For Comprehensions
 
+### For comprehensions eh ... Which means, that I have to ‘know’ some stuff to actually understand how a for loop works in Scala. Well let’s get it!
+
+### So for loops in Scala actually does the iteration and you can just add a filter to it. Which is pretty cool since you don’t need to make an if statement and add a continue or what not. 
+
+### For loop example: `val twentySomethings = for (user <- userBase if (user.age >=20 && user.age < 30))  
+    yield user.name  // i.e. add this to a list` As you can see, it yields the user.name. This means a for loop is a generator of some sort. Pretty cool. 
+
+- The thing is, you don’t know what generators are in nature. What they are used for. Well I think that it’s used for putting in items one by one. Well, isn’t that actually the iterator method? Okay dude, I get your point. I don’t know germinators, so I’ll go study them.
+
 ## Generic Classes
 
 ## Variances
