@@ -407,6 +407,42 @@
 
 ## Variances
 
+### OOOOOOkay, I really don’t get any of this at the moment. Well it’s pretty much something to do with generics. Let’s dig into it.
+
+### Variance = Correlation of sub typing relationships of complex types & sub typing relationships of their component types
+
+- Okay, I still don’t get it.
+
+- class Foo[+A] // A covariant class  
+  class Bar[-A] // A contravariant class  
+  class Baz[A]  // An invariant class
+
+- I think this is actually something that helps people to not use some generics and stuff. So complex stuff doesn’t get more complex or whatever.
+
+### Covariance
+
+- So something that’s covariant, is something that can be just used as polymorphism in generics. Nothing much. But isn’t this the same as invariant?
+
+- I get it. So covariance means that class `A` and class `B`, if they’re subtypes, they can be interchangeable. This is absolutely the Liskov’s substitution principle. So the `+A` annotation will just let all classes that have a relationship be able to be used as a generic parameter.
+
+### Contravariance
+
+- It’s the opposite of Covariance. As you can see, if a class Animal and Cat exist, the Animal class can print out an animal and a cat. But the Cat can’t print out an animal. So methods that are overridden, will need the `-A` annotation for generics. Or that maybe break the Liskov?
+
+### Invariance
+
+- So this means, everything is treated differently. Container[Cat] and Container[Animal] are not the same thing!
+
+### Other Examples
+
+- I think you should get another example by yourself in the future. Actually use generics and use the variance feature of Scala.
+
+### Comparison With Other Languages
+
+- In Java, it’s called use-site variance? Gotta get to know about this!
+
+- [https://medium.com/@sinisalouc/variance-in-java-and-scala-63af925d21dc](https://medium.com/@sinisalouc/variance-in-java-and-scala-63af925d21dc)  And I get it! The `>` operator up on the generics! I get it.
+
 ## Upper Type Bounds
 
 ## Lower Type Bounds
