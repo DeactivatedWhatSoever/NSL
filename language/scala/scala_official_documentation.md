@@ -391,6 +391,20 @@
 
 ## Generic Classes
 
+### Hmm. I wish to know the actual basics of why to use a generic class. Well it was really got for collections. I can know since I’ve used them all in Java. But still, what other usages? What is it really good for?
+
+### Defining a generic class
+
+- Well there’s nothing to it. Just add a bracket with a letter next to the class definition like this: `class Robin[A] {}`
+
+- There’s nothing much to the definition except for the letter A. It’s a common convention to use A for one generic feature. For a map, or two generic values, it would be K(Key) and V(Value). If there’s more, I don’t know, I think we’ll be using it the wrong way then ... 
+
+### Usage
+
+- Just instantiate the variable with the bracket of the type you want. `Stack[Int]` just like that. 
+
+- Also, the type in the bracket also supports polymorphism. Which means, if class B and C inherit for A, the stack can have type B and C values. 
+
 ## Variances
 
 ## Upper Type Bounds
