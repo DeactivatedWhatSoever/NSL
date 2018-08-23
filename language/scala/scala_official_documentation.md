@@ -457,6 +457,10 @@
 
 ## Lower Type Bounds
 
+### Opposite of upper type bounds, obviously. The syntax is: `B >: A`. So this dude declares a super type of that type. `B` must be a more super type than `A`.
+
+### Oh yeah, `Nil` comes out of this document. It says it’s actually an empty list. Don’t really get it ... Why did they name this Nil? Isn’t this actually the same thing as null? 
+
 ## Inner Classes
 
 ## Compound Types
