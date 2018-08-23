@@ -445,6 +445,16 @@
 
 ## Upper Type Bounds
 
+### What the hell is a type bound? Let’s find out what a bound is first. Something like a type group eh? Types that are bound to each other. By getting extended, or implemented, well anyways, Scala can extend abstract, regular, traits. Multi inheritance only goes with traits with the `with` keyword. 
+
+### So upper type bounds. Let’s see what they really are. Also, I think it has a lot in common with variances.   Upper Type Bound: `T<: A`. What does that mean ... 
+
+- Type variable `T` refers to a subtype of type `A`.
+
+- Ahh I get it. The `T <: A` is the same thing in Java 8 generics, `T < A`. It’s just that Scala has the colon in there. 
+
+- Like the words, type `T` refers to a subtype of type `A`. So only subtypes of `T` can come into the parameter. 
+
 ## Lower Type Bounds
 
 ## Inner Classes
