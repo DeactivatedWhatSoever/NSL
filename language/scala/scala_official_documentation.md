@@ -477,6 +477,14 @@
 
 ## Abstract Types
 
+### Dunno what the differences between generics are with these. Well I think it also helps things for reflection. Creating objects, actual class byte code in runtime.
+
+### So you can declare `abstract types` in your class or trait. You can declare them like: `type T` and use that to make real generic stuff. Damn, how can you make this much generic stuff? Ahh ... I guess it’s the rule of maths. Only this and that can come in, and those types, well, those types can be anything. 
+
+- Most of the stuff like Int, Double, and all that stuff come from maths. For functional programming, I must get to know how maths work with this. How they want to actually show functional programming in maths. 
+
+- This sure ain’t going to be an easy journey, but let’s try and get it!
+
 ## Compound Types
 
 ## Self-type
