@@ -463,6 +463,20 @@
 
 ## Inner Classes
 
+### The documentation says it’s possible for Scala, but it’s the same as Java. Java can also have inner classes. Don’t know why they said it like that but, come to think of it, the context is actually different. In all the languages, Scala, does this and that. Yep, the context was actually global. Sorry for the complaint!
+
+### It’s just the same. Just declare a class in a class, and you’re in. You can also use that class as a member variable right away. 
+
+### A graph data structure is a very good example for implementing inner classes. That class would be a `Node` in a `Graph` class.
+
+- The cool thing is, when you declare multiple `Graph`s, they are the same. But, the `Node` class inside the `Graph` classes are not the same! I repeat! They are not the same! If you try to join or connect other inner classes, the compiler will get angry!
+
+- But, there’s actually a way to make these `Node` classes get connected to each other. We need to imperatively say that the `Node` class in `Graph` are all the same! Like this: `[Graph#Node]` when you actually make something inside the inner class. Remember, the inner class needs to know its parent. Or else it will just think as if it’s the only type out there.
+
+### Okay, there’s some syntax looking like `::`. I don’t know what this is, and I should go find out about it. There’s so much stuff over here! You can declare so much of these overall operators! This is why people said Scala should only be used by one person lol.
+
+## Abstract Types
+
 ## Compound Types
 
 ## Self-type
