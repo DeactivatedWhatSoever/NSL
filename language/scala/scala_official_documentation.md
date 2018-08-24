@@ -487,6 +487,14 @@
 
 ## Compound Types
 
+### I think I should go and learn what the actual word `compound` means first.
+
+### `A with B with C ... { refinement }` -> That’s the general form of compound types. The reason it’s like that is, when the parameter needs to have various methods and those methods are in different types, you can let the parameter be compound to other types. 
+
+- This is actually a really cool feature in a language. I’ve never seen something like this. But the thing is, when I see these kinds of things, doesn’t the odds of making a program more dependent and complicated? It looks as if code can get harder. I know there would be a lot of things that this kind of feature will solve but, I’m not really sure. People sure will make programs more messy if these kinds of things get out more and more in the world.
+
+- For another opinion, we’ll have to learn how to use these properly, and get some use cases in our heads.
+
 ## Self-type
 
 ## Implicit Parameters
