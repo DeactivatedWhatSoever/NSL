@@ -497,6 +497,23 @@
 
 ## Self-type
 
+### ``` trait Tweeter {  
+    this: User =>  // reassign this  
+    def tweet(tweetText: String) = println(s"$username: $tweetText")  
+  } ```
+
+### Okay, I totally don’t get this. When the hell should we need this stuff? Man! Scala! You’d better show some respect to the new people! lol. I think I should get a course on this or actually find a way to use this and make a great example of it. 
+
+- Maybe you could make a Scala tutorial with more use cases of the features that you didn’t really know. It’s not just knowing the syntax that make you fluent in Scala. Knowing the syntax is a must, and you have to speak fluently. So that means, you need to know a lot of use cases and have used all the syntax in many cases and refactored code in a Scala way!
+
+- Okay, I got this, but first, let’s try and get to understand the `Self-tye` in a shallow manner.
+
+### Ahh, so self types are for making a trait to mix in another trait without using an import statement. So, in one sentence, implicitly mix in a trait in force.
+
+- I totally got this shallowly! 
+
+### `someIdentifier: SomeOtherTrait =>` -> General form. So it doesn’t have to be `this`? It actually can be something else eh?
+
 ## Implicit Parameters
 
 ## Implicit Conversions
