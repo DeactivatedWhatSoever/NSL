@@ -534,6 +534,10 @@
 
 ## Polymorphic Methods
 
+### Oh my god, you can also make parameter generics? This language is like going fancy! It can do anything, which means more things to know and more ways to express something. The more the ways to express something, the more ... complicated stuff comes out! Lol 
+
+### Well anyways, you can define a function like this: `def listOfDuplicates[A](x: A, length: Int): List[A] = { //block }` Yes, you just put in a type like that. Of course the type can be inferred like an int or string, but for complex objects, it may need specification when invoking the method. listOfDuplicates[Blah](blah, 1) -> etc. 
+
 ## Type Inference
 
 ## Operators
