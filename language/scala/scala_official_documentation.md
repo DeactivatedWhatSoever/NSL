@@ -516,6 +516,16 @@
 
 ## Implicit Parameters
 
+### Implicit eh, something that really needs to be, implicit. Something that actually comes out. I mean, it’s there, really. That’s what implicit, wait. The opposite is explicit! If it’s explicit, then it’s just there, showing us everything. But if it’s implicit, then it’s not just right there, it’s something that we have to think to actually get it out.
+
+### So, type inference is it? I think that’s the thing that it wants to talk about. If we have implicit implementations of a method, then that method will see whether it can use that type to actually execute the method. 
+
+- In a typed language, implicit isn’t easy to actually implement. Even in Java 8, they tried to make the lambda parameter implicit! And that’s all. Everything must be explicitly noted by its types. Now I get it. For implicit stuff, Scala must sometimes need some values to have the types assigned first. That’s why the method that really needs implicit stuff, can actually reference whether it can use that implicit value or whatever.
+
+### Scala will first look for implicit definitions and implicit parameters that can be accessed directly (without a prefix) at the point the method with the implicit parameter block is called.
+
+- Yep, the first thing when you want to use implicit parameters, you need to define implicit values to actually use them as parameters. Scala will get them for you.
+
 ## Implicit Conversions
 
 ## Polymorphic Methods
