@@ -540,6 +540,26 @@
 
 ## Type Inference
 
+### Yep, the Scala compiler can actually infer the type! And the best part, which means, you don’t need to declare the type explicitly!
+
+### Omitting the type
+
+- I think it can actually just infer strings, ints, and all that basic level type stuff. But not the user defined object stuff. So, you can also just go away with return types too. Well of course the compiler will know what kind of parameter will come in to the function. Duh. 
+
+- `def fac(n: Int) = if (n == 0) 1 else n * fac(n - 1)` Yup, Scala can’t infer recursive function’s return types!
+
+### Parameters
+
+- Well obviously, the compiler can’t infer parameter types. Because they have no hints! But, when they can, is when they are using anonymous functions. Like map, or something like that, they can infer the type since they have the hint from the parent!
+
+### When not to rely on type inference
+
+- Open API’s, where people really need to know what the types are. So, I think it won’t be good to use type inference at all! Unless you’re working by yourself. God dang you Scala! Then this will make everything hard for everyone! 
+
+- Okay, as long as your team mates are really fluent at Scala, you can just use type inference. But if they’re not, then you shouldn’t. Okay?
+
+### Oh yeah, you should always have this question in mind. Type inference vs dynamic typing!
+
 ## Operators
 
 ## By-name Parameters
