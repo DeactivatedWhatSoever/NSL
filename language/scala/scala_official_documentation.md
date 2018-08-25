@@ -562,6 +562,35 @@
 
 ## Operators
 
+### Yep, I found that this is the same with Haskell. But to come of it, what are they in Java? Really. What are they? I think that’s your next question to actually have a go at. I love curiosity! 
+
+- So you can call it in two ways. The operator is actually the function name lol.  `10.+(1)` === `10 + 1`
+
+- So that’s why functions that have one parameter can be called like an operator lol. They call it, an `infix operator`.
+
+- Yup, dot notation vs infix operator
+
+### Defining and using operators
+
+- Woah, you can actually define the `+` operator as a function for a class. So if you’re adding vectors together, you can actually define that stuff!
+
+- I think creating an and, not, or function would be cool! It’ll be like coding in Python! Actually getting the advantages of Scala, a functional language. 
+
+### Precedence
+
+- ``` (characters not shown below)  
+  * / %  
+  + -  
+  :  
+  = !  
+  < >  
+  &  
+  ^  
+  |  
+  (all letters) ```
+
+- Yup, the priorities are like that, but I didn’t really get it. I need to go and find how the hierarchy goes. And in what order those things get evaluated in.
+
 ## By-name Parameters
 
 ## Annotations
