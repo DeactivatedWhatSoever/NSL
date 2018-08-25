@@ -528,6 +528,10 @@
 
 ## Implicit Conversions
 
+### An implicit conversion ... So A to B right? 
+
+### Okay, I totally don’t get how this works. So implicitly say that `A` will get converted to `B`? Well I think that’s it but, I don’t really get how this works and how this is used. I’m really confused. I think I should go on and research about this when I’m actually taking the course. I can’t just get stuck on this. I’m just here to see what Scala has. Okay?
+
 ## Polymorphic Methods
 
 ## Type Inference
