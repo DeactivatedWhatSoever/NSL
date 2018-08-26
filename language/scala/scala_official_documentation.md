@@ -593,6 +593,14 @@
 
 ## By-name Parameters
 
+### By-name parameters? Oh my god. By-name? What in the world does this mean. So something that is passed, will be evaluated by its name?
+
+### Cool. It actually helps! This is how you make a by-name parameter: `def whileloop(condition: => Boolean)(body: => Unit): Unit = { //block }`
+
+- So this means, that the parameter isn’t evaluated until it’s used. So if you just pass in a normal parameter, with just a type, it’ll need to be used! But if not, it can get evaluated by chance or a condition, which would be a heavy computation, it can be evaluated when it has to. Also, it can only be evaluated once. That’s how you use these dudes. 
+
+- Remember, the `=>` operator to the type. That’s how you define them.
+
 ## Annotations
 
 ## Default Parameter Values
