@@ -635,3 +635,28 @@
 
 ## Packages and Imports
 
+### Creating a package
+
+- It goes the same like Java. project/src/main/scala/SOURCE! Also, the test would be like, project/src/test/scala/TESTS
+
+- Yeah, Scala’s convention of packages are actually having the same with the directory structure. But the thing is, Scala is actually agnostic to the naming! Which means, it doesn’t need to be the same with the directory structure.
+
+- You can also use braces to define a package. It’s pretty cool that Scala can do that. It’d be good to actually visualize a package by braces, but I don’t think they’ll use that stuff.
+
+### Imports
+
+- ``` import users._  // import everything from the users package  
+  import users.User  // import the class User  
+  import users.{User, UserPreferences}  // Only imports selected members  
+  import users.{UserPreferences => UPrefs}  // import and rename for convenience ```
+
+	- Had to have this reference. It’s pretty neat!
+
+- Oh yeah, it’s pretty cool that Scala can import everything anywhere, I mean, inside a method like Python! 
+
+	- Dude, I know this is pretty cool, but when should we use this kind of technique? When we just need to use it in that specific place? Is that good to have dependency locked in?
+
+- Cool, The `scala` and `java.lang` package as well as `object Predef` are imported by default.
+
+- Also, you can use the `_root_.whatever` way to import stuff from other packages when you have conflicting names.
+
