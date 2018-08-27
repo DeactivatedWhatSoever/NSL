@@ -631,5 +631,7 @@
 
 ## Named Arguments
 
+### The orders of the named arguments can be rearranged, but when you use both positioned and named, the positioned must come first in order, and you may use named parameters after with any order you like.
+
 ## Packages and Imports
 
