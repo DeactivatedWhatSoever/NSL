@@ -625,6 +625,10 @@
 
 ## Default Parameter Values
 
+### Yep, Scala gives you the ability to give default values to methods. But the thing is, you have to give named parameters to invoke the method. 
+
+### So if they all have default values, then you can just use positioned parameters. But when they partially have default values, then you need to give them named parameters.
+
 ## Named Arguments
 
 ## Packages and Imports
