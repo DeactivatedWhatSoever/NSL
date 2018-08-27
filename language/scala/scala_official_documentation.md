@@ -603,6 +603,26 @@
 
 ## Annotations
 
+### One of the things that you can use for a annotation, is the `@deprecated` annotation. Since override is actually a syntax in Scala, it doesn’t need an annotation. But what about overload? The reason Scala doesn’t need overload is, it can have positional ‘named’ parameters, with default values and all of that. So you only need to define one method with all of that. You don’t need to overload anything!
+
+- Oh yeah, the `@deprecated` annotation will print a warning message when compiling.
+
+### Annotations that ensure correctness of encodings
+
+- It says something about the `@tailrec` annotation. But I don’t understand about the tail in a recursive function. When the function fails it prints: “Recursive call not it tail position”. Does this means something like, exit ways?
+
+- I think you’ll need more investigation of this. 
+
+- I think there’s actually something like a tail recursive function. Let’s get into it another time.
+
+- Oh yeah, the `@tailrec` annotation can actually give compile errors! Which means you actually have to fix your code in compile time!
+
+### Annotations affecting code generation
+
+- So there are some annotations that actually affect the code size. Like, that annotation will generate some code? And `@inline` is one of them? Okay, what the hell does an inlined function mean.
+
+- Ohhh, so Java can actually has to use the named parameters for annotations. It can’t used positioned + named. But Scala can do that! Scala actually can do named + positioned.
+
 ## Default Parameter Values
 
 ## Named Arguments
