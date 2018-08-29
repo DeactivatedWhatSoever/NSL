@@ -77,4 +77,12 @@ IP Routing
 * How does routers route? Also to switches. All that network component middle stuff. 
 * So they don’t repeat the OSI layer connection?
 
+### Python Summary
+
+Pretty funny that I didn’t get anything over here. I already knew all the basic syntax. All I got to learn is about the `#!` -> Shebang! lol. 
+
+I also got this question again:
+* Dynamic Typing vs Type inference
+* Interpreters -> cross platform
+
 #books
