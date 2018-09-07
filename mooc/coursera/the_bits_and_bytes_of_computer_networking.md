@@ -80,6 +80,81 @@ Reference: [Ethernet frame - Wikipedia](https://en.wikipedia.org/wiki/Ethernet_f
 
 ## Week 2
 The network layer.
+There’s like not much that I learned over here. It was mostly about datagrams, IP headers, some protocols, and about binary numbers! Hex, octets and all that stuff. That’s what I mostly saw.
+
+### IP Address
+IPv4 -> 4 octets
+IP addresses actually represent independent networks. 
+
+There’s two ways to give an IP address. DHCP and static.
+Dynamic Host Configuration Protocol, which is just a dude that gives IP addresses dynamically. And the static IP thing is just literally the word, static. The IP doesn’t change.
+
+So packets in the IP layer are called IP datagrams. It’s pretty cool that they encapsulate the data of the above layer in the payload section. So in the datalink datagram, there’s a payload section. That payload actually has the information of the IP layer. So encapsulation goes like that. Eventually, the data is transferred in packages, but they still have all the data. It’s pretty cool to know. 
+
+### IP Headers
+[IP Protocol Header](https://www.thegeekstuff.com/2012/03/ip-protocol-header/)
+The above blog really has a good explanation of the headers. The headers that Google pointed out was the TTL. Time To Live. Since routers can infinitely route to each other, we needed a way to avoid these kinds of things. So the TTL is actually, how many times an IP datagram can hop. Remember, hop is a scale to know how many times a router communicated with another router. The TTL gets decremented until to 0. It’ll get dropped when it hits 0.
+
+### IP Adress Classes
+Class A, B, C
+0-126, 16M
+128-191 64K
+192-223 254
+
+IP Addresses have two elements, the network part, and the node part.
+
+Class A    network, node, node, node
+Class B    network, network, node, node 
+Class C    network, network, network, node
+
+The above classes are the most common ones. D, and E are also available but they’re not really relevant. 
+
+An Address Resolution Protocol(ARP), finds the corresponding IP address with the MAC address. So it broadcasts to the network and gets an ARP response. That’ll search the ARP table and get the MAC address, and it’ll send the data to that host. 
+
+### Subnets
+Subnetting vs Subnet masks vs CIDR
+These are the things that we’ll cover over here. What subnets are, how to do understand subnet masks and CIDR.
+
+[Subnetting and Subnet Masks Explained](http://www.steves-internet-guide.com/subnetting-subnet-masks-explained/) -> A real well written blog.
+
+Subnetting: Dividing IPv4 networks into smaller networks.
+
+Making networks to smaller networks.
+
+network, subnet, subnet, node
+network, subnet, node, node
+
+But I don’t know how all the & operating thing works. I need to get a know how of this.
+
+CIDR(Classless Inter-Domain Routing)
+
+I think I should go and find a way to understand the subnet calculus. I heard there’s a lot of stuff in the CCNA stuff. Let’s do it!
+
+### Routing
+
+* Routing Protocols
+* Routing Tables
+* RFC
+
+A routing table. It’s a table of router informations. It has the destination ‘network’ and the number of hops. That’s the actual thing you’ll need for a router to router to another network. They Also need to be updated for the best routes!
+
+#### Interior / Exterior Gateway Protocols
+Interior -> Link State Protocol, Distant-Vector Protocol
+Remember, in programming, vectors and lists.
+
+Exterior -> TBD …
+
+Routing Protocol Examples
+* RIP
+* EIGRP
+* OSPF
+* BGP
+
+Find out about IP address allocation.
+
+Non-Routable Address Space: Remember all those starting ip addresses. 192.168.0.0 and all that stuff. 
+RFC: Request for Comments
+NAT: Network Address Transformation
 
 ## Week 3
 The transport and application layers.
