@@ -150,6 +150,8 @@ Routing Protocol Examples
 * OSPF
 * BGP
 
+[IETF  | Internet Engineering Task Force](https://www.ietf.org/)
+
 Find out about IP address allocation.
 
 Non-Routable Address Space: Remember all those starting ip addresses. 192.168.0.0 and all that stuff. 
@@ -158,6 +160,68 @@ NAT: Network Address Transformation
 
 ## Week 3
 The transport and application layers.
+
+The thing that I learned over here is the application layer and the transmission layer. Also, when you learn this with OSI, there’ll be two more layers which are, presentation layer and session layer.
+ TCP -> Application, compression, encryption and all that stuff. Anyways, The thing that I should go in more deeper is, the TCP socket states and TCP Control Flags. Then you’ll get the idea of the 3-way handshake and the 4-way handshake. Open and closing connection! 
+
+I won’t really get into the things that go into the TCP segment. This is what you call a packet in the transport layer. So if I knew all that stuff, I would be doing a networking engineer thing lol. I wouldn’t be a programmer lol. Of course it would be good for me to know all of that, but I’ll get to know it when I really need to know them. All I need to know is, that I know that those kinds of stuff are out there. 
+
+### TCP Segment
+* Destination Port, Source Port
+* Sequence Number
+* Acknowledgement Number
+* Data Offset Field
+* Control Flags -> Really important
+* Checksum Header
+* Urgent Pointer Field -> Not much times seen in the industry
+* Options
+* Padding
+
+### TCP Control Flags & Three-Way Handshake
+Control flags? Are they different from the socket states? Well yes they are. These flags indicate the connection process. 
+* URG(Urgent)
+* ACK(Acknowledged)
+* PSH(Push)
+* RST(Reset)
+* SYN(Synchronize)
+* FIN(Finish)
+
+### TCP Connection Establishment
+A -> B
+1. SYN -> SYN-ACK
+2. ACK -> Full duplex, Three-Way Handshake.
+
+Four-Way Handshake = finish
+1. FIN
+2. ACK
+3. FIN
+4. ACK
+
+### TCP Socket States
+These definitions vary by OS. When you ever get to troubleshoot this part, you must see the OS specifications for socket states.
+
+* LISTEN
+* SYN_SENT
+* SYN_RECEIVED
+* ESTABLISHED
+* FIN_WAIT
+* CLOSE_WAIT
+* CLOSED
+
+Connection-oriented Protocol = TCP
+Connectionless Protocol = UDP
+
+So that’s why UDP is just used for video streaming. Speed, but can lose a few frames. But what if you don’t want to lose frames? Just download it you idiot. How did Netflix give so much great frame rates? They don’t really drop the frames that much. Is it because there’s too many frames? lol. 
+
+### System Ports, Registered Ports, Ephermal Ports
+* Port 1-1023 = System Ports  -> Well-known network services
+* Port 1024-49151 = Registered Ports -> Just less common program ports
+* Port 49152-65535 = Private or ephermal ports -> Outbound connection ports! They’re also used for private applications and that stuff. 
+
+### Firewalls
+There are actually devices lol. These things just block unwanted inbound networks from other ports. These are mostly software. Iptables, firewalld, and stuff.
+
+You should listen to the `All the layers in Unison` lecture again. It’s a great overview of understanding how all the networking works together.
 
 ## Week 4
 Networking services.
