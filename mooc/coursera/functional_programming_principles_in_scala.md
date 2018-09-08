@@ -86,6 +86,54 @@ What is tail recursion? There’s a special annotation in Scala.
 -> [Tail-Recursive Algorithms in Scala | alvinalexander.com](https://alvinalexander.com/scala/fp-book/tail-recursive-algorithms)
 
 ## Week 2
+It's mostly on higher-order functions. Where functions are actually able to be passed along, behavior can be passed instead of values and objects. 
+
+### Higher-Order Functions
+Okay, higher-order functions are first class citizens. Which means, they can be passed around as variables. Only primitive types and objects were able to be passed in object-oriented languages. That paradigm didn't have a concept of passing around ‘behavior'. In functional programming, we need to pass around behavior to actually make functions. We can have functions inside functions, and also pass in functions, return functions as well. That’s how math works.
+
+#### Anonymous Functions
+This is just syntactic sugar for higher-order functions. Since you can just define a function and pass it, you can pass a lambda(anonymous function) as an argument. So it's not that important. If the lambda repeats a lot, then you should define that into a function. 
+
+### Currying
+ ()()()()() == ((((((())))))) -> It's the same! This is currying. Just giving one argument to the other, returning a function and keep on returning it! 
+
+```scala
+def sum(f: Int => Int)(a: Int, b: Int): Int = ???
+
+The type of sum: (Int => Int) => ((Int, Int) => Int))
+1. Gives a function that has one Int argument and returns an a function that takes in two Int arguments and returns an Int.
+
+Int => Int => Int === Int => (Int => Int)
+```
+
+ What is map reduce? Is it a general form of a recursive function? I think you should go and comprehend what map reduce is before you go to the next lecture. 
+ Currying is something about splitting functions apart by its parameters. You can make procedural steps by calling the returning functions step by step. Why is this needed? Make functions smaller. If we don't curry, then our functions will be very big. Very big means, something 
+
+### Example: Finding Fixed Points
+What is a `fixed point`? Applying higher-order functions. The points that meet with `f(x) = x`. I need to find and apply these principles. It's so hard to think about this stuff in this way.
+
+### Scala Syntax Summary
+ There's not much over here. Just the syntax of Scala that we used in the lectures. I already learned them in the Scala official documentation. 
+
+### Functions and Data
+We'll learn how functions create and encapsulate data structures. Functions creating data structures? Not sure of this man. I thought it was about abstraction and stuff. 
+ I actually got to know why Scala classes can have members defined right on top. Since they're are `val`s on default and since they're val's, they can be accessed publicly. They can't be changed, so it doesn't need to be private. So in FP, everything is public and can't be changed once initiated. That's why it doesn't need access modifiers.
+ The add function also becomes a sub lol. Just making the number negative, that's all. 
+ I guess `Rationals` are `분수`.
+
+### More fun with Rationals
+Data abstraction is actually making classes. Or objects. Case classes if they're just data classes? I guess. 
+ `require(condition, "exception message")` -> You can actually forbid your values to have a certain value by filtering it with a condition. This can actually replace the `setter` method in most OOP objects. 
+ `assert(condition` -> Same with the above. 
+We have a default constructor that you define next to the class name. If you want to make another one, just define a this function. 
+`def this(x: Int) = this(x, 1)` like that.  
+
+### Evaluation and Operators
+ Classes and Substitutions. What is a substitution? I think this is a very important thing over here. Replacement? Is it the same as evaluation? I think I need to get to know how the program actually executes when it's written in functional programming. It's totally hard to understand how it gets evaluated in order or whatever. 
+ It's cool that we can use the methods like operators. Since operators are functions after all in Scala. Remember, the operators can be called infix. Scala is a really great language that lets programmers do stuff what they want. I saw this when you could redefine your own operators. Even Kotlin doesn't let you do that lol. 
+ 
+#### Precedence Rules
+You need to find what operator is stronger or weaker. 
 
 ## Week 3
 
