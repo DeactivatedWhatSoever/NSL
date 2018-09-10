@@ -225,6 +225,34 @@ You should listen to the `All the layers in Unison` lecture again. It’s a grea
 
 ## Week 4
 Networking services.
+What we learn over here are just services and applications. I would rather go and see the implementations of this stuff. Well, you should know the implementations of the other stuff too. Dang, there’s too many things to look at and learn. How to divide and conquer code? How to break it into pieces? I really want to know that. How to read code. All that stuff. Let’s try to learn. 
+* DHCP
+* DNS
+* NAT
+* VPN
+* Proxy
+
+### DHCP
+Dynamic Host Configuration Protocol. The lecture says the implementations really vary in feature. I wonder if all the iPhone and network cards actually have the clients installed. If there’s no client, it won’t be able to connect to the DHCP server right? I’d better get to know this. Maybe a search will do.
+
+### DNS
+Dude, there’s a lot to the DNS. We need to know a lot of this. But the thing is, I got to know why Cypher and people had to adjust the TTL. Time to live, is how long are you going to cache your domain in the DNS. So it needs to get smaller to actually change your static IP address. It’s pretty cool. 
+* A Record
+* AAA Record
+* CNAME
+* TXT
+Got all of that and boom.
+
+All the DNS stuff should be visited again since it has so many things to learn. It actually has some cool things about, how the name servers to load balancing. It actually does it! Since there could be a lot of static ip’s that are associated with the same domain name.
+
+### NAT
+Network Address Translation. Didn’t really pay attention to the lecture but, it had something to do with port forwarding. It hides the IP address, but it can forward the traffic to a specific port. Which is pretty impressive. 
+
+### VPN
+Virtual Private Networks. They say it’s a tunneling software. How do you actually implement one? Also these actually vary in implementation too. So you should go find the one that you want and do it. I heard that this is sort of, paid? Go find out how to actually do a free VPN. Also, 2FA came out of here too. 
+
+### Proxy
+A proxy that actually caches your web pages, or, the reverse proxies that just forward the request to the servers in the back and gives back the response. Well I would like to know the core difference between a proxy and a reverse proxy. 
 
 ## Week 5
 Connecting to the internet.
