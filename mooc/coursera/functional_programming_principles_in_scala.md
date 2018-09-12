@@ -136,8 +136,28 @@ We have a default constructor that you define next to the class name. If you wan
 You need to find what operator is stronger or weaker. 
 
 ## Week 3
+Finally I get to understand functional abstraction? If that's what it's called. I’m not sure whether if you write pure functional code, you need access modifiers or even inheritance. I wonder about traits. Mixins. Are they part of the functional programming family? How do we use it. Do we really need them? I hope I get the answers in this week.
+
+### Class Hierarchies
+Classes that extend each other ... So FP does inheritance? Is this right? Dynamic binding & family writing. So inheritance can't be avoided in FP too? Or is it because Scala is a multi-paradigm language. Should I learn `Elm`? I'm pretty much scared on what to do. If FP is the future, how to actually program stuff in that way. 
+ It’s just `abstract class`, `override`, `extends`, it's all the same. I think I should pay more attention when we get to see `trait`. 
+ Cool, singleton objects, `object` defined objects are values.  
+* Dynamic Binding
+* Static Binding
+We need to get a hand of these things. 
+
+### How Classes Are Organized
+You can find all the documentation of the standard library at `Scala Doc`. Also, you can import the classes you want with `_` and all that. It's just the same as Java. 
+ `Traits`. These are mostly used when you want multi inheritance. I wonder how Scala solved the diamond problem? Concrete methods <-> abstract methods. 
+ The rest are about `Nothing`, `Null`, and the type hierarchy in Scala.
+
+### Polymorphism
+Types as parameters? I think they're generic-like things from Java. So you can pass in types as parameters, which would be generics. 
+ Generic functions? How can that be possible? So you can bring in any type of parameter and do this and that? Ahh, so in Java, you can't make a function that has a generic parameter. Only a class that has generic parameters can make generic functions. But in Scala, you can just create any kind of generic functions!
 
 ## Week 4
+[VSnake notes: Functional Programming Principles in Scala](http://vasnake.blogspot.com/2016/03/functional-programming-principles-in.html)
+I'll just replace the other weeks with this note. I'm not really sure this course is right for me. It doesn't seem to show me all the things that I was actually thinking of. I thought this course would show the differences of OOP and why Scala actually gives you the opportunity to code in OOP. How it goes with FP and all that stuff. 
 
 ## Week 5
 
