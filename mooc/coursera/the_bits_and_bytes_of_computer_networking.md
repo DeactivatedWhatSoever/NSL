@@ -256,6 +256,41 @@ A proxy that actually caches your web pages, or, the reverse proxies that just f
 
 ## Week 5
 Connecting to the internet.
+* WAN
+* Cellular
+* Wireless
+How can we connect to the internet? I think it’s always the IPS. Internet Provider Services. They do all the work right? But how did it happen in the old days? 
+### POTS & Dial-Up
+Dial up. Plain old telephone service. Remember, it used the phone lines to communicate in the internet. It’s pretty much really cool how they saw a way to connect the world. You can only use the phone or the internet at this stage. Remember that strange sound that you heard when you connected to the internet? When I heard that sound again, I was so into nostalgia. Lol and it only could transmit to 14.4Kb. Which is pretty much a funny thing. 
+
+Band rate: Bits per second in phone line.
+
+* T-carrier technologies
+* DSL(Digital Subscriber Line)
+	* ADSL -> Asymmetric
+	* SDSL -> Symetric
+* Cable broadband
+* Fiber Connections
+
+What exactly is point to point protocol? How does it communicate with all the others. 
+
+Fiber -> Fiber to the X{Neighborhood, Building, Home, Premises}
+ONT(Optical Network Termination)
+
+WAN(Wide Area Network)
+-> Spans across multiple physical locations.
+
+Destination Point -> Local Loop -> LFE, ISP -> WAN
+* Frame Relay
+* HDLC(High Level Data Link Control)
+* ATM(Asynchronous Transfer Mode)
+* Point to Point VPN -> WAN Tech
+
+### Wireless Networking
+IEEE gives specs for the Wi-Fi networking. 802.{b,a,g,n,ac). It’s cool to know that the Wi-Fi technology is actually inside the physical and data link layer. It uses radio signals to communicate. 2.4GHz, 5.0GHz. These are the frequency bands that it uses. 
+
+I learned stuff about configuration, security, channels and cellular. It’s pretty cool how also Wi-Fi has collision domains! To actually resolve that issue, we needed something called channels. Those channels actually makes us go into other network segments and just communicate over there. I wonder if there are too many people in a channel. Doesn’t that make you get another collision domain? I want to find out whether there’s any way to scale wireless! 
+ Security is pretty much a fun thing to look at. It goes from 64, 128, and 256. WEP, WPA, WPA2. I would love to see what these kinds of methods are. Are they just passwords in the means of key in this context? I’m not sure. I’d better find out. I also got to know about MAC address configuration. You can just let your home network know about the devices that you trust. I gotta do this and see whether I can still get cracked in this kind of security! Password -> MAC address registration -> and more? Let’s find out when you get to setup your home network. 
 
 ## Week 6
 Troubleshooting and the future of networking.
