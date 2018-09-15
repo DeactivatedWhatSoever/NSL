@@ -295,4 +295,14 @@ I learned stuff about configuration, security, channels and cellular. It’s pre
 ## Week 6
 Troubleshooting and the future of networking.
 
+Well in this section, I didn’t really learn new things. It’s just about the cloud, troubleshooting with ping, nslookup(dig), trace route, netcat. That’s all to it and then I actually went on for learning the cloud. Dang, there sure were no information. 
+
+I do learned that some place called `Level 3 Communications` owned some public DNS servers. I don’t know why you really need them to actually do some troubleshooting with the DNS. It’s just, you’ll normally be troubleshooting with your own domain name registrar or whatever. Would you need it if you’re setting up your own DNS server? I’m not sure. 
+ Since we use those kinds of stuff, we don’t actually get to use the `hosts file`. It always get tampered with viruses and well, sometimes it’s useful to actually map an address with a host that you actually want it to be. Which is pretty fun lol. I wonder if we actually add a new alias for google lol. 
+
+### IPv6
+IPv6 is actually the future and I should learn about the new protocols that come out and trying to convert the stuff that I use to this. I’m not sure whether this will be faster or not since it came out for actually getting the ability to allocate more IP addresses for people to use. 
+ The things that I should study more is how to actually read IPv6 addresses and how to use them. I saw these kinds of addresses on `Watch Dogs` and it was pretty cool.
+ IPv4 + IPv6, needs to have a harmony. And that’s why there’s some tunneling software and protocols that actually do the job. The competitors are: 6in4, Tunnel Setup Protocol, AYIYA.
+
 #mooc
