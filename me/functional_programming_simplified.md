@@ -26,4 +26,27 @@ Yeah. You can learn functional programming with Haskell since it's a `pure` FP l
 ### The purpose of this book
 Cool. I can learn Haskell way easier with this book even if I get a chance to learn Haskell! I'm pretty sure that I won't be getting a go with Haskell since I don't really think that's the future. I might go with Elm, but I'm going to stick with programming in FP with JavaScript. Or TypeScript. 
 
+## Who This Book is For
+Yep, parallel/concurrent application development! Totally want to do that. 
+
+### 1) Developers who want a simple introduction to FP
+OOP Java -> FP Scala
+
+### 2) Those interested in writing "better" code
+Hell yeah I'm into writing better code. Because of the code that I'm going to write now are going to be exceptional. They need to be exceptional because mostly it's on for refining data, running algorithms and etc. 
+ Writing better(safe, testable, less error-prone) code faster without reducing quality and maintainability. 
+ Pure functions only rely on their inputs. Doesn't use stuff from up top or like that. Even if it uses stuff from up top, they're immutable. 
+
+### 3) Parallel / concurrent developers
+Most multi-threading problems are solved because of immutable data. [The Free Lunch Is Over: A Fundamental Turn Toward Concurrency in Software](http://www.gotw.ca/publications/concurrency-ddj.htm) I think I should read this article really carefully. Also, we need to write concurrent code by using some messaging/actors frameworks and try to find the best ways to write concurrent code. 
+
+### 4) Big data app developers
+No state management, just algebra like functions that give good refined data.
+
+### 5) Upperclass college students
+I think these dudes would mostly just should get a good spark with C and C++ and then get on with Functional Programming. 
+
+### Cation: Not for FP experts
+Yup, this book is for people like me. 
+
 #reading/books
