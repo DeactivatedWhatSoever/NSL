@@ -49,4 +49,43 @@ I think these dudes would mostly just should get a good spark with C and C++ and
 ### Cation: Not for FP experts
 Yup, this book is for people like me. 
 
+## Goals, Part 1: "Soft" Goals of This Book
+Well, the thing that I saw in the figure.
+* Semigroup
+* Monad
+* Currying
+* Partial Application
+* Applicative
+* Functor
+* Monoid
+* Referential Transparency
+* Lambda
+* Type Class
+* Higher-Order Functions
+* Higher-Kinded Types
+* First-Class Functions
+* Composition
+* ADT
+* Combinator
+* List Comprehension
+
+There's a whole lot going on there. But, I'll get there.
+
+### A word of caution: “The Learning Cliff”
+Isn't it the learning curve? But I think it's a cliff since it's really hard dude. "Do the thing to learn the thing”
+You either keep learning or fall off the cliff. This means FP is really hard. I have to keep on doing it, keep trying to think in it, and I must make all the things that I do with FP. Try to destroy imperative thinking. 
+
+### Aside: Working hard to learn something new
+Even Eienstien had a hard time learning new things. So don't worry man.
+
+### More on Point #7: Thinking in FP
+1. Data flows into the application
+2. The data is transformed by some functions
+3. A final output is produced
+
+Yep, function signatures are really important things. But I don't know `why` at the moment and I would like to know the why by going through the book.
+
+### Summary
+Think in FP. That's what you have to get. Oh yeah, you have to have a question everything spirit mate. 
+
 #reading/books
