@@ -39,4 +39,26 @@ Real important thing over here is, you have to see what Django does when you ini
 ### Starting a Git Repository
 There was absolutely nothing much over here. Just making a repository and making your first commit. It also has `.gitignore` and all that stuff. 
 
+## Extending Our Functional Test Using the unites Module
+Didn’t know that old fashion is making a blog, post forum lol. Nowadays, they’re to-do lists lol. Let’s get on with it. 
+[The secret to being a top developer is building things! Here’s a list of fun apps to build!](https://medium.freecodecamp.org/the-secret-to-being-a-top-developer-is-building-things-heres-a-list-of-fun-apps-to-build-aac61ac0736c)
+-> This dude wrote a great list of what to actually make.
+
+### Using a Functional Test to Scope Out of a Minimum Viable App
+Functional Test == Acceptance Test == End-to-End Test
+Dang, E2E was actually the same with Acceptance. Well isn’t integration test the same thing too? I think I should find the diff between. So integration testing was actually testing between two applications. A database and the server or something like that. But a functional test is actually a user story. A specification, something that really needs to be tested by human, but automated by this.
+[testing - What’s the difference between unit, functional, acceptance, and integration tests? - Stack Overflow](https://stackoverflow.com/questions/4904096/whats-the-difference-between-unit-functional-acceptance-and-integration-test)
+
+A word for comments. It’s pretty cool that the author explained about it. You shouldn’t write down `what` the code does. You should write `why` you wrote this code. You must name your variables, functions, classes, as intuitive as you can and structure it so good so that people don’t need to read any comments. 
+
+### The Python Standard Library’s unitest Module
+Well it’s just another `xUnit` thing in Python. The setup and teardown functions, way how you describe the test with the function name, and all the assertions and stuff. How many assertions for each test? Is there a rule? Or is it nice to shove it all in. Anyways, I learned an important thing in Python. 
+
+```python
+if __name__ == '__main__':
+	# This statement is actually used to make this script a command line executable. It checks whether it should be imported or executed.
+```
+
+
+
 #reading/books
