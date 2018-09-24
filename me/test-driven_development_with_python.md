@@ -92,4 +92,44 @@ To test a view, it mostly checks the essential contents of an HTML page. But I t
 So the cycle is pretty much feel redundant at some point. Because you have a write a test and write the most smallest code that you can write that addresses the failure of the test and repeat. Why not just write a whole lot of code and make some test code out of it? I’m not sure which one is actually write, but it pretty is hard to know what to do what.
  I think the author wants to say, change minimal code and keep testing until the tests clear. 
 
+## What Are We Doing with All These Tests? (And, Refactoring)
+There are a lot of questions that I have to ask myself or the guy that’s explaining TDD to me. But the thing is, we’re trying to write good code. Readable and testable. The reasons that I’m trying to get this in my skill set is:
+* Write down features for everyone and the developers to read.
+* Write code that I really need.
+* Get confidence for the code I’ve written.
+
+### Programming Is Like Pulling a Bucket of Water Up from a Well
+Dang, the more the test coverage the better, is what’s the author is talking about. So if the function is that trivial, why not just write a line of code! Since it’s that simple and trivial, you can just write down a test that easily. It’s pretty much a great thing if you think about it like 
+ The important thing to catch over here is, get your mind to actually write tests like, you have to. If you don’t do it, then a murderer will kill you while testing your code lol. If you don’t make it clear, then he’ll get angry.
+
+### Using Selenium to Test User Interfaces
+Man, if you get to write good tests, you’ll never lose tracks of what you were doing. You can just get back to what you were doing by just running the tests again!
+ Dang you can use selenium to actually type in words and check all the stuff in the html elements and the attributes inside the elements. It’s like jQuery lol. Well anyways, there’s something called an `explicit` wait that I need to keep in mind. We just sleep for 1 second over here, but I think we could make it event driven and do something when the page loads after the event. 
+ Also, another word for committing code. More atomic, the better.
+
+### The “Don’t Test Constants” Rule, and Templates to the Rescue
+What should we not test? Obviously templates are there for just writing down html in another file. What are constants in the testing context? So really, things that don’t change. Once constants are declared, they don’t change. So testing that would be pointless. If it were to change, then we would have a point in changing it. So that’s why we don’t test immutable things? Unit tests are more of testing input, output, logic, control structures and all of that.
+
+#### Refactoring to Use a Template
+Well there’s nothing much in using templates. Obviously, template engines are going to completely dead in the future? Well not completely dead since server developers will need a way to just create html stuff on the fly. Not much to worry though. I hope people in the frontend will save the backend people!
+
+#### The Django Test Client
+The Django test client has a lot of features. It has a built in http client which is pretty cool. Also does all the template assertion. I think it would be a great idea to write a library that wraps around `JUnit` and does special tests for Spring Framework. I think there would be one out already but I’ve never used it or never seen one. It’ll be great to actually have a go though. I wonder whether there’s a great assertion for REST API response!
+
+### On Refactoring
+Remember, refactoring is changing the code without changing the functionality. Make it more readable, and reduce the code. Also, refactor the functioning code OR the test code. Don’t refactor them at once.
+
+### A Little More of Our Front Page
+I did a go by incrementing just one assertion at a time. So I just repeat until I have no assertions to verify. It’s pretty cool. It lets me to think computational. One by one, I solve a failing test, and after I finish all the tests, then I get a chance to refactor the tests, and the code. I’m still doing the table part, but that’s for the next chapter.
+
+### Recap: The TDD Process
+TDD practice
+* Functional tests
+* Unit tests
+* The unit-test/code cycle
+* Refactoring
+
+The `write minimal code` part is abstracted into the unit test TDD cycle in functional tests. So it’s actually an ultimate cycle, the functional tests represent the sake of the application. If those don’t pass, the app is absolutely not functional. 
+ All we need to know is, doing the same TDD cycle. Write a test, write “minimal” code and refactor either the test or implementation, and write a test again when the tests pass. 
+
 #reading/books
