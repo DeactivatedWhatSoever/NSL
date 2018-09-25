@@ -132,4 +132,71 @@ TDD practice
 The `write minimal code` part is abstracted into the unit test TDD cycle in functional tests. So it’s actually an ultimate cycle, the functional tests represent the sake of the application. If those don’t pass, the app is absolutely not functional. 
  All we need to know is, doing the same TDD cycle. Write a test, write “minimal” code and refactor either the test or implementation, and write a test again when the tests pass. 
 
+## Saving User Input: Testing the Database
+Doing one thing at a time is the key of TDD. But you also get the chance to think about the forest. I think I’m getting a head of this. 
+
+### Wiring Up Our Form to Send a POST Request
+CSRF -> Should get a sense of security. You know SQL injection, but you don’t know CORS or CSRF. I think it’s a time for you to actually get this stuff in the way. You always pass them as if you’d never have to deal with them. Let’s go to that YouTube channel or what not to get this in your long-term memory. 
+ Oh yeah, we only used some HTML to do a POST request. The server doesn’t have anything to respond so it just refreshes. Need to implement the next part in the next section.
+
+### Processing a POST Request on the Server
+We do process it in the `views.py` part. Which is the controller, but shouldn’t this have another function that does it? Not just put in an if statement and check whether it’s POST or not and do this and that. Don’t think it’s a good practice.
+
+### Passing Python Variables to Be Rendered in the Template
+You can just pass in the variables to the render function. I think it’s the same as the `ModelAndView` thing in Spring. You put in the view, and put in the data that you need. So, it’s pretty much how web services were made. Since the web services didn’t want to refresh everything, that’s when the frontend stuff came in. 
+
+#### An Unexpected Failure
+This is the best part of writing tests. This is called regression. If you are break something, you’ll get a failing test. When you feel dull, or you’re doing some drunk coding, then it’ll be the best for you to do this. I love it. 
+
+### Three Strikes and Refactor
+DRY(Don’t Repeat Yourself)! If you start to get a lot duplication, then, that’s when you get to refactor. It’s a really good factor to start with refactoring. Remember, code OR tests! Make your commits atomic!
+
+### The Django ORM and Our First Model
+Daaaaang, the author doesn’t explain about integrated tests at the moment. It will be discussed later in the book. 
+ I need to check about the ORM! See if there’s a functional version and see how everything is managed inside. How Hibernate and SQLAlchemy does this and that. 
+
+#### Our First Database Migration
+`./manage.py makemigrations` -> Just the same as db migrate in rails. Nothing new!
+
+#### The Tests Get Surprisingly Far
+It’s just a few words about the Python language. Sometimes the tests can go really far and you’ll have to figure out on your won because of the Python language is pretty generous. 
+
+#### A New Field Means a New Migration
+So when you do anything to the model, you have to do a new migration. That’s how you track versions of your database. You don’t need to manage the `sql` schemas by yourself.
+
+### Saving the POST to the Database
+Remember, use `FIXME` and `TODO` to not get interrupted from coding the current feature. You may encounter some problems on the way, but it’s sometimes better to just go on with the thing that you were doing. If there’s a major problem, then you should do a rethink. 
+
+### Redirect After a POST
+You have to redirect after a POST because of the double POST problem. When you do a POST request, you’ll actually be on the same URL, which means you’ll do another submit. But if you get redirected, you’ll have a different URL on refresh.
+
+#### Better Unit Testing Practice: Each Test Should Test One Thing
+Try to break the tests as tiny as you can. If you have multiple steps for a test, it won’t be easy to find which test is failing. So rather just make the tests tiny as you can, in other words, put one assertion for each test. If you’re testing multiple items, you can use more than one assertion. 
+
+### Creating Our Production Database with migrate
+Okay, we created a production database with `./manage.py migrate`. But the problem is, shouldn’t the functional tests also be inside a test database?
+
+### Recap
+Just recapping!
+
+#### Regression
+When new code breaks some aspect of the application which used to work.
+
+#### Unexpected failure
+When a test fails in a way we weren’t expecting. This either means that we’ve made a mistake in our tests, or that the tests have helped us find a regression, and we need to fix something in our code.
+
+#### Red/Green/Refactor
+Another way of describing the TDD process. Write a test and see it fail (Red), write some code to get it to pass (Green), then Refactor to improve the implementation.
+
+#### Triangulation
+Adding a test case with a new specific example for some existing code, to justify generalising the implementation (which may be a "cheat" until that point).
+
+#### Three strikes and refactor
+A rule of thumb for when to remove duplication from code. When two pieces of code look very similar, it often pays to wait until you see a third use case, so that you’re more sure about what part of the code really is the common, re-usable part to refactor out.
+
+#### The scratchpad to-do list
+A place to write down things that occur to us as we’re coding, so that we can finish up what we’re doing and come back to them later.
+
+NOTE: Check out PDB! Python Debugger! I think this is the ultimate tool to actually debug Python. 
+
 #reading/books
