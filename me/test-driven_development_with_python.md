@@ -199,4 +199,20 @@ A place to write down things that occur to us as we’re coding, so that we can 
 
 NOTE: Check out PDB! Python Debugger! I think this is the ultimate tool to actually debug Python. 
 
+## Improving Functional Tests: Ensuring Isolation and Removing Voodoo Steps
+So we'll be refactoring the functional tests and make it actually scalable. We only put it in one file and it does some stuff like `time.sleep(1)` stuff. Which is not really a good practice. We don't want `constants` to interfere. We need actual computed values. So we'll be getting this stuff done. 
+
+### Ensuring Test Isolation in Functional Tests
+We made a new Django app for the `functional_tests`. It does seem a good choice but I'm wondering whether if we need new functional tests, we make a new file for it. Since all the views are all in one, the models are all in one, I'm really not sure whether this is right. Do we need an app for every model? Or domain? I don't know the philosophy of Django. Gotta get to know it. 
+
+#### Running Just the Unit Tests
+We need to just run the modules that we want. Like we only have `lists`, so we just put that in for the test command as an argument.
+
+### Aside: Upgrading Selenium and Geckodriver
+Okay, sometimes the Firefox or Chrome or whatever browser just upgrades. When that happens, the functional tests might not run again. So we need to upgrade Selenium and the drivers for the browsers. We need to keep up with the versions mate!
+
+### On Implicit and Explicit Waits, and Voodoo time.sleeps
+The selenium library has implicit waits, but `time.sleep` is an explicit wait technique. We don't know what constant to put in. I wish there could be a great way to just know when to get the elements, when the browser has got all the things up. I think these kinds of tests should be done by the frontend. Since the frontend could get the events of the driver and stuff. I don't think template engines should do this kind of stuff. There should only be integrated tests and unit tests in the server, and functional tests should be in the client. Since it's a black box testing method, we only should just get the call the API and do the UI checking at the frontend level.
+
+
 #reading/books
