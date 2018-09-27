@@ -88,4 +88,13 @@ Yep, function signatures are really important things. But I don't know `why` at 
 ### Summary
 Think in FP. That's what you have to get. Oh yeah, you have to have a question everything spirit mate. 
 
+## Goals, Part 2: Concrete Goals
+[GitHub - jdegoes/lambdaconf-2014-introgame: Online material for the Introduction to Functional Game Programming with Scala workshop.](https://github.com/jdegoes/lambdaconf-2014-introgame)
+-> It's pretty cool how a person made a game with functional programming. Since games are so full of state mutation, I thought it would be so hard to implement games in FP. If I get through this book, this maybe is the thing that I'll get to understand first! 
+ Scala FP libraries
+* https://github.com/typelevel/cats
+* https://github.com/scalaz/scalaz
+Also, `LambdaConf` is something that is really inspiring the FP community. 
+Oh yeah, I wanna find what `Monad` means. There's so many tutorials out there, and everyone doesn't seem to understand it. It's pretty funny how they say it like that lol.
+
 #reading/books
