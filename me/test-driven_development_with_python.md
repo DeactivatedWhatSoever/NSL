@@ -214,5 +214,105 @@ Okay, sometimes the Firefox or Chrome or whatever browser just upgrades. When th
 ### On Implicit and Explicit Waits, and Voodoo time.sleeps
 The selenium library has implicit waits, but `time.sleep` is an explicit wait technique. We don't know what constant to put in. I wish there could be a great way to just know when to get the elements, when the browser has got all the things up. I think these kinds of tests should be done by the frontend. Since the frontend could get the events of the driver and stuff. I don't think template engines should do this kind of stuff. There should only be integrated tests and unit tests in the server, and functional tests should be in the client. Since it's a black box testing method, we only should just get the call the API and do the UI checking at the frontend level.
 
+## Working Incrementally
+So, by working incrementally, we can adapt to existing code with TDD. Let's find out how it really is implemented then. 
+
+### Small Design When Necessary
+This is the part that I didn't like about TDD. Why can't we think about the whole forest? Does this mean that the forest isn't needed? We only look at trees? Or do the functional tests represent the forest. I'm pretty confused of the `scope` of the forest. But still, let's keep on going then.
+
+#### Not Big Design Up Front
+So designing the whole architecture up front is actually a very traditional way. So the agile philosophy is that you learn more in practice that theory. So that’s why they take small incremental steps. 
+
+#### YAGNI!
+You ain't gonna need it. This really goes with abstraction. Some times, you don't really need the abstraction that you think of. It seems that the future isn't that close. You start to make everything big and big, and when it gets too big, you're too late to actually go back. You have to put in mind, the dude that's going to need it will implement when it is need. You will implement it when you really need it. So, you ain't gonna need it now.
+
+#### REST (ish)
+Since we're just making the app with plain HTML and no JavaScript, we can't use other HTTP request verbs. So that's why the author is just going over this part. 
+
+### Implementing the New Design Incrementally Using TDD
+Write a functional test, TDD, and when the test doesn't past, go for another layer of TDD except they're unit tests. 
+
+### Ensuring We Have a Regression Test
+How did we ensure? We added another functional test. That functional test was all about the new features that we were going to add, and all about solving the problems too. With these functional tests, it sure felt safe to code again!
+
+### Iterating Towards the New Design
+We get tempted on changing everything, it's called the refactoring cat lol. Well anyways, when we start to change everything and just run the tests, it won't work that way. We make a working state to a working state. Incrementally step by step, that's what we want in an agile manner of TDD.
+
+### Taking a First, Self-Contained Step: One New URL
+Writing a new test whether the url gives us our desired result. The list of my to-do items.
+
+#### A New URL
+`lists/the-only-list-in-the-world/` -> Add this. Actually, I have a question about this. The trailing slash, why like that? And I guess the `lists` is in front but it doesn't have a slash. So we need to put a slash on the end I guess.
+ By the end of this section, I got to actually finish all the failing tests except for the multi-list test. Nice going. I love it how the author explains the thought process from the failing tests. You see the tests fail, and you think what you need next, and see what you need more. 
+
+### Green? Refactor
+So we always have to think when we get into a `Green` faze. whether to refactor or keep going and write a test. We've found some unnecessary tests and deleted them, and going to write one for the other view that shows the list of to-do items.
+
+### Another Small Step: A Separate Template for Viewing Lists
+Did a lot of stuff over here. We didn't actually get the functionality of two separate views. That's done. But still, we went to the next step of our design without destroying anything. The app is pretty simple, but it really is cool that I didn't break anything dramatically. I did it one by one. So cool.
+
+### A Third Small Step: A URL for Adding List Items
+* Adjust model so that items are associated with different lists
+* Add unique URLs for each list
+* Add a URL for creating a new list via POST
+* Add URLs for adding a new item to an existing list via POST
+
+So, I'm pretty curious of how you make anonymous users. Is it just guest stuff? And that's all? There must be an identifier to keep tracking them. If it's a phone, we could just use that ADID or UUID or something, or if it's something like a browser, I don't know an IP address? Let's try and think about or research it some day.
+
+#### A Test Class for New List Creation
+Just a new test class for new lists. So the classes are actually identifiers of each little function. Not really special or something. Yeah, since in Java, you have to make each class for each test. Since Python is so small and readable, I think that's pretty much the reason this is possible.
+
+#### A URL and View for New List Creation
+Just added a nice view an url pattern for creating new to-do lists!
+
+#### Removing Now-Redundant Code and Tests
+Yep, the home GET api only needs to give the home page now. All the POST stuff is finally divided apart!
+
+#### A Regression! Pointing Our Forms at the New URL
+Since the form URLs have changed, I have to change them in the template. But I used my regression! That was really cool. I could just spot where the problem was.
+
+### Biting the Bullet: Adjusting Our Models
+Okay, I'm going to experience some Django ORM stuff over here. But it's gonna be very basic. A foreign key relationship!
+
+#### A Foreign Key Relationship
+`models.ForeignKey(Model, default=None)` One to one, one to many, many to many, etc. Hope to get a grasp in the future.
+
+#### Adjusting the Rest of the World to Our New Models
+Yep, we just associate the list, which means, we make a new list and stick it inside the items. But I think there'll be a problem ... Since there'll be a new list every time we make a new to-do item!
+
+### Each List Should Have Its Own URL
+It's pretty cool how Django uses regex for URL patterns. But I'm just wondering about how Django responds to HTTP verbs. Is there a good way for this? Yeah, there are `view decorators` in Django. [View decorators | Django documentation | Django](https://docs.djangoproject.com/en/2.1/topics/http/decorators/)
+
+#### Capturing Parameters from URLs
+`(.+)` says it captures all parameters. You can just pass another parameter through the view functions. Which is the controller.
+
+#### Adjusting new_list to the New World
+ Just adjusting the URLs that were only used for one. 
+
+### The Functional Tests Detect Another Regression
+When I ran the functional tests, I got another regression! It's so cool that this keeps on happening. Well anyways, I need to fix the global problem about adding items to the list thingy.
+
+### One More View to Handle Adding Items to an Existing List
+Well we need to add an item to an existing list. I don't know why we need a new view, but lets just follow.
+
+#### Beware of Greedy Regular Expressions!
+`(.+)` -> This regex captures everything behind. `(\d+)` only captures digits. I wonder, if there's a better way than just putting in regex. I think the Flask way is way better lol.
+
+#### The Last New URL
+* Add URLs for adding a new item to an existing list via POST
+* Refactor away some duplication in urls.py
+	* Ooh this is interesting. Wonder how.
+
+#### The Last New View
+The code looks so identical to the `new_item` thing. Want to change this ASAP. Hope the author goes that way.
+
+#### Testing the Response Context Objects Directly
+The `response.context` in the tests are actually the items passed to the render function. So you can actually test the contexts and see whether it gets passed or not.
+
+### A Final Refactor Using URL includes
+Didn't know you could just split out your urls. That's pretty good really. Anyways, remember the TDD philosophies you got from this chapter.
+* Working State to Working State (aka The Testing Goat vs Refactoring Cat)
+* Split work out into small, achievable tasks
+* YAGNI
 
 #reading/books
