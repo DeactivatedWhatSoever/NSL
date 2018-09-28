@@ -97,4 +97,16 @@ Think in FP. That's what you have to get. Oh yeah, you have to have a question e
 Also, `LambdaConf` is something that is really inspiring the FP community. 
 Oh yeah, I wanna find what `Monad` means. There's so many tutorials out there, and everyone doesn't seem to understand it. It's pretty funny how they say it like that lol.
 
+## Goals, Part 3: A Disclaimer
+Disclaimer => Responsibility.
+
+### The "reporter" metaphor
+A reporter goes into a foreign world and tries to understand the world by living in it, asking questions and takes notes about it. The notes will be written as clearly as possible and will be interpreted into plain ol' good English and Scala. 
+
+### A reporter is not a salesman
+I love this title. A reporter isn't here to sell, which means that it won't just tell us about the good stuff about FP. It'll also tell us about the bad stuff, when it’s not good and what's good for that. I hope this really is here.
+
+### A personal experience
+I wish to move to this new land of FP. It is pretty much the future, as long as there's a new theory coming out, or I could make it for parallel and distributed computing, I just hope I'm going the right track. But as I feel it, I think I'm going the write track. Theoretically cool FP is. 
+
 #reading/books
