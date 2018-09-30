@@ -315,4 +315,7 @@ Didn't know you could just split out your urls. That's pretty good really. Anywa
 * Split work out into small, achievable tasks
 * YAGNI
 
+## Web Development 'Sine Qua Nons’
+"Real Developers Ship” -> I love this saying. Of course we need to make a production environment, make a continuous deployment, integration environment and stuff. But still, I would love to learn this stuff outside the book and just do it my way. Find the best way to do this and that. Good? Lol.
+
 #reading/books
