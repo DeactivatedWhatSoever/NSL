@@ -192,4 +192,7 @@ Just think about the five rules when you start to write mutable code.
 ### What's next
 Let's get a better functional programming description.
 
+## One Rule for Reading this Book
+“If you already understand the material in a lesson, move on to the next lesson.”
+
 #reading/books
