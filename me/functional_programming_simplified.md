@@ -128,7 +128,7 @@ These are the author’s first questions, so let’s jot them down, and make you
 * If all variables are immutable, how do I handle changes in my code?
 	* For instance, if I’m writing an order-entry system for a pizza store, what do I do when the customer wants to change their pizza crust or toppings in the middle of entering an order?
 * Why is recursion better? Is it really better? Why can’t I just use `var` fields inside my functions, as long as I don’t share those `var`s outside the function scope?
-* Is “Functional I/O” really better than “Traditional I/O”
+* Is “Functional I_O” really better than “Traditional I_O”
 * Are there certain applications where the FP approach is better or worse?
 * In what points does it vary with OOP? 
 	* Does FP need access modifiers?
@@ -163,5 +163,33 @@ I still haven’t understand this but, just giving statements, which is the most
 
 ### What’s next?
 A few rules will be announced that’ll help me learn functional programming.
+
+## Rules for Programming in this Book
+Just remove the things that you learned from OOP in your head. It will be way easier to shift paradigms. Just actually, don't try to question the opposite, or equivalent structure. Just think of, "is it better than OOP? If it is? Why?"
+
+### The rules
+1. There will be no `null` values in this book. We'll intentionally forget that there is even a `null` keyword in Scala.
+2. Only `pure functions` will be used in this book. I'll define pure functions more thoroughly soon, but simply stated, (a) a pure function must always return the same output given the same input, and (b) calling the function must not have any side effects, including reading input, writing output, or modifying any sort of hidden state.
+3. This book will only use immutable values (`val`) for all fields. There are not `var` fields in pure FP code, so I won't use any variables(`var`) in this book, unless I'm trying to explain a point.
+4. Whenever you use an `if`, you must always use an `else`. Functional programming uses only `expressions`, not `statements`.
+5. We won't create "classes" that encapsulate data and behavior. Instead we'll create data structures and write pure functions that operate on those data structures. 
+
+### The rules are for your benefit (really)
+I get it. there are five rules, and it's just using pure functions, no null, values, if else expressions, and data structures. Repeat!
+* Not Null
+* Pure functions
+* Immutable Values
+* If, else expressions
+* Data Structures
+	* Which means the classes won't have data and behavior. 
+
+Just think about the five rules when you start to write mutable code. 
+
+### Not a rule, but a note: using ???
+`def createWorldPeace = ???`
+-> The definition of the function is TBD.
+
+### What's next
+Let's get a better functional programming description.
 
 #reading/books
