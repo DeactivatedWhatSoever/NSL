@@ -318,4 +318,50 @@ Didn't know you could just split out your urls. That's pretty good really. Anywa
 ## Web Development 'Sine Qua Nons’
 "Real Developers Ship” -> I love this saying. Of course we need to make a production environment, make a continuous deployment, integration environment and stuff. But still, I would love to learn this stuff outside the book and just do it my way. Find the best way to do this and that. Good? Lol.
 
+## Prettification: Layout and Styling, and What to Test About It
+Lol. I'm so thrilled to see CSS again. It's been a long time. Going to use bootstrap in here eh. But it's pretty cool you can learn how you can test CSS. I think it would only be like whether you have to class, id, or that stuff or not. Or you could see the text has a certain font or color and that. That'll be possible for sure.
+
+### What to Functionally Test About Layout and Style
+So we can actually test the position. Layout can be tested by it's x, y, position and width, height. And the style could be checked whether that type of CSS is applied to the HTML. 
+
+### Prettification: Using a CSS Framework
+Using Bootstrap! We just downloaded it to the static directory. If  we had a separate frontend, I bet this would be really different. I would love to know the different side. Django is actually pretty easy and good to use. 
+
+### Django Template Inheritance
+So you can `extend` a template. You assign a block to the parent, and the child gives a value to the block. Not that much of a good way to do it, and the `{% %}` is sooooo annoying. It's so hard to type lol. I miss the `{{ }}`. Well anyways, lets get moving.
+
+### Integrating Bootstrap
+Just putting in the href and stuff. I gotta find what the meta tags mean in the head later.
+
+#### Rows and Columns
+Hope they're the same when I did em. Yep, `col-md-6`, they're the same. So the `container` class is actually the root, and the next `row` is just a row. Inside that, you can put in 12 columns. That's it.
+
+### Static Files in Django
+So the Django development server, `runserver` will actually look over all the `/{app}/static/` directories and get the file that is referenced! It would be way better if it actually just had a map when the server comes up right? A data structure that's in static memory that just has the directory paths. It'll just get it from that right? Well the search algorithm might be faster and better. That's why no lol.
+
+### Using Bootstrap Components to Improve the Look of the Site
+The site actually looks good even though it doesn't have anything lol. Can't believe that layout alignment does a big thing. 
+
+#### Jumbotron!
+`class=“jumbotron”` -> Just a bootstrap thing.
+
+#### Large Inputs
+`class=“form-control input-lg”` -> Lol I remember this one.
+
+#### Table Styling
+`class="table”` -> Remember this one too.
+
+### Using Our Own CSS
+Well it'll be cool if you knew how to design. But why not try and find some black and white themes. You love black and white! You can learn from that dude. I know you can. Except the logo is the thang. But still, why not use alphabet logos. It'll be cool. And just inverse the design for dark mode and that. I love it.
+
+### What We Glossed Over: collecstatic and Other Static Directories
+The `collectstatic` command actually collects all the `static` files into the root `static` directory, or whatever you name it to. It's because, in production, you need an actual web server to serve your static content. Or actually just use a CDN. 
+
+### A Few Things That Didn't Make It
+* Customising bootstrap with LESS or SASS
+* The `{% static %}` template tag, for more DRY and fewer handcoded URLs
+* Client-side packaging tools, like `npm` and `bower`
+
+Try to find the point of making layout and style tests that don't change all the time. Like a black box layout size, or like some animations that need a lot of client-side code. Those could be things that you'll need to test for.
+
 #reading/books
