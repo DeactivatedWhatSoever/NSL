@@ -109,4 +109,59 @@ I love this title. A reporter isn't here to sell, which means that it won't just
 ### A personal experience
 I wish to move to this new land of FP. It is pretty much the future, as long as there's a new theory coming out, or I could make it for parallel and distributed computing, I just hope I'm going the right track. But as I feel it, I think I'm going the write track. Theoretically cool FP is. 
 
+## Question Everything
+“Why is this FP approach better than what I do in my OOP code?”
+-> I think this is an excellent question. I want to find out what’s better and what’s bad code smell. 
+
+### What is FP?
+“FP applications consist of only immutable values and pure functions.”
+So it’s actually that the pure functions that give immutability. You also need to make constants all the way or else there will be mutation. -> FP elevator pitch(easy way to tell a concept)
+
+### What questions come to mind?
+These are the author’s first questions, so let’s jot them down, and make your own questions.
+* How can possibly write an application without reading input or writing output?
+* Regarding I/O
+	* How do I write database code?
+	* How do I write RESTful code?
+	* How do I write GUI code?
+	* How do I write file manipulation code?
+* If all variables are immutable, how do I handle changes in my code?
+	* For instance, if I’m writing an order-entry system for a pizza store, what do I do when the customer wants to change their pizza crust or toppings in the middle of entering an order?
+* Why is recursion better? Is it really better? Why can’t I just use `var` fields inside my functions, as long as I don’t share those `var`s outside the function scope?
+* Is “Functional I/O” really better than “Traditional I/O”
+* Are there certain applications where the FP approach is better or worse?
+* In what points does it vary with OOP? 
+	* Does FP need access modifiers?
+	* How does FP make a value that needs custom defined data structures?
+
+### Decide for yourself what’s better
+“Is the approach I’m looking at better or worse than other options? If so, why?”
+-> This dude sure has a lot of great quotes on thinking about something. But does he really think like that all the time? I’m not sure. But still, don’t suspect, and just go for it.
+
+### The best idea wins
+Don’t blindly listen to people. You should put your critical thinking hat on and make your own decisions.
+
+### A quick aside: Imperative programming
+So imperative programming is all about thinking how the computer works. The computer will just execute the program line by line by changing its variables with statements. It’s all about state manipulation.
+
+### A critical thinking exercise
+Questions for an imperative way and functional(recursive) way of a sum function implementation.
+* What’s wrong with the imperative approach? Who cares if I use a var field in a for loop inside a function? How does that affect anything else?
+* Will the recursive function blow the stack with large lists?
+* Is one approach faster or slower than the other?
+* Thinking in the long term, is one approach more maintainable than the other?
+* What if I want to write a “parallel” version of a sum algorithm (to take advantage of multiple cores); is one approach better than the other?
+
+### We write what we want, not how to do it
+What we want -> just nice execution?
+How to do it -> instructions?
+
+“In FP we don’t tell the computer `how` to do things, we just tell it `what` we want.”
+
+I still haven’t understand this but, just giving statements, which is the most lowest command is `how` to do things, and just using functions, which means you just believe the implementations of them is `what` we want. 
+ I think it means, give the computer some space! He’ll do the things that he can! All we need to do is just tell `what` to do! Not always bother him and tell him him `how` to do all that stuff.
+
+### What’s next?
+A few rules will be announced that’ll help me learn functional programming.
+
 #reading/books
