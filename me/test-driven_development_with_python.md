@@ -364,4 +364,83 @@ The `collectstatic` command actually collects all the `static` files into the ro
 
 Try to find the point of making layout and style tests that don't change all the time. Like a black box layout size, or like some animations that need a lot of client-side code. Those could be things that you'll need to test for.
 
+## Testing Deployment Using a Staging Site
+I'm actually feeling good on doing all this stuff. Django actually could be my hero. Well still, I think flask could be way better for me too. I’m not really sure what to do man. But let's take it. 
+
+### TDD and the Danger Areas of Deployment
+* Networking
+* Dependencies
+* The database
+* Static files (CSS, JavaScript, images, etc.)
+
+Staging should be live as possible. A good place to run functional tests on.
+
+1. Getting a basic manual deployment up and running
+2. Moving to a production-ready config
+3. Automating the deployment
+
+I wonder, but I think I should figure the best practices by myself when I do this. Dockerize everything since that stuff won't come out over in this book ... I think.
+
+### As Always, Start with a Test
+Okay, the tests won't work when you put the `STAGING` env variable. So lets get started.
+
+### Getting a Domain Name
+I got it. I wonder what domain name I should buy for myself. `loosecannons.xyz` is on bought, but I don't know for the other stuff. `robinrheem.com`? Should that be in? I'm not sure. What should I go for? I would love to make a little one. 
+
+### Manually Provisioning a Server to Host Our Site
+* Provisioning a new server to be able to host the code
+* Deploying a new version of the code to an existing server
+
+#### Choosing Where to Host Our Site
+* Running your own (possibly virtual) server
+* Using a PaaS offering like Heroku, OpenShift, or PythonAnywhere
+
+Good old fashion way. Server admin, SSH, web server config and stuff. Let's get that done.
+
+#### Spinning Up a Server
+* Ubuntu 18.04 (Bionic)
+* root access
+* public internet
+* Can you SSH
+[Book-TDD-Web-Dev-Python/server-quickstart.md at master · hjwp/Book-TDD-Web-Dev-Python · GitHub](https://github.com/hjwp/Book-TDD-Web-Dev-Python/blob/master/server-quickstart.md)
+
+So you can get some free instances over here I guess. Just for little development. I think I can handle that. It's cool to have a go with Digital Ocean. But I want to know more about it. Let's give it a try though! 
+[AWS vs. DigitalOcean: Which Cloud Server is Better – Hacker Noon](https://hackernoon.com/aws-vs-digitalocean-which-cloud-server-is-better-1386499a6664)
+
+#### User Accounts, SSH, and Privileges
+Made an account, put it into sudoers, and can now just use `ssh {serverName}` and done.
+
+#### Installing Python 3.6
+Gonna use pyenv. Installed it with `pyenv-installer`.
+
+Okay, can't believe it hangs forever when you try to install a version with pyenv on my little `venom`! I have to actually install real packages. 
+```sh
+$ sudo apt install python3 python3-venv python3-pip
+```
+
+#### Configuring Domains for Staging and Live
+It says that it has to A records that point to the same server. Shouldn't the staging server be in a different server? Or is it the port that's going to be changed? I'm not sure how the author is going to get this over though. Let's just register two A records then. `todo` and `staging-todo`. 
+
+### Deploying Our Code Manually
+We just git clone the stuff in the user's directory. And that's it. 
+
+#### Creating a Virtualenv on the Server Using requirements.txt
+Well, I have done this a few times, but I prefer using `pipenv`. It's way better and easier to manage dependencies. 
+ Dang, this isn't really easy. `pipenv` isn't really easy to do. Okay, I give up for the moment. Just going to go with venv and make a `requirements.txt` thing.
+
+#### Using the FT to Check That Our Deployment Works
+If you run your tests with the `--failfast` option, then you can exit the test ASAP. 
+
+### Debugging a Deployment That Doesn’t Seem to Work at All
+Well it was just the `runserver` that didn't have the right host. If you point it to `0.0.0.0`, it'll just go away, but I wanted to make sure. So I specified the actual static ip of my machine.
+
+### Hacking ALLOWED_HOSTS in settings.py
+Just give a wildcard to the value of `ALLOWED_HOSTS` in `settings.py`. 
+
+### Creating the Database with migrate
+`migrate --noinput` comes to the rescue!
+
+### Success! Our Hack Deployment Works
+It's pretty sad that I couldn't get `pipenv` up fast. I wish to get better and debug the problem some time later. Oh, since I'll have to like install mysql and that stuff on my `venom`, I'll rather use docker and make that work lol. 
+
 #reading/books
