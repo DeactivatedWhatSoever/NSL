@@ -443,4 +443,182 @@ Just give a wildcard to the value of `ALLOWED_HOSTS` in `settings.py`.
 ### Success! Our Hack Deployment Works
 It's pretty sad that I couldn't get `pipenv` up fast. I wish to get better and debug the problem some time later. Oh, since I'll have to like install mysql and that stuff on my `venom`, I'll rather use docker and make that work lol. 
 
+## Getting to a Production-Ready Deployment
+We can use FT's to detect regressions. Which is pretty cool for a non-coding situation. I love it. Since this place doesn't use docker, I think I should get it done after this tutorial finishes. Also, I want a great way to develop locally fast and furious while using docker. 
+
+### What We Need to Do
+* Use port 80
+* Django runserver -> Gunicorn(WSGI Server) + Nginx
+* DEBUG=True -> False, ALLOWED_HOSTS, SECRET_KEY.
+* Systemd config
+
+### Switching to Nginx
+Let's just install Nginx and do this and that.
+
+#### Switching to Nginx
+```sh
+$ sudo apt install nginx
+$ sudo systemctl start nginx
+```
+
+#### The FT Now Fails, But Show Nginx is Running
+Yep, we get `Weclome to nginx!` when we run the FTs.
+After this, we need a way for Nginx to talk with the Django server. Which would be Gunicorn, WSGI, and Unix Socket.
+
+#### Simple Nginx Configuration
+```nginx
+server {
+    listen 80;
+    server_name superlists-staging.ottg.eu;
+
+    location / {
+        proxy_pass http://localhost:8000;
+    }
+}
+```
+
+```sh
+# reset our env var (if necessary)
+$ export SITENAME=staging-todo.loosecannons.xyz
+
+$ cd /etc/nginx/sites-enabled/
+$ sudo ln -s /etc/nginx/sites-available/$SITENAME $SITENAME
+
+# check our symlink has worked:
+$ readlink -f $SITENAME
+/etc/nginx/sites-available/staging-todo.loosecannons.xyz
+```
+
+Use `sudo nginx -t` for configuration validation.
+
+### Switching to Gunicorn
+`gunicorn superlists.wsgi:application`
+
+### Getting Nginx to Serve Static Files
+```nginx
+   location /static {
+        alias /home/elspeth/sites/superlists-staging.ottg.eu/static;
+    }
+# Add all that stuff to the config
+```
+
+### Switching to Using Unix Socket
+```nginx
+location / {
+        proxy_pass http://unix:/tmp/superlists-staging.ottg.eu.socket;
+    }
+
+So, unix:/ -> It's pretty much an indicator of a file?
+```
+
+```sh
+$ sudo systemctl reload nginx
+$ gunicorn --bind unix:/tmp/staging-todo.loosecannons.xyz.socket superlists.wsgi:application
+```
+
+### Using Environment Variables to Adjust Settings for Production
+`settings.py` -> Now we need to change the environment variables.
+* ALLOWED_HOSTS: Just serve `staging-todo.loosecannons.xyz`
+* DEBUG: Leaving tracebacks to the world will let other people able to debug your server. How it works, giving hints about it, that's bad. But you want that in production don't you? Well it's a tradeoff I guess.
+* SECRET_KEY: Cookie & CSRF protection. 
+
+### Essential Googling the Error Message
+Just googling out!
+
+#### Fixing ALLOWED_HOSTS with Nginx: passing on the Host header
+```nginx
+    location / {
+        proxy_pass http://unix:/tmp/superlists-staging.ottg.eu.socket;
+        proxy_set_header Host $host;
+    }
+
+# Just passing the header of the host as the same. That'll make it go through. Or else it'll pass localhost.
+```
+
+### Using a .env File to Store Our Environment Variables
+Just generate an `.env` file and put in some env vars.
+
+#### Generating a secure SECRET_KEY
+```sh
+$ echo DJANGO_SECRET_KEY=$(
+python3.6 -c"import random; print(''.join(random.SystemRandom().
+choices('abcdefghijklmnopqrstuvwxyz0123456789', k=50)))"
+) >> .env
+
+# The above command looks so cool.
+
+$ unset DJANGO_SECRET_KEY DJANGO_DEBUG_FALSE SITENAME
+$ echo $DJANGO_DEBUG_FALSE-none
+$ set -a; source .env; set +a
+$ echo $DJANGO_DEBUG_FALSE-none
+```
+
+### Using Systemd to Make Sure Gunicorn Starts on Boot
+```service
+[Unit]
+Description=Gunicorn server for staging-todo.loosecannons.xyz
+
+[Service]
+Restart=on-failure
+User=robin
+WorkingDirectory=/home/robin/sites/staging-todo.loosecannons.xyz
+EnvironmentFile=/home/robin/sites/staging-todo.loosecannons.xyz/.env
+
+ExecStart=/home/robin/.local/share/virtualenvs/staging-todo.loosecannons.xyz-NldgUv-1/bin/gunicorn \
+	--bind unix:/tmp/staging-todo.loosecannons.xyz.socket \
+	superlists.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Systemd vs Init.d?
+```sh
+# this command is necessary to tell Systemd to load our new config file
+$ sudo systemctl daemon-reload
+# this command tells Systemd to always load our service on boot
+$ sudo systemctl enable gunicorn-staging-todo.loosecannons.xyz
+# this command actually starts our service
+$ sudo systemctl start gunicorn-staging-todo.loosecannons.xyz
+
+# Check system logs
+$ sudo journalctl -u gunicorn-staging-todo.loosecannons.xyz
+# Analyze
+$ systemd-analyze verify /path/to/my.service
+```
+
+#### Saving Our Changes: Adding Gunicorn to Our requirements.txt
+Already done it.
+
+### Thinking About Automating
+Provisioning
+* User account & home folder + sudo
+* `add-apt-repository ppa:deadsnakes/ppa && apt update`
+* apt install nginx git python3.6 python3.6-venv
+* Nginx config for virtual host
+* Systemd for Gunicorn
+
+Deployment
+* ~/sites with source code
+* Start pipenv shell
+* `pipenv install`
+* `./manage.py migrate`
+* `./manage.py collecstatic`
+* Restart Gunicorn job
+* Run FT
+
+#### Saving Templates for Our Provisioning Config Files
+So I think you should go and see `Provisioning vs Configuration Management`. It's pretty basic of what the author is doing over here. It's of course not the best practice, but you can see that what you really need to do.
+
+### Saving Our Progress
+* Don't use Django dev server in production
+* Don't use Django to serve your static files
+* Check your `settings.py` for dev-only settings.
+* Security
+[My First 5 Minutes On A Server; Or, Essential Security for Linux Servers](https://plusbryan.com/my-first-5-minutes-on-a-server-or-essential-security-for-linux-servers)
+
+installing fail2ban and watching its logfiles to see just how quickly it picks up on random drive-by attempts to brute force your SSH login
+
+How the hell can you brute force an SSH login... Dang ... 
+
 #reading/books
