@@ -1,0 +1,4 @@
+# Python for Data Analysis
+The reason I'm reading this book is to actually get analytical skills. I’d love to know the tools, and see how I can do things with data. I really need to have some time to explore, what to do with that data, what kind of analysis I can make, and all that stuff. I need to find the treasure inside all that data. As a Quant, I need to create an eye that can spot the hidden alpha inside the markets. Also, I need to do stuff with financial data. I need to know all the tools first to actually translate the old books into present time. This will actually be the most important skill to have, so I must get in for it.
+
+#reading/books
