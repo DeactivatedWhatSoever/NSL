@@ -621,4 +621,72 @@ installing fail2ban and watching its logfiles to see just how quickly it picks u
 
 How the hell can you brute force an SSH login... Dang ... 
 
+## Automating Deployment with Fabric
+Automate, automate, automate. Just like everyone. I think data analysis would be a great thing to actually do some automation stuff lol. -> Infrastructure as Code. IaC === automation of deployments and provisioning.
+
+### Breakdown of a Fabric Script for Our Deployment
+A `fabfile.py` actually does a lot of stuff. You can use most of all the commands, environment variables, and all that stuff that you can do with linux in an easy way. 
+
+#### Pulling Down Our Source Code with Git
+Pull the new code when it's a fresh machine, or just get the latest commit and reset hard.
+
+#### Updating the Virtualenv
+Create or update the virtualenv
+
+#### Creating a New .env File if Necessary
+Writing an env file? It'll all have the secret over here. Not sure whether it'll be a good idea. 
+
+#### Updating Static Files
+Just running the `collectstatic --noinput` command.
+
+#### Migrating the Database If Necessary
+Yep, just doing it all the same. `migrate —noinput`.
+
+### Trying It Out
+cd into the directory where the `fabfile` is.
+`fab deploy:host=robin@staging-todo.loosecannons.xyz`
+
+#### Deploying to Live
+`fab deploy:host=robin@todo.loosecannons.xyz` 
+Just doing it on the real production one! All the console output! Love it ... It feels like paradise ... And everything works!
+
+### Provisioning: Nginx and Gunicorn Config Using sed
+`s/replaceme/withthis/g` -> `s/DOMAIN/todo.loosecannons.xyz/g` Using sed! Pretty cool. 
+
+After that, we activate the file with a symlink
+`sudo ln -s /etc/nginx/sites-available/todo.loosecannons.xyz /etc/nginx/sites-enabled/todo.loosecannons.xyz`
+
+```sh
+cat ./deploy_tools/gunicorn-systemd.template.service \
+    | sed "s/DOMAIN/todo.loosecannons.xyz/g" \
+    | sudo tee /etc/systemd/system/gunicorn-todo.loosecannons.xyz
+
+$ sudo systemctl daemon-reload
+$ sudo systemctl reload nginx
+$ sudo systemctl enable gunicorn-superlists.ottg.eu
+$ sudo systemctl start gunicorn-superlists.ottg.eu
+```
+
+### Git Tag the Release
+```sh
+$ git tag LIVE
+$ export TAG=$(date +DEPLOYED-%F/%H%M)  # this generates a timestamp
+$ echo $TAG # should show "DEPLOYED-" and then the timestamp
+$ git tag $TAG
+$ git push origin LIVE $TAG # pushes the tags up
+```
+
+Done.
+
+### Further Reading
+* [Solid Python Deployments for Everybody · Homepage of Hynek Schlawack](https://hynek.me/talks/python-deployments/)
+* [git-based fabric deploys are awesome](http://dan.bravender.net/2012/5/11/git-based_fabric_deploys_are_awesome.html)
+* [Bibliography](https://www.obeythetestinggoat.com/book/bibliography.html#twoscoops)
+* [The Twelve-Factor App](https://12factor.net/)
+
+#### Automating Provisioning with Ansible
+Is ansible the best thing? Or is it best to do it with Terraform. Need to get the right tools for the right jobs. 
+
+Automating provisioning vs Configuration management.
+
 #reading/books
