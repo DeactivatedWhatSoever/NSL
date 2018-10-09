@@ -689,4 +689,40 @@ Is ansible the best thing? Or is it best to do it with Terraform. Need to get th
 
 Automating provisioning vs Configuration management.
 
+## Splitting Our Tests into Multiple Files, and a Generic Wait Helper
+* Refactor tests
+* Input validation
+	* I actually want to know the best way to do input validation. Since all the security problems are from this. 
+
+### Start on a Validation FT: Preventing Blank Items
+We just wrote a FT for input validation. Well, just a comment test. Remember! You always must specify the specs of what you're going to make.
+
+#### Skipping a Test
+`@skip` decorator from the `unittest` library. It skips your tests, I think it's the equivalent of `@Ignore` in `JUnit`. 
+
+#### Splitting Functional Tests Out into Many Files
+Make a base class that does some setup, and make a class for each file for each functional test.
+
+#### Running a Single Test File
+`$ ./manage.py test functional_tests.test_list_item_validation`
+
+Just like that, and you can run a test file by accessing them with module paths.
+
+### A New Functional Test Tool: A Generic Explicit Wait Helper
+We use `lambda`. We just pass a function that does some assertion over there, and the while loop will return until the assertion is true. It'll end in 10 seconds, well the `MAX_WAIT` if it keeps on going false. 
+
+### Finishing Off the FT
+Just made a general method `wait_for` which you can pass some behavior and the function will wait for the behavior until it asserts true. And then I just made another FT with it. It was pretty awesome, and I love the idea of just splitting all the FTs too.
+
+### Refactoring Unit Tests into Several Files
+It's actually a good idea to just make a tests directory and separate all the tests into multiple files in the first place.
+
+* Use a tests folder
+	* FT: Group into particular feature or user story
+	* Unit Tests: Just make one test file for one source code file.
+* Don't forget the “Refactor" in "Red, Green, Refactor"
+* Don't refactor against failing tests
+	* Not working FTs don't count. But you have to use `skip` well.
+* Try a generic `wait_for` helper
+
 #reading/books
