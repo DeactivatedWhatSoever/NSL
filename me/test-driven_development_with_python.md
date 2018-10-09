@@ -725,4 +725,48 @@ It's actually a good idea to just make a tests directory and separate all the te
 	* Not working FTs don't count. But you have to use `skip` well.
 * Try a generic `wait_for` helper
 
+## Validation at the Database Layer
+Nothing much about TDD, but more about Django. I think it'll be a good chance to learn some Django stuff and you could use the knowledge to make a Django app yourself.
+
+### Model-Layer Validation
+I didn't really get why Ruby On Rails did all the validation at the `save` level. I mean, when you hit the database. Isn't it way better to actually, oh wait, there's a part where you can do validation on the model properties. On the top, remember? So it's better to just do the validation at last when you're actually going to need it? Or else you’ll be tempted to check it twice right? That's a pretty good thing to know. 
+
+#### The self.assertRaises Context Manager
+The `with` keyword is actually used when it has a context manager. Something to clean up, or catch an exception, all that stuff can be used with the `with` keyword. 
+[8 PEP 343: The ‘with' statement](https://docs.python.org/release/2.5/whatsnew/pep-343.html)
+
+#### A Django Quirk: Model Save Doesn't Run Validation
+The model `save()` doesn't actually runs the validation. I think the `full_clean()` does all the validation and stuff.
+
+### Surfacing Model Validation Errors in the View
+We used the `escape` function from Django html. It'll be used for actual SQL Injection and XSS and all that stuff. 
+
+#### Checking That Invalid Input Isn't Saved to the Database
+`full_clean` then `save`. Then check whether the other dude is created or not. I think this type of thing should be done within a transaction.
+
+### Django Pattern: Processing POST Requests in the Same View as Renders the Form
+So, it'll actually be a cool `POST` thing. 
+
+#### Refactor: Transferring the new_item Functionality into view_list
+So, the `new_item` is deleted and it's moved to `view_list`. So the urls are actually way better. It's RESTful!
+
+#### Enforcing Model Validation in view_list
+There's a lot of repeating code. But we'll get there. Anyways, we did model validation enforcement in the `view_list`. `full_clean` and `save` thing.
+
+### Refactor: Removing Hardcoded URLs
+Removing the hardcoded urls. Finally. And yes, here comes the Django stuff. You give the names of the urls in the `urls.py` file. That's what you use.
+
+#### The {% url %} Template Tag
+`{% url ‘{url_name}’ parameter1 parameter 2 %}`
+That's it. But what about in the tests?
+
+#### Using get_absolute_url for Redirects
+If we define that url, we can just pass in the model and it'll redirect itself! That's so cool. Django magic stuff alert!
+
+On Database-Layer Validation
+* Validation at the database layer is the ultimate guarantee of data integrity
+* But it comes at the expense of flexibility
+* And it's not designed for user-friendliness
+	* So the frontend (form validation) is there to the rescue.
+
 #reading/books
