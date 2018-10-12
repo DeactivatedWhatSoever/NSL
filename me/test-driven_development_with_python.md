@@ -769,4 +769,70 @@ On Database-Layer Validation
 * And it's not designed for user-friendliness
 	* So the frontend (form validation) is there to the rescue.
 
+## A Simple Form
+Too much duplication with validation eh. So isn't there some sort of form validation for the server? Or active model something? The HTML form could be validated with JavaScript, well yeah. Anyways, let's get on with it. 
+
+### Moving Validation Logic into a Form
+Django Forms Superpowers:
+* They can process user input and validate it for errors.
+* They can be used in templates to render HTML input elements, and error messages too.
+* And, as we'll see later, some of them can even save data to the database for you
+	* Dude, is this a really good practice? I'm not sure. 
+	* If the logic is somewhat, magic, then we'll just know.
+
+#### Exploring the Forms API with a Unit Test
+So we can write down unit tests that lets us explore the new APIs we learn about. If you want to write better code, and you want to study about the framework or something, I think it's best to actually just write something with it. Actually do this and do that, and then see how it really works after you know how to use it properly. You can't know the internals of something that you don't even use. 
+
+#### Switching to a Django ModelForm
+So we actually changed the form to use the model. `forms.models.ModelForm` -> This gets connected with the database model you have. I wonder if this much dependency is actually good. It'll sure be an easy method to use to create admin tools and all that.
+
+#### Testing and Customizing Form Validation
+So we add the things that we need for customization in the `Meta` class of the `ModelForm` extended class. I bet this leads to the database!
+
+### Using the Form in Our Views
+When you make something, you need to make it deployable right away. Use every bit of code that you write. Let's go!
+
+#### Using the Form in a View with a GET Request
+Okay, changed the controller(views.py) and the views(HTML). Now I need to have a go with the FTs and it won't work. 
+
+#### A Big Find and Replace
+Find and replaced all the item ids and names ... I'm not sure whether this is good. Why not just change the auto generated ids and names? Meh.
+
+### Using the Form in a View That Takes POST Requests
+Okay, changing the POST!
+
+#### Adapting the Unit Tests for the new_list View
+Splitting assertions:
+* If there's a validation error, we should render the home template, with a 200.
+* If there's a validation error, the response should contain our error text
+* If there's a validation error, we should pass our form object to the template.
+
+#### Using the Form in the View
+We just actually create the `ItemForm` and use that all the way. See if it's invalid, and then redirect it or just go create it.
+
+#### Using the Form to Display Errors in the Template
+So if there's an error, the `form` context will have an `errors` array. Then you can just display the text with `form.text.errors`. -> form.{fields}.errors.
+
+### Using the Form in the Other View
+I mostly changed the views.py file to use the `form` object and put it in the view context.
+
+#### A Helper Method for Several Short Tests
+Just made a helper method that calls a new todo to the list. And use all that in for checking whether it's saved to the db, renders the list, has the form object in the context, and renders the error message.
+
+#### An Unexpected Benefit: Free Client-Side Validation from HTML5
+The `required` HTML does everything! That does some validation for you. Like blank text and stuff.
+
+### A Pat on the Back
+Did good Robin. Now you got to see when you do a massive refactor, or actually change a lot of the legacy, you can just do it with no worries with TDD. Since you have all the tests with you, there's not much to fear. And remember, you must try to make your tests as simple as possible. Then you'll get to know what the problem is right away. Since they do specific stuff. 
+
+### But Have We Wasted a Lot of Time?
+Well if we did use the form validation stuff in the first place, it would’ve been good. But I'm not sure whether this is doing good server validation or not. Let's find out more!
+
+### Using the Form's Own Save Method
+You just add a `save` method to the `ModelForm` object that you created. And just save it with the super()! So the model form actually extends the `Model` eh? Let's see it some time. 
+
+* Then views(controllers)
+	* So the controller should be very thin. If there's too much logic, it should be moved into separate places. In the models, or like to the framework or anything like that.
+* Each test should test one thing
+
 #reading/books
