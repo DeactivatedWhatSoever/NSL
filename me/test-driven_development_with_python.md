@@ -835,4 +835,36 @@ You just add a `save` method to the `ModelForm` object that you created. And jus
 	* So the controller should be very thin. If there's too much logic, it should be moved into separate places. In the models, or like to the framework or anything like that.
 * Each test should test one thing
 
+## More Advanced Forms
+This chapter is mostly about Django Forms. So let's just think about knowing all the stuff. Oh! And we're going to not allow duplicate items!
+
+### Another FT for Duplicate Items
+You can just run the functional test method by going the path until the method! `{path.class.method_name}` like that.
+
+#### Preventing Duplicates at the Model Layer
+Just did `unique=True` on the model. But the thing that I need to know about is, write both sides of the test? That's something that I want to know. 
+ You can write a few tests for something, but you have to believe in somewhat of your code. But if that code has some stupid stuff, then you have to test that stupid stuff. Or else there will be a disaster that you didn't even know about. 
+
+#### A Little Digression on Queryset Ordering and String Representations
+Doing some string representations with the dunder method, `__str__`. Anyways, this is all done over here. 
+
+#### Rewriting the Old Model Test
+Just rewrote the models tests since it was `ListAndItemModel`. I just split those two apart and put all the relevant tests together.
+
+#### Some Integrity Errors Do Show Up on Save
+So, when we change something in the model, we need to make a new migration. `makemigrations` on the way!
+
+### Experimenting with Duplicate Item Validation at the Views Layer
+So, the models layer is pretty good. Do we need to do it on the view layer? So that'll be the controller I guess. Necessary? Well lets see. 
+ Did it, but still didn't get to the point where we get to validate the data before we save it to the database.
+
+### A More Complex Form to Handle Uniqueness Validation
+Django has two types of validation layers. The model validation, and the form validation. You should get aware of that and think.
+
+### Using the Existing List Item Form in the List View
+So the new one shouldn’t have that kind of feature. The existing items needed to get checked by its text
+
+### Wrapping Up: What We've Learning About Testing Django
+Just shows about all the tests. Next up, JavaScript. 
+
 #reading/books
