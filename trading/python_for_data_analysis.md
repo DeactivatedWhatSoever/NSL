@@ -88,4 +88,96 @@ import statsmodels as sm
 * Pseudocode
 * Syntactic sugar
 
+## Python Language Basics, IPython, and Jupyter Notebooks
+Good software engineering != Good data analysis. So you don't have to worry about your software engineering skills. Okay, the thing is, you have to try and get the material inside your head. Like try to be a dude that has photographic memory. Just think as if that is yours and you do it. You have to reflect more, revive more, and retain more. Keep thinking of what you've learned. Active retrieveal, that's the key. 
+
+## 2.1 The Python Interpreter
+Interpreted language? A Python program is executed by an interpreter. That interpreter just runs the code one line at a time. It tries to see every line of code eh? 
+
+Just installed IPython, and I'll get it working. Interactive Python environment. Wanted to make a better interactive shell eh? let's get to know it more.
+
+## 2.2 IPython Basics
+IPython + Jupyter Notebook. I wish to learn more about IPython. Want to live in the terminal more than Jupyter. 
+
+### Running the IPython Shell
+So the IPython shell is exactly, just an enhanced shell. So you use Jupyter when there's bigger stuff to do eh? Alright.
+
+### Running the Jupyter Notebook
+Just installed jupyter and ran it. I'm thinking of making a remote jupyter and put all the notebooks up there, and make a analysis thing with it. I wonder how venom will get along with that but, I'm sure I need to get my server running. I'll put up all the apps I need and I need to start to develop my robot ASAP. 
+
+### Tab Completion
+I think `jedi` is behind the tap completion. Whoever made that, needs to get some love lol. 
+
+### Introspection
+Cool, I love the `?` feature. You can get some cool insights of an object or whatever variable that you have. ?object, object? and you'll get some insight about it. Also, you should learn how to get the docs from the object or package. `??` will print out the implementation if possible.
+
+### The %run Command
+The `%` something commands are called magic commands. Pretty neat. They have `%load` too. It is used for importing the code inside the code cell. Can get useful, but I'm going to put my libraries up on GitHub so don't worry about it that much.
+
+If you want to interrupt the running code, just use `ctrl-c` and it'll help you out in the most time.
+
+### Executing Code from the Clipboard
+`%paste`, `%cpaste`. You can just paste and execute the code that's in your clipboard. Also in IPython. Pretty convenient. 
+
+### Terminal Keyboard Shortcuts
+Well I got to learn `ctrl-U`, `ctrl-p, ctr-n` and `ctrl-f, ctrl-b`. That's all. I know there would be a whole lot more, but I'll go see them when I need more productive navigation.
+
+### About Magic Commands
+These are just for IPython. They don't exist in the original Python shell. Dang... they have `%debug`. Does it work like a debugger?!
+ Well anyways, there’s a lot commands out there. 
+
+### Matplotlib Integration
+Analytical computing. 
+IPython: `%matplotlib`
+Jupyter: `%matplotlib inline`
+
+## 2.3 Python Language Basics
+Programming concepts and language mechanics. 
+
+### Language Semantics
+* Indentation, not braces
+* Everything is an object
+* Comments
+* Function and object method calls
+* Variables and argument passing
+* Dynamic references, strong types
+	* Dynamic references, you can reassign your variable with a new type. I think that's what you call dynamic referencing, since the type is dynamic.
+	* Python does have strong types since you need to convert an int to a str if you want to print an int. Only in obvious times you can think of type inference. 
+* Attributes and methods
+	* Accessing objects by name is often referred to as "reflection.”
+* Duck typing
+	* If an object has some methods that resembles a duck, then it's type is a duck! I think this is just representing interfaces. 
+* Imports
+* Binary operators and comparisons
+* Mutable and immutable objects
+
+### Scalar Types
+* None
+* str
+* bytes
+* float
+* bool
+* int
+* Numeric Types
+	* int, float
+* Strings
+* Bytes and Unicode
+* Booleans
+* Type casting
+	* str(), bool(), int(), float()
+* None
+	* type(None) = NoneType
+* Dates and times
+	* datetime module!
+
+### Control Flow
+* if, elif, and else
+* for loops
+* while loops
+* pass
+* range
+* Ternary expressions
+	* `value = true-expression if condition else false-expression`
+	* `if condition: value = true-expr else: value = false-expr
+
 #reading/books
