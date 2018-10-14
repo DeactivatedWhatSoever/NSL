@@ -180,4 +180,166 @@ Programming concepts and language mechanics.
 	* `value = true-expression if condition else false-expression`
 	* `if condition: value = true-expr else: value = false-expr
 
+## Built-in Data Structures, Functions, and Files
+It's all about built-in stuff in this chapter. 
+* Tuples
+* Lists
+* Dicts
+* Sets
+
+## 3.1 Data Structures and Sequences
+So let's try to learn the specific things about the built-in data structures. That Tuples are immutable and that stuff.
+
+### Tuple
+These are immutable sequences. That's the thing that you have to remember about. And you did.
+
+#### Unpacking tuples
+Tuples can be unpacked. Unpacking is actually something like this:
+`a, b, c = tup` -> The tuple has three elements. So the unpacking variables must match with the length of the tuple. 
+
+Remember! The tmp, which is known as the variable switching can be used with unpacking tuples! 
+`a, b = b, a`
+
+#### Tuple methods
+Woah! Didn't know that tuples had the `count` method. I always did this stuff with `len` ... Dang ... Learned a new thing from the basics. Oh, uhhhh ... I got it wrong. Should've of read it.
+ Well anyways, it counts the occurrences of a value passed.
+
+### List
+A data structure that is a mutable sequence. 
+
+#### Adding and removing elements
+* append
+* insert
+* pop
+* remove
+
+#### Concatenating and combining lists
+* The `__add__` dunder method can actually do this stuff. Just with the `+` operator! === `extend`
+
+#### Sorting
+* `sort`	
+* `sort(key={parameter})`
+
+#### Binary search and maintaining a sorted list
+Cool ... There were cool methods that actually find where the element should be inserted while maintaining the order!
+ Oh, it's the `biscect` package.
+
+#### Slicing
+You can just slice with the indexes. [3:4] -> Yup. Also use the `-` indexes.
+
+### Built-in Sequence Functions
+Sequence functions eh... Something good for iterating and stuff?
+
+#### enumerate
+Get index when iterating!
+
+#### sorted
+Just sorts the list!
+
+#### zip
+Pairs up to sequences.
+
+#### reversed
+Reverse!
+
+### dict
+Yup, the key-value map data structure. One of the most useful and needed data structures. Great for dynamic programming and stuff.
+* values
+* keys
+* You can use number keys eh!
+
+#### Creating dicts from sequences
+zipping them will actually do it!
+
+#### Default values
+`get(key, default_value`
+
+#### Valid dict key types
+The keys need to be immutable objects like scalar types. Dang ... that means it also accepts tuples!
+
+### set
+* union
+* intersection
+* add
+* clear
+* remove
+* pop
+* update
+* intersection_update
+* difference
+* difference_update
+* symmetric_difference
+* symmetric_difference_update
+* issubset
+* issuperset
+* isdisjoint
+
+### List, Set, and Dict Comprehensions
+`[expr for val in collection if condition]`
+
+#### Nested list comprehensions
+Like, flattening and that stuff. Just do two for loops. 
+
+## 3.2 Functions
+Plain old functions `def` nothing else.
+
+### Namespaces, Scope, and Local Functions
+Just stuff about the life cycles of functions and stuff. Nothing really new. But namespaces, I should check them out. 
+
+### Returning Multiple Values
+Multiple values actually means tuples. That's what I get. That's why unpacking can be possible. But the thing is, functions should return multiple values right? That's not the law of maths!
+
+### Functions Are Objects
+Just showing that functions are first-class citizens.
+
+### Anonymous (Lambda) Functions
+`lambda argument1, argument2: ?` can this happen? Dunno.
+
+### Currying: Partial Argument Application
+`from functools import partial` -> Dude, the partial is currying? Oh partial application, if it just handles one argument and returns a function, then it's currying right?
+
+### Generators
+`iterator protocol`
+This makes objects iterable! This is where `yeild` comes in mate. 
+
+#### Generator expressions
+`gen = (x ** 2 for x in range(100))` -> Just use parentheses instead of brackets. Just think that you're making a tuple.
+
+#### itertools module
+* combinations
+* permutations
+* groupby
+* product
+
+### Errors and Exception Handling
+```python
+def attempt_float(x):
+	try:
+		return float(x)
+	except (ValueError, TypeError):
+		return x
+```
+
+#### Exceptions in IPython
+Cool, IPython gives you context! When you get an exception.
+`%debug, %pdb` Let's use that magic!
+
+## 3.3 Files and the Operating System
+Open files with `open`.
+So files need releasing, which release resources(like RAM?) to the OS? Gotta do a bit more digging.
+
+Have a look at the Python file modes when you open.
+
+Oh, and I want to know what the `flush` function really does. And what it really means in computer science.
+
+### Bytes and Unicode with Files
+Binary mode vs Unicode mode. 
+
+I think you should get to know what Python's Unicode functionality is, and try to find out what encode vs decode really means. 
+
+[Unicode HOWTO — Python 3.3.7 documentation](https://docs.python.org/3.3/howto/unicode.html)
+
+## 3.4 Conclusion
+Let's get on with Numpy and array-oriented computing in Python.
+
 #reading/books
