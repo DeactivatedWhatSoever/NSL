@@ -867,4 +867,50 @@ So the new one shouldn’t have that kind of feature. The existing items needed 
 ### Wrapping Up: What We've Learning About Testing Django
 Just shows about all the tests. Next up, JavaScript. 
 
+## Dipping Our Toes, Very Tentatively, into JavaScript
+JavaScript: The Good Parts. Does that language have good parts? Lol let's get on with it.
+
+### Starting with an FT
+Created a functional test. Whether it has an error box and deleted the input right away.
+
+### Setting up a Basic JavaScript Test Runner
+The author said there were so many test related libraries. So the author fortunately just got a library that was pretty much similar to `unittest`, `QUnit`.
+
+### Using jQuery and the Fixtures Div
+I wish to know what a `Fixture` is in testing. Gotta get to know the concepts of it. Mocks, Fixtures, don't know what they are. Well anyways, this section was just about jQuery and stuff. Nothing much.
+
+### Building a JavaScript Unit Test for Our Desired Functionality
+Just writing some tests with jQuery and QUnit.
+
+### Fixtures, Execution Order, and Global State: Key Challenges of JS Testing
+As the section says, execution order and global state. These things are the things that are hard in JS testing. Let's learn some of it. 
+
+#### console.log for Debug Printing
+`console.log();` That's it!
+
+#### Using an Initialize Function for More Control Over Execution Time
+Getting more control of execution time? When to actually execute this or that right? I think I get it. 
+
+### Columboo Says: Onload Boilerplate and Namespacing
+JavaScript name-spacing. The author said there are other ways for doing JavaScript name-spacing. It's because of the other libraries.
+
+### JavaScript Testing in the TDD Cycle
+1. Write an FT and see it fail.
+2. Figure out what kind of code you need next: Python or JavaScript?
+3. Write a unit test in either language, and make the test pass.
+4. Write some code in either language, and make the test pass.
+5. Rinse and repeat
+
+### A Few Things That Didn't Make It
+* At the moment, our test only checks that the JavaScript works on one page. It works because we’re including it in base.html, but if we’d only added it to home.html the tests would still pass. It’s a judgement call, but you could choose to write an extra test here.
+* When writing JavaScript, get as much help from your editor as you can to avoid common "gotchas". Check out syntax/error-checking tools like "jslint" and "jshint", also known as "linters".
+* QUnit mainly expects you to "run" your tests using an actual web browser. This has the advantage that it’s easy to create some HTML fixtures that match the kind of HTML your site actually contains, for tests to run against. But it’s also possible to run JS tests from the command line. We’ll see an example in [chapter_CI].
+* The new shiny thing in the world of frontend development are MVC frameworks like angular.js and React. Most tutorials for these use an RSpec-like assertion library called Jasmine. If you’re going to use one of them, you’ll probably find life easier if you use Jasmine rather than QUnit.
+
+#### JavaScript Testing Notes
+* Managing global state. 
+	* DOM / HTML fixtures
+	* namespacing
+	* understanding and controlling execution order
+
 #reading/books
