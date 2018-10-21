@@ -249,4 +249,56 @@ Just remember, writing software with pure functions. Then you’ll only have imm
 ### See also
 See the book and read the links when you have time.
 
+## What is this Lambda You Speak Of?
+Lambdas. All I get to think they are just anonymous functions. Also, we need them to pass around behavior easily. It’s just syntax sugar. But what kind of things can we do with these? That’s pretty much a good thing to know. Let’s go.
+
+### Goals
+The main goal of this section is to know about what the hell is lambda? 
+
+### The short story
+I don’t like history, so lets strap in.
+
+#### Lambda
+Lambda is a greek symbol that `Alonzo Church` chose to actually explain the concept of a function.
+
+Modern functional programming: lambda === anonymous function.
+
+#### The term lambda calculus
+Calculus: a formal system.
+Lambda calculus: a formal way to think about functions.
+
+Most of the terms over here are about functions and their evaluations. The definition of functions, and how they are evaluated.
+
+### The Longer Story (History)
+Okay, I don’t really like history and don’t really want to get to know about it. I would like to go on when I really need to think about it. So lets just skip it for now. 
+ I’ll just give you the pointers so you can have a big picture of it. Well if you ever get to read it though lol.
+
+#### The 1950s and Lisp
+
+#### John Backus, FORTRAN, and FP
+
+#### Erlang
+
+#### Haskell
+
+#### Martin Odersky and Scala
+
+#### Today
+
+### One Last Point
+It’s actually a really huge point. Things haven’t actually been considered when the concept of lambda calculus came out.
+1. Maintaining state over long periods of time.
+2. Interacting with files
+3. Networking 
+There were not such things as files or networking. Because of that, we need to find out how to solve those problems with FP.
+
+So the result comes to: pure functional programs can’t have states and are immutable. Which means they can’t have I/O. Also, there was a 62 year gap between the invention of lambda calculus and monads. Monads are actually the solver of I/O. I don’t know what monads are, but I hope to get a good understanding of it. I only got a hint of it as lazy evaluation.
+
+### If you like history …
+[The Innovators: How a Group of Hackers, Geniuses, and Geeks Created the Digital Revolution: Walter Isaacson: 9781476708706: Amazon.com: Books](https://www.amazon.com/Innovators-Hackers-Geniuses-Created-Revolution/dp/1476708703/ref=as_li_ss_tl?s=books&ie=UTF8&qid=1471034437&sr=1-3&keywords=walter+isaacson&linkCode=sl1&tag=devdaily-20&linkId=6cf7a95f04552678b8e78436fa48aeb6)
+Maybe I should read this book and get a grasp of computer history. At least know about it so you can learn how to study history yourself. Since it’s history about stuff that you actually care about, I think you could get a big picture of why people did this and why people made that and stuff. 
+ 
+### See also
+See the links in the book. 
+
 #reading/books
