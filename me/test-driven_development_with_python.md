@@ -913,4 +913,24 @@ JavaScript name-spacing. The author said there are other ways for doing JavaScri
 	* namespacing
 	* understanding and controlling execution order
 
+## Deploying Our New Code
+Just deploying the code to our staging server. Which would be `venom` for me lol. 
+
+### Staging Deploy 
+Just run the `fab` command and run a functional test on the staging server.
+
+### Live Deploy
+Just live deploy with `fab`. 
+
+### What to Do If You See a Database Error
+Don't have these and I'll know how to solve them :)
+
+### Wrap-Up: git tag the New Release
+```sh
+$ git tag -f LIVE  # needs the -f because we are replacing the old tag
+$ export TAG=`date +DEPLOYED-%F/%H%M`
+$ git tag $TAG
+$ git push -f origin LIVE $TAG
+```
+
 #reading/books
