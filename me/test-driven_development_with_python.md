@@ -933,4 +933,10 @@ $ git tag $TAG
 $ git push -f origin LIVE $TAG
 ```
 
+## More Advanced Topics in Testing
+* We'll be learning how to integrate third-party systems, and how to test them. 
+* Mocking and test isolation
+* Test fixtures
+* CI Environment
+
 #reading/books
