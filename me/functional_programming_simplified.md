@@ -301,4 +301,92 @@ Maybe I should read this book and get a grasp of computer history. At least know
 ### See also
 See the links in the book. 
 
+## The Benefits of Functional Programming
+There are general benefits for functional programming, and also specific benefits of functional programming when you use Scala. I guess the biggest benefit that’s on top of my mind would be less bugs, less side-effects. But I guess most of those comes from I/O.
+
+### Benefits of functional programming in general
+These are the things that you should keep in mind while you read this section.
+1. Pure functions are easier to reason about
+2. Testing is easier, and pure functions lend themselves well to techniques like property-based testing
+3. Debugging is easier
+4. Programs are more bulletproof
+5. Programs are written at a higher level, and are therefore easier to comprehend
+6. Function signatures are more meaningful
+7. Parallel/concurrent programming is easier
+
+### Benefits of functional programming in Scala
+Scala/FP’s additional benefits:
+1. Being able to treat functions as values and use anonymous functions makes code more concise, and still readable
+2. Scala syntax generally makes function signatures easy to read
+3. The Scala collections’ classes have a very functional API
+4. Scala runs on the JVM, so you can still use the wealth of JVM-based libraries and tools with your Scala/FP applications
+
+### 1) Pure functions are easier to reason about
+Brain-to-code gap. It’s a pretty good saying. Higher-level code. The reason pure functions are easier to reason is, you only need to look at the function signatures. What it inputs, and what it outputs. The scope of the function is only that block. You don’t have to care about the outside world that much. But when you have to care about the outside world, you only need to see the thin layer. In Haskell, there’s an architecture where the core has only pure functions. But there’s a thin layer for impure functions that does I/O and all that bad(?) stuff.
+
+### 2) Testing is easier, and pure functions lend themselves well to techniques like property-based testing
+In imperative coding, you mostly define `private void changeState` kind of methods. I did that a lot when I developed android applications. Those methods don’t really do anything but change global state and return nothing. Now those make the side effects. I get it now. 
+
+#### Proofs
+FP is like algebra. Which means the functions will only calculate stuff with the inputs that it’s given and will return something. Because of that, we can write tests that test obvious stuff. I’m not sure of the `property-based` whatever thing atm. [ScalaTest](http://www.scalatest.org/user_guide/property_based_testing) -> It’s about property-based testing. I think it’ll test absolute every input that there is. Which is plausible over in FP. 
+
+### 3) Debugging is easier
+Since the stack trace of a program spits out the part in a pure function, all you need to check is the input that made the exception. That’s actually really cool. All you need to know is the inputs to that function. And the thing is, you really don’t need a debugger, and it’s way easier to write a test. Things like `QuickCheck` in Haskell is really good for checking the properties of a function. You only need to look at one place, the input, and the function that threw the exception. Debugging complete.
+
+### 4) Programs are more bulletproof
+States are passed around as values. So this means, no static global state. State is changed into a new state and you won’t need to think of the old state. State changing -> New values. 
+ Because we have pure functions, they really are bullet proof. Small pieces of code that don’t have side effects. Pure functions is actually everything for functional programming. States are changed somewhere else, no open world global shitty things. All you have is a scope of your function and the inputs from the outside world that you manipulate in your small world.
+
+### 5) Programs are written at a higher level, and are therefore easier to comprehend
+Readability features of functional programming:
+* The ability to treat functions as values
+* The ability to pass those values into other functions
+* Being able to write small snippets of code as anonymous functions
+* Not having to create deep hierarchies of classes (that sometimes feel “artificial”)
+* Most FP languages are “low ceremony” languages, meaning that they require less boilerplate code then other languages
+
+### 6) Pure function signatures are meaningful
+Pure functions tell mostly everything. The name describes what it does, the parameter types and names tell us what we’re manipulating with, and what it returns tells us where we can use it. Because of this, the signatures are really meaningful compared to non-pure functions. Those functions have void return and void parameters. Which means we only have the function name, and we can’t really guess what it really does. All we can do is believe that the function will do what we want. 
+
+### 7) Parallel programming
+Worrying about `deadlocks` and `race conditions`? Think again in FP! Because we don’t have states, we can just spin up multiple threads. Nothing special! Parallel computing leads us to concurrent computing!
+
+#### Deterministic algorithms and concurrency
+Deterministic algorithm === Same as the definition of a pure function.
+* Concurrent = Two queues and one coffee machine
+* Parallel = Two queues and two coffee machines
+
+### 9) Scala/FP benefit: Syntax makes functions signatures easy to read
+The syntax can be explicit and implicit. But most of the time, it’s really readable. In Java, the return type is in the front and the parameters are at the back. In Scala, they’re the opposite. Which means we put in this and we get that, it makes sense. Also for generic parameters, it’s way easier to know which one is which.
+
+### 10) Scala/FP benefit: The collections classes have a functional API
+Immutable collections I guess. No custom for loops. That’s great since we can delete explicit statements in our code. Which statements can’t make our programs parallel.
+
+### 11) Scala/FP benefit: Code runs on the JVM
+Is it really? Dunno atm. It’s actually just about the Java libraries that you can use. That’s all. 
+
+### One more thing … 
+People said that TDD is dead. And it went to something else. They said it’s good, but they need another way to actually test. But FP, people didn’t look back. Once they went from imperative to FP, they just kept on saying good stuff about FP. That’s on for like a few decades. Let’s go for it.
+
+### Summary
+1. Pure functions are easier to reason about
+2. Testing is easier, and pure functions lend themselves well to techniques like property-based testing
+3. Debugging is easier
+4. Programs are more bulletproof
+5. Programs are written in a higher level, and are therefore easier to comprehend
+6. Function signatures are more meaningful
+7. Parallel/concurrent programming is easier
+
+Plus, the benefits of Scala FP!
+1. Being able to treat functions as values and use anonymous functions makes code more concise, and still readable
+2. Scala syntax generally makes function signatures easy to read
+3. The Scala collections’ classes have a very functional API
+4. Scala runs on the JVM, so you can still use the wealth of JVM-based libraries and tools with your Scala/FP applications
+
+### What’s next
+Let’s find out the potential drawbacks and disadvantages of FP. We need to know this really well. We can’t just know the good parts and use it in that way. We need to know the bad parts and try to make it better by making the bad parts good.
+
+### See Also
+Have a read! All the links are in the book. 
+
 #reading/books
