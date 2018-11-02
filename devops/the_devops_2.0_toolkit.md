@@ -22,4 +22,57 @@ So orchestration, I still really don't know the true meaning of this word. It's 
 ### The Light at the End of the Deployment pipeline
 Yep, it's all because of Docker. We finally got a way to actually make immutable infrastructure and make deploying infrastructure plausible. Let's take the red pill and see how this rabbit-hole goes. 
 
+## The Implementation Breakthrough - Continuous Deployment, Microservices, and Containers
+With CD(Continuous Deployment), microservices, and containers, we can implement a whole new world combined. Let's find out.
+
+### Continuous Integration
+I already know the benefits of CI and I'm trying to adopt it to my team. The real prerequisite over here is actually tests. We need to find out whether our new code works or not, and it goes well with the rest of the code. We have to integrate ASAP, and always. Also, the sooner we know the code cracks, the sooner we'll get to fix it. 
+
+The real things we need in CI:
+* Pushing to the code repository
+* Static analysis
+* Pre-deployment testing
+* Packaging and deployment to the test environment
+* Post-deployment testing
+
+### Pushing to the Code Repository
+When a push or PR goes to the code repository, then there'll be a CI trigger. The CI pipeline will proceed and the developer who made the changes will get the notification when it fails. Because of not giving everyone the notification, it'll be best for the person who actually made the changes to look it up. That'll be really fast. So it'll be best to give a private message which will make the people most responsive.
+ Push, commit vs PR. I'm not sure whether it's right to actually just do that stuff. They'll need reviews right? Or if they don't need reviews, it'll be code like real small or actually viewable stuff? But I don't think coding works out like that. There'll be people who want to review the code or want to get it reviewed when they're part of the job is done. How continuous is actually something we need to define and match the consensus with the team. 
+ Anyways, most of the CI pipelines start with a static analysis of the code. Let's get to it.
+
+### Static analysis
+So, a CI tool is actually responsible for detecting whether the code has changed or not. And then execute the pipeline. So I think it'll be good for you to try and find a nice tool that does that. 
+ Anyways, the opposite of static analysis is obviously dynamic analysis, and dynamic analysis is actually some sort of code that executes and analyzes the code dynamically. Really, I don't know what that really means but I hope to find out.
+ Static analysis is really easy to apply and it mostly get rids out all the code reviews most people will do. Which is pretty cool. Like lint, white spaces, or matching coding conventions and all of that. Love it. 
+ There's a picture in the book and it really is a good picture. I'd love to put it in over here but It'll be better to just have a nice address over here for mental reminders.
+
+### Pre-Deployment testing
+Mostly things like unit tests and functional tests come over in here. These are really critical things and must have them in this part. They are the most easy and fast things to actually do over here. 
+ Didn't know integration and performance tests don't have a lot of code coverage. But duh, code coverage mostly is done by unit tests and functional tests. Anyways, that's it!
+
+### Packaging and Deployment to the Test environment
+Package your code! Make it into a JAR or whatever thing that you do in your programming language, or make a Docker container with just the runtime for your code and the libraries that you need to execute your code. That's done like that!
+
+### Post-Deployment testing
+Now, functional, integration and performance tests are run over here. The tests that need to get tested when actually deployed!
+ BDD for functional tests, and Gatling for performance? Gotta get to know what Gatling is.
+ Well this is mostly the finish line for integration. You could also put in some metrics for measuring code coverage for tests. I think that should be great when we actually need it. 
+
+### Continuous Delivery and Deployment
+The most important thing about CD is, the pipeline must have confidence about `no need of manual testing`. It's then, that we can actually deploy the code to production with confidence and actually automate it. If we need manual testing, then we can't really deploy it. 
+ To actually make continuous deployment, we can't actually do that if there are politics involved. Like marketing, the business people, they want to deploy it at some time or some place. That actually needs us to have confidence. So certain products or services won't be able to do deployment, but most of them will be able to do delivery. Some teams which actually need manual testing, a QA team, will only be able to have a CI environment.
+ We need proxies that determine which release is actually deployed or not. Also, we need to make the integrated software like databases, need to actually work in both versions.
+ Since no business decisions or whatever are in continuous deployment, we need a way to actually make sense of the code that are visible to the users. That's where feature flags come in. With these, we can toggle which feature should be on or not. 
+
+### Microservices
+Micro means less code to package, test, and deploy. This will also let us run these pipelines in parallel and make a whole system deployment much faster. The thing is, I'm keeping on thinking that this actually is the future. I know that if you have too many applications up when you're app is small, it's not really cost effective. But it'll be great in the future. I'm just thinking, when the app is small, just write it small in monolithic. But when it gets bigger, start splitting them up.
+
+### Containers
+Isolation and immutable are the keywords that we must swallow in to understand containers. Because of containers, we could ship our applications in an isolated environment that doesn't change. That's why we can actually have operating systems that have nothing except a runtime of containers. Really, this is the god damn future. I love it. A whole cloud infrastructure could actually run on a container cluster. 
+ Hypervisors vs Ixc is the next topic you should go study about. Well anyways, containers are obviously winning.
+
+### The Three Musketeers - Synergy of Continuous Deployment, Microservices, and Containers
+Let's get into it. I think the introductory is done now. But the thing is, if we want continuous deployment, we need to make our apps in a microservice fashion, and put them in isolated and immutable environments like containers. 
+ `Knowing is not enough; we must apply. Willing is not enought; we must do.`
+
 #reading/books
