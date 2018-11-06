@@ -939,4 +939,40 @@ $ git push -f origin LIVE $TAG
 * Test fixtures
 * CI Environment
 
+## User Authentication, Spiking, and De-Spiking
+Diving into authentication. Finally. Do I get to understand authentication, authorization techniques? I think you should get it over here. If you don't, don't even considering passing this chapter.
+
+MEMO:
+Part 3: More Advanced Topics will be read when I really need to. It mostly has user authentication and testing that, also making CI. Don’t think I’ll need it at this point, and I will get a grasp of authentication & authorization later on when I make my own project. 
+
+### Passwordless Auth
+
+### Exploratory Coding, aka “Spiking"
+
+### De-spiking
+
+### A Minimal Custom User Model
+
+### A Token Model to Link Emails with a Unique ID
+
+## Epilogue: Obey the Testing Goat
+It was really, really hard.
+
+### Testing Is Hard
+[Book-TDD-Web-Dev-Python/tests at master · hjwp/Book-TDD-Web-Dev-Python · GitHub](https://github.com/hjwp/Book-TDD-Web-Dev-Python/tree/master/tests) -> It’s the test framework that the author wrote. Lol.
+
+Anyways, the thing that testing was hard for me was, the doubt of it. People thought that it was mostly just, I don’t know, something that causes design flaws? But if you just write unit tests for everything, it could be thought out like that. I mostly got all the benefits from doing TDD. The regression, my code can be refactored, people can see the specs of my code, all that. Also, it can have no QA! That’s the most important thing that I could think at the moment. Because we only saw the trees, there came out a way to actually see the forest. BDD. We can write functional tests with BDD and it was a great way to actually see the tests as specs and stuff. It was testable! 
+
+### Keep Your CI Builds Green
+Make your CI as close as production. That way, when it fails you don’t just pass it away and not resolve it because it works on your machine. If it works on your machine, there’ll be a lot of reasons, but the environment that goes on is not your machine. It’s the one on the CI! So anyways, no matter what, just test the things on your machine, and also test it on the CI. 
+
+### Take Pride in Your Tests, as You Do in Your Code
+It makes software development more fun. That’s the most important thing. Take test code with pride. Since people don’t do it, you do it and people will love you for doing it. Functional tests, performance tests, unit tests, all those goodies. You’ll make manual testing no more! That’s a really important thing when your team is small!
+
+### Remember to Tip the Bar Staff
+I’ll consider it when someone really needs it :)
+
+### Don’t Be a Stranger!
+Love you Harry! Thanks for the book!
+
 #reading/books
