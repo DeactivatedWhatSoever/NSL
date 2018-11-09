@@ -1,0 +1,5 @@
+# The DevOps 2.0 Toolkit
+The reason I'm reading this book first is because it's practical. I was going to read `Continuous Delivery`, but I thought it'd be way better for me to actually get my hands dirty because I'm actually doing some CI/CD stuff at work and trying to make it better. I really want to make a good development environment for my team mates and let them develop way easier than ever. I want them to say: “Because of working with Robin, I could only focus on the business model and got the job done really fast and got to rest faster! Thanks and I would really love to work with an environment with Robin."
+ Yup, an environment with me will establish a great development environment. Also, a great production environment :) Anyways, this book is actually a series and I think it'll be best for me to read them all since I think this author cares a hell lot about DevOps and the tools we need. If I get to know everything about DevOps, I want need to think about infrastructure stuff when I make my own products. I'll make my own development environment! Let's go!
+
+#reading/books
