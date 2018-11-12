@@ -389,4 +389,74 @@ Let’s find out the potential drawbacks and disadvantages of FP. We need to kno
 ### See Also
 Have a read! All the links are in the book. 
 
+## Disadvantages of Functional Programming
+General FP drawbacks
+1. Writing pure functions is easy, but combining them into a complete application is where things get hard.
+2. The advanced math terminology (monad, monoid, functor, etc.) makes FP intimidating
+3. For many people, recursion doesn’t feel natural
+4. Because you can’t mutate existing data, you instead use a pattern that I call, “Update as you copy.”
+5. Pure functions and I/O don’t really mix.
+6. Using only immutable values and recursion can potentially lead to performance problems, including RAM use and speed.
+
+Scala FP drawbacks
+1. You can mix FP and OOP styles
+2. Scala doesn’t have a standard FP library
+
+### 1) Writing pure functions is easy, but combining them into a complete application is where things get hard
+Writing pure functions is easy. It’s because you just get some data in, transform the data in the way you want, in other words, applying an algorithm, and output the data. 
+ But the hardest thing over here is, when you start to combine those pure functions and making it into a running application. 
+
+### 2) Advanced math terminology makes FP intimidating
+Not a problem with me though.
+
+### 3) For many people, recursion doesn’t feel natural
+Because of recursion doesn’t feel natural, you want to use for loops all the time. It’s much easier, and much … comfortable. But the only way to recursion isn’t actually recursion. You can use for expressions, collection functions like map, and then you can go with recursion. 
+ The most important thing to catch over here is, `Recursive Thinking, Recursive Mindset`.
+
+### 4) Because you can’t mutate existing data, you instead use a pattern that I call, “Update as you copy”
+Yep, case classes come in. Copy and just change the variables that you need to change, and update as you copy. When you write code like this in the first time, you’ll be using a hell lot of intermediate values. But we’ll learn how to get rid of them after!
+
+#### “Update as you copy” gets worse with nested objects
+Yep … If there is a case class, but has some properties which are objects … That’ll be a really hard run. Well luckily, these problems are solved and we’ll know soon!
+
+### 5) Pure functions and I/O don’t really mix
+Doing any sort of I/O is going to be impure. So, all the other things will be written in pure functions, but with I/O, that’s just going to be one peal of the onion. An impure outer layer is going to do that for us. `The Scala cookbook` -> This book has a lot of implementations for this.
+
+#### Pure and impure functions
+In Scala, we wrap those IO stuff with the IO[] class. This wrapper indicates this function is impure! Because, you don’t know what will be returned.
+
+#### The benefit of Haskell’s IO type
+Yep, it just gives me the indicator that a function is impure. We’ll get more information about GUI/UI stuff at “Should I use FP everywhere?” -> Dang I sure want to know about that!
+
+### 6) Using only immutable values and recursion can lead to performance problems, including RAM use and speed
+Dang … 660MB of RAM sorting 10 million integers. Okay, with FP, everything is `possible`, JUST possible. Now, we’ll get a look of this at FP performance.
+
+### 7) Scala/FP drawback: You can mix FP and OOP styles
+All you need is house rules. Whether you’re going to use this or that, just agree with your contributors. After that, when you think again, FP + OOP could be a real benefit. People are trying to find a way to actually make the combined. I’m pretty much waiting to see what happens next.
+
+### 8) Scala/FP drawback: Scala doesn’t have a standard FP library
+So, Scala doesn’t have a built-in standard FP library. Which is pretty much bad at the moment. We’ll only have this and that custom libraries. I thought Scala was a functional language! Wrong! It’s just a multi paradigm language! Dang! Why did they do that! Well anyways, let’s find out what we can do about this rather than just finding what libraries to use. `Scalaz` and `Cats`. 
+
+### “Should I use FP everywhere?”
+Let’s think about the drawbacks and how we can get them to not be that kind of drawbacks anymore.
+
+#### 1a) GUIs and Pure FP are not a good fit
+Daaaang, the words “update” and “mutate” don’t exist in the FP vocabulary. The reason it’s not a good fit is, screens should be refreshed when the pixels are changed. If it’s FP, you have to refresh the whole screen when a change really is necessary. In imperative programming, you only need to change a few pixels instead of the whole screen. 
+ Also, all the GUI frameworks are OOP. Are there any FP GUI frameworks? So you have to write OOP for changing the UI state, but all the other logic should be written in FP.
+
+#### 1b) Caveats to what I just wrote
+Functional Reactive Programming (FRP) is the way for functional programming in GUI applications. You can use observables to do IO, and observe them for events and invoke functional built-ins on them. 
+
+### 2) Pragmatism (the best tool for the job)
+Just be pragmatic instead of pure.
+
+### Summary
+It’s the same at the top point. But the thing that I got over here is, performance, thinking recursive, and IO stuff. I want to know how to architect that thin layer of IO! Impure stuff!
+
+### What’s next
+Breaking through the great FP terminology barrier.
+
+### See also
+See the list!
+
 #reading/books
