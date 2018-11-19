@@ -56,4 +56,78 @@ Just collaborate!
 ### Let’s Get Started!
 Next up is, Strategic design with bounded contexts and the ubiquitous language!
 
+## Strategic Design with Bounded Contexts and the Ubiquitous Language
+In short, DDD is primarily about modeling a `Ubiquitous Language` in an explicitly `Bounded Context`. -> That’s the most concise explanation that I can get. But let’s see exactly how a bounded context is actually bounded. 
+ At first, your bounded context will be in the problem space, and when you start modeling it, it’ll become your solution space. Because of this, the bounded context is where your implementations are going to be. And you’ll have separate software artifacts for each bounded context. 
+ So what do you mean by separate software artifacts? Does that mean I have to make another project for each context? Or just another package? I’m not sure. I need to get a better understanding of the `scope` of a bounded context. 
+ The problem space is where you model your software in a high level. Drawing diagrams, getting all the specifications and writing it all down, see what the constraints are, all that stuff. The book says this is where `Context Maps` work the best, and sometimes `Bounded Contexts` can come into the problem space. It’s because there’s sometimes you need to know the implementation to actually understand the interface. 
+ And the solution space is where all the implementation goes! If that bounded context is a key of your strategy, it is your `Core Domain`. 
+ When you get to implement your bounded context, you write your implementation, test code, and integration tests with other bounded contexts! It already feels like the micro service architecture lol.
+ One team can develop with one bounded context, or multiple bounded contexts, but multiple teams shouldn’t work with one bounded contexts. Once the company scales, the bounded context will get bigger and the teams will need to have work for their own. 
+ If we don’t have bounded contexts, we’ll eventually result with a big ball of mud which is just monolith. Too many concepts will result in a huge inheritance tree and it’ll be so hard to develop on it. People will start to make new trees inside it, and yes, monolith again. 
+
+### Domain Experts and Business Drivers
+The business drivers and domain experts need to work together and make a bounded context for each word. For example, if we have the word policy, it has a lot of meanings. But if we just actually make a context for each policy function, we can jus give it out to the development team and just manage the policies for its own function. {function} context -> And there’s a class called `Policy`. Then, we’ll have no need to actually name those classes like `ClaimPolicy`. 
+
+### Case Study
+Woah, this case study is really great. It’s about making an agile scrum software, and the people who are designing it keeps on making it bigger and bigger. People don’t know when to stop! Of course there are great ideas and lots of things to add, talk about, but if they keep on ‘adding’ it to the project, it’ll become a big ball of mud in no time. So, I think in the next paragraph, we’ll see how to actually design it with bounded contexts.
+
+### Fundamental Strategic Design Needed
+So it’s all about finding the core of the application. The `Core Domain` is what we need to find, and then wrap around it with other bounded contexts. It’s about finding the core problem that we are trying to solve. In result, the tools we need to use are ubiquitous language and bounded contexts. Split it up before it goes to monolith. But I still don’t get the `scope` of it. It’s so intuitive. There’s no rules. I know that there’s no rules to some kind of architecture methodology. I’ll have to know when to split it up or not. I’ll learn by trail right? 
+ We really get a lot of testing benefits when we design with strategic design. Since all the bounded contexts have their own world, it’s way easier to test. We’ll also have a few more benefits, but the book will say it soon! I want to experience this stuff ASAP.
+ How do we know whether this is the `Core Domain` or not? This is where we find people who are domain experts. Developers don’t tend to listen to the domain exports and they tend to just think about their technical complexity. You have to listen to them first, and see what the problems really are. The business complexity will show what to solve, and it’ll sure show how much your technology should be complex or not. It’s all about communicating until you get the real thing. The `Core Domain`. 
+
+### Challenge and Unify
+“What is core?” -> This question should be answered here! Splitting the domains up into `Scrum Core Domain`, `Collaboration Bounded Context`, it’s actually really cool to do it like that. I’m pretty touched! So the next question that I had was, “How the hell do we integrate between the bounded contexts?”, “Also, how to model the interfaces between the bounded contexts?”. Well, we’ll find out later by using the almighty `Context Mapping`!
+
+### Developing a Ubiquitous Language
+The domain names can actually be verbs, adverbs, nouns, all that stuff. If it explains the thing that you’re trying to do, then it’s applicable. Also, people tend to just draw the model and not develop it. If we get inside the user scenario too long, it’ll be really hard for us to actually implement it. Also, it’ll be really hard to keep on with the documentation updating and stuff. 
+ To make a user scenario, you have to think of `who` does `what`. So keep on making the scenarios of who does what and who needs to be notified, which is what anyway.
+
+#### Putting Scenarios to Work
+Specification by example -> Behavior-Driven Development. The language that is used for writing specifications is cucumber. `given/when/then` approach. 
+
+#### What about the Long Haul?
+People think innovation stops once the product is done. Maintenance isn’t really the factor they think about. But the thing is, it’s actually the biggest part. Make the product feel alive, making it breath, all that. If it doesn’t do that, who will use it after the creation of it? 
+
+#### Architecture
+* Input Adapter
+	* Security
+	* User Interface
+	* Representations
+* Application Service
+	* Security
+	* Transactions
+	* Task Coordination
+	* Use Case Controller
+* Domain Model
+	* Entities
+	* Business Logic
+	* Domain Events
+* Output Adapter
+	* Repositories
+	* Documents
+	* Cache
+	* Messaging
+
+So, this is how all the things are split up into. So we need to see IDDD to actually get the best of this. 
+ You can architect the app with other than `Adapter` and `Port` patterns.
+* Event-Driven Architecture; Event Sourcing
+* CQRS
+* Reactive and Actor Model
+* REST
+* SOA
+* Microservices -> Yep, DDD bounded contexts are actually the same with this!
+* Coud computing
+Microservices could be much more smaller, but it still represents a domain model of the bounded context. It’s just inside another deployment. That’s all. So I think if you do DDD, micro services is just right there. That’s why everyone talked about DDD then. Well anyways, for microservice architecture, I think the important thing is communication, between the micro services, the gateway, log aggregation, etc. 
+
+### Summary
+* Some of the major pitfalls of putting too much into one model and creating a Big Ball of Mud
+* The application of DDD strategic design
+* The use of Bounded Context and Ubiquitous Language
+* How to challenge your assumptions and unify mental models
+* How to develop a Ubiquitous Language
+* About the architectural components found inside a Bounded Context
+* That DDD is not too difficult to put into practice yourself!
+
 #reading/books
