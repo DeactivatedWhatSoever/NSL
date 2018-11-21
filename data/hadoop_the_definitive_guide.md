@@ -178,4 +178,79 @@ cat input/ncdc/sample.txt | \ ch02-mr-intro/src/main/python/max_temperature_map.
 sort | ch02-mr-intro/src/main/python/max_temperature_reduce.py
 ```
 
+## The Hadoop Distributed Filesystem
+When we can’t put all the data inside a single machine, we need to find a way to distribute the data to multiple machines. This is where a distributed filesystem comes in. It’s connected to the net, and does this and that to distribute the data. We’ll find out about Hadoops Distributed Filesystem, HDFS. 
+
+### The Design of HDFS
+The good stuff:
+* Very large files
+	* Yup, petabytes. That big.
+* Streaming data access
+	* A write once and read multiple paradigm eh? But dude, that means it has no transactions. So just write it once, and then do that and this for just analysis? So you don’t even delete or update right? How is this streaming data access?
+* Commodity hardware
+	* It can run on any type of hardware. It doesn’t need to be run on like mainframe and stuff. 
+
+The bad stuff:
+* Low-latency data access
+	* HDFS is optimized for delivering high throughput of data. Not good for data access. HBase is a good project for low-latency data access.
+* Lots of small files
+	* HDFS can’t hold onto A LOT of files since the node needs to carry around the metadata of the files. As a rule of thumb, each file, directory, and block takes about 150 bytes. You can do the math yourself. It means we need a lot of memory! So don’t put in too many files. 
+* Multiple writers, arbitrary file modifications
+	* Writes are made at the end of the file. It’s an append only fashion, no multiple writers. 
+
+### HDFS Concepts
+We’ll see the concepts of what HDFS has.
+
+#### Blocks
+Cool. Disk blocks are 512 bytes lol. If I ever learned about the operation system I would know about a filesystem. Anyways, an HDFS block size is 128MB. It’s huge, I know, it’s because of the seek time. If it seeks too many blocks, then it’ll be a bad thing. But if there’s a few blocks, the seek time will be less. 
+
+Benefits of abstracting its own block in a filesystem.
+1. A file can be bigger than a disk. So we can distribute it through the network. 
+2. It simplifies the storage subsystem. 
+3. Blocks fit well with replication for providing fault-tolerance and availability. 
+
+#### Namenodes and Datanodes
+An HDFS cluster actually uses the master-worker pattern! A namenode(master) and a number of datanodes(workers). The namenode has all the metadata of the filesystem. So if the master is lost, the worker nodes won’t know where the files are. That’ll be a disaster. So the master has to have another standby master and the metadata should be persisted in an NFS server or something. But I’m sure there’ll be other ways to make it available.
+
+#### Block Caching
+It’s cool that the blocks that get accessed a lot can be cached. It’s an explicit cache so it only gets cached in the machine. You can specify how many blocks you can cache and stuff. More to it when you actually get to configure one.
+
+#### HDFS Federation
+So the namenodes have their own problems. Which is memory. It’s hard to think how much a namenode needs how much memory to actually make the cluster available. So there’s some technique called HDFS federation which helps manage namenode memory by doing this and that. Don’t know the details, but when I get to do it, I think I’ll come cross this. 
+
+#### HDFS High Availability
+The new namenode is not able to serve requests until:
+1. It loaded its namespace image into memory
+2. Replayed its edit log
+3. Received enough block reports from the data nodes to leave safe mode
+
+Woah, it can actually take 30 minutes or over to start a namenode from cold. So it does some failover things and fencing right? I mean everything does that! The failover controller does the transition between the standby and the failing master. 
+
+### Various Interfaces
+From now on, it’s mostly just command-line interface and java interface exploration. It tells you have to access the file and all that stuff. But I’m not really interested in it now since I’m not going to actually use this. I only need to know the high-level internals of this. Need to know what it does, and what it is. So I’ll just skip this part and come back and read it when I really need it.
+
+### Data Flow
+I think I’ll be exploring the data flow of HDFS. How it gets loaded, read, write, all that stuff right? The anatomy!
+
+#### Anatomy of a File Read
+Pretty much the image really explains it all.
+1. The HDFS client opens the Distributed Filesystem and gets the block locations from the namenode.
+2. After that it reads from the Filesystem Data InputStream and closes. That simple!
+
+#### Anatomy of a File Write
+HDFS’s coherency model? Coherency, the quality of being logical and consistent.
+1. The HDFS Client creates a file in the Distributed Filesystem and writes it to the namenode.
+2. It then writes it to the Filesystem Data OutputStream, and the data nodes get written. The whole pipeline of course.
+3. And then it closes, and says it completed the write to the namenode.
+
+### Coherency Model
+A coherency model for a filesystem describes the data visibility of reads and writes for a file. HDFS trades off some POSIX requirements for performance. 
+ So, after you create a file, it’s guaranteed that it’s in the filesystem. But when you write something on it, and even if you flush it, it won’t write guaranteed!
+
+### Parallel Copying with distcp
+It’s just a utility for copying in parallel.
+
+### Keeping an HDFS Cluster Balanced
+It’s not always possible to prevent a cluster from becoming unbalanced. For this, we can use the `balancer` tool to subsequently even out the block distribution across the cluster.
+
 #reading/books
