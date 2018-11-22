@@ -70,4 +70,112 @@ I'm just thinking of reading Hadoop Fundamentals and MapReduce. Also some Relate
 * MapReduce Types and Formats
 * MapReduce Features
 
+## MapReduce
+It’s a programming model for data processing. Map all the data in parallel, and then aggregate, which is reduce.
+
+### A Weather Dataset
+Okay, we’re going to make an example app with weather! Okay, but the problem is, I don’t think this chapter’s a follow around thing. It doesn’t tell us what to do actually step by step. 
+
+#### Data Format
+It’s just weather data from NCDC.
+
+### Analyzing the Data with Unix Tools
+I love unix tools :)
+```sh
+#!/usr/bin/env bash*
+for year in all/* do
+echo -ne `basename $year .gz`"\t" gunzip -c $year | \
+    awk '{ temp = substr($0, 88, 5) + 0;
+           q = substr($0, 93, 1);
+           if (temp !=9999 && q ~ /[01459]/ && temp > max) max = temp }
+         END { print max }'
+done
+```
+That’s how it looks like!
+
+Hard things!
+1. Dividing the work into equal-size pieces
+2. Combining the results from independent processes may require additional processing
+3. You are limited by the processing capacity of a single machine. -> Question! What about software threads? What if you spawn 100 of them!
+
+### Analyzing the Data with Hadoop
+So, we need to convert the job above, into a MapReduce job.
+
+#### Map and Reduce
+So, there’s some key-value pairs that actually indicate map and reduce. Well I don’t really get the insides, but I’m sure MapReduce does all the things that are in the 3 things mentioned above. 
+
+#### Java MapReduce
+So the mapper, it has an input key, input value, output key, and output value. The reason for the keys are because of Hadoop to know which machine is computing what. 
+
+The result: 
+Skipped the mapper and reducer.
+```java
+public class MaxTemperature { 
+	public static void main(String[] args) throws Exception { if (args.length != 2) { 
+      System.err.println("Usage: MaxTemperature <input path> <output path>");
+      System.exit(-1);
+    }
+Job job = **new**Job(); job.setJarByClass(MaxTemperature.class); job.setJobName("Max temperature"); 
+FileInputFormat.addInputPath(job, **new**Path(args[0])); FileOutputFormat.setOutputPath(job, **new**Path(args[1])); 
+    job.setMapperClass(MaxTemperatureMapper.class);
+    job.setReducerClass(MaxTemperatureReducer.class);
+    job.setOutputKeyClass(Text.class);
+    job.setOutputValueClass(IntWritable.class);
+System.exit(job.waitForCompletion(**true**) ? 0 : 1); } 
+} 
+```
+
+### Scaling Out
+In the last example, it was just inputting a file and outputting a file. It’s just a trivial example, but in the real world, we don’t use Hadoop like that. We put in massive input, and produce massive output. To do that, we need to store the input and output inside a file system that’s capable. That file system will let Hadoop distribute the data, and the application or jobs that are running will be managed by YARN!
+
+#### Data Flow
+Hadoop task = map task + reduce task.
+ So YARN manages the resources of the Hadoop cluster. The input are split up, and they are called splits. Those splits need to find an optimal size of 128MB, or which is a size of an HDFS block, but we also need to consider the size of the splits. How many splits, and how big are the splits, we need to optimize these two things to have less overhead on managing the counts of the splits, and managing the size of each split.
+ The output of the reduce is stored in HDFS for reliability. And then the data gets replicated to other servers! 
+ You can have multiple reduces, and even no reduces. Just doing the jobs in parallel. 
+
+#### Combiner Functions
+It’s used on the map functions output. So, then why not just use another map function for this job? Or is it for combining a few sets of map and reducing? So that’s how you can make reduces for a few different maps right? I get it. 
+
+**Specifying a combiner function**
+Just `job.setCombinerClass` -> and then you’re done! Remember, it has to be a reducer since it actually combines, which is reducing. 
+
+#### Running a Distributed MapReduce Job
+Dang, the example on the book took 6 minutes to run on a 10-node EC2 cluster with High-CPU Extra Large instances.
+
+### Hadoop Streaming
+You can write MapReduce jobs with other languages than Java. But to use other languages, the interface is actually the Unix standard streams. So you can use any language that can read standard input and write to standard output.
+ The following headers are just examples of using the Hadoop Streaming API for writing MapReduce applications.
+
+#### Ruby
+Ruby examples, check the out in the book. 
+
+#### Python
+```python
+# Map function for maximum temperature in Python
+import re
+import sys
+for line in sys.stdin:
+val = line.strip()
+(year, temp, q) = (val[15:19], val[87:92], val[92:93])  
+if (temp != "+9999" and re.match("[01459]", q)): 
+print "%s\t%s" % (year, temp)
+
+# Reduce function for maximum temperature in Python
+import sys
+(last_key, max_val) = (None, -sys.maxint) for line in sys.stdin: 
+(key, val) = line.strip().split("\t") if last_key  and last_key != key: 
+print "%s\t%s" % (last_key, max_val) 
+(last_key, max_val) = (key, int(val)) else: 
+    (last_key, max_val) = (key, max(max_val, int(val)))
+if last_key:
+print "%s\t%s" % (last_key, max_val) 
+```
+
+**Run Tests**
+```sh
+cat input/ncdc/sample.txt | \ ch02-mr-intro/src/main/python/max_temperature_map.py | \
+sort | ch02-mr-intro/src/main/python/max_temperature_reduce.py
+```
+
 #reading/books
