@@ -130,4 +130,31 @@ Microservices could be much more smaller, but it still represents a domain model
 * About the architectural components found inside a Bounded Context
 * That DDD is not too difficult to put into practice yourself!
 
+## Strategic Design with Subdomains
+If you find a DDD project, you’ll find multiple bounded contexts. One of them will be a Core Domain, and the others will be Subdomains. Mostly, a Subdomain is mapped 1:1 with a Bounded Context. There will be times when multiple Subdomains go in a Bounded Context which is not a optimal approach. So we can understand the Core Domain is a clean Subdomain?
+
+### What Is a Subdomain?
+It’s just a subpart of your entire business domain. You can’t just understand a huge business domain without splitting it up into parts. So I think this will be way better used in the problem space since it lets you split the business domain into subdomains. And then, we use bounded context to actually implement the subdomains. 
+
+### Types of Subdomains
+There are three primary Subdomains in a DDD project.
+* Core Domain
+	* Perhaps the most important part of DDD and subdomains. This is where the key, the identity of your companies domain comes in. If you don't separate your other things with this, you're company will struggle with a big ball of mud. Well anyways, There's only one of these in your products, and of course there will become more when you make other huge projects. 
+* Supporting Subdomain
+	* It's just a supporting dude. Which actually supports your Core Domain, or whatever. There's no off-the-book solution for implementing supporting subdomains. So you have to decide whether this is really needed, and will it aid your other bounded contexts. Also, this part can be outsourced to others!
+* Generic Subdomain
+	* These kinds do have off-the-book solutions since they're generic. So this isn't the actual part that companies should invest in unless they really need it. Most of the elite developers go inside he Core Domain. So I bet this part would be like, some internal tools and whatever. 
+
+### Dealing with Complexity
+The first thing you have to do when you see something monolithic, you must separate them into bounded contexts. You have to start seeing whether it makes sense with the legacy system, and the system you are building. If the legacy is too big, it is an unbounded context, still, you have to try and separate the interests in to subdomains. Then you find a way to actually integrate with the unbounded context. 
+ When you want to add a domain model inside a Core Domain, or Subdomain, you have to make another package for it. Then it'll know that it's a core or sub. 
+ I think I should use `seggregate` more than `separate` lol. Well anyways, this type of thing you're doing is usually done in the solution space. Where the actual implementation is. 
+
+### Summary
+* What Subdomains are and how they are used, both in the problem and solution space.
+* The difference between a Core Domain, a Supporting Subdomain, and a Generic Subdomain.
+* How you can make use of Subdomains while reasoning about integration with a Big Ball of Mud legacy system
+* The importance of aligning your DDD Bounded Context one-to-one with a single Subdomain. -> Bounded Context : Subdomain = 1:1
+* How you should segregate a Supporting Subdomain model from your Core Domain model using a DDD Module when it is impractical to separate the two in different Bounded Contexts. 
+
 #reading/books
