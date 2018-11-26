@@ -253,4 +253,83 @@ It’s just a utility for copying in parallel.
 ### Keeping an HDFS Cluster Balanced
 It’s not always possible to prevent a cluster from becoming unbalanced. For this, we can use the `balancer` tool to subsequently even out the block distribution across the cluster.
 
+## YARN
+Yet Another Resource Negotiator. The resource management API is hidden from the user. The distributed computing frameworks are on the top, then YARN and HDFS. So the distributed computing frameworks such as MapReduce, Spark, etc. do communicate with YARN, but the user just uses the higher-level APIs from the application layer. 
+
+### Anatomy of a YARN Application Run
+1. The `ApplicationClient` submits a YARN application to the `ResourceManager`.
+2. The `NodeManager` starts a container, and there’s an `Application` process running in the container.
+3. The container then allocates resources to the `ResourceManager` (heartbeat)
+4. And then the container starts another container inside another `NodeManager` when it needs to. 
+
+#### Resource Requests
+So YARN can request resources at any time. It can request it dynamically when they need them, or just request them up front. The thing that got in mind was that it spawns containers of other NodeManagers. That means it knows its geological location. So YARN will try to request resource to its nearest machine, and when there’s none, it’ll request somewhere else in the cluster. 
+
+#### Application Lifespan
+It’s not really important of a YARN application’s running time. It’s important to categorize applications in terms of how they map to the jobs that users run. 
+1. One application per user job. 
+	1. MapReduce. It just spawns the job and kills it when it finishes. 
+2. One application per workflow or user session of jobs.
+	1. Spark executors, get the containers up front and just keep on using for those kind of jobs.
+3. One long-running application for several users. 
+	1. Things like low-latency SQL analysis on Hadoop solutions should use this. There’ll be a master that won’t die so you won’t have to wait for YARN to spin up the applications. 
+
+#### Building YARN Applications
+You don’t really get a chance to build applications on top of YARN since stuff like Spark, Tea, and all that stuff is out. So a few examples, if you want to run DAG(Direct Acyclic Graph) jobs, Spark or Tea works. Or for stream processing, Spark, Samza, or Storm works.
+ So if you want to actually build applications with YARN, then you can use Apache Twill and Apache Slider. But if you want a more raw approach, then use the distributed shell.
+
+### YARN Compared to MapReduce 1
+The world without YARN is called `MapReduce 1`. 
+Comparison between the two:
+**Map Reduce 1**
+* Jobtracker
+* Tasktracker
+* Slot
+
+**YARN**
+* Resource manager, application master, timeline server
+* Node manager
+* Container
+
+YARN benefits:
+* Scalabiltiy
+	* Cool, MapReduce 1 only scaled to 4000 nodes and 40000 tasks. While YARN scales to 10000 nodes and 1000000 tasks.
+* Availability
+	* MapReduce 1 had to do two things at once. That’s why it couldn’t get high availability because it had to do too many things when the master died.
+* Utilization
+	* In MapReduce 1 you had to designate the number of slots for map and reduce jobs. Because of this, sometimes you’ll have to wait for one of them to finish because there were no slots! Since YARN uses containers, it just abstracts out the computing resource usage!
+* Multitenancy
+	* Yep, because of YARN, we can make other applications than MapReduce.
+
+### Scheduling in YARN
+In an ideal world, everything will just run perfectly. Concurrency ftw! But in the real world, that doesn’t actually apply. Things need to wait. 
+ So YARN provides a choice of schedulers and configurable policies. 
+
+#### Scheduler Options
+Three schedulers are available in YARN:
+* FIFO
+	* It’s just a queue. First in, first out. 
+	* Not good for clusters since there are too many jobs to run in parallel.
+	* The other two are good for large clusters.
+* Capacity
+	* The big jobs get to run and the little jobs get to run in priority.
+* Fair Schedulers
+	* It allocates the resources for big jobs and little jobs fairly so it finishes fast!
+
+#### Capacity Scheduler Configuration
+Skip! I’ll go learn it when I need to configure one.
+
+#### Fair Scheduler Configuration
+Skip! I’ll go learn it when I need to configure one.
+
+#### Delay Scheduling
+There are times that you can just wait for the jobs to finish, but there are times when you can’t wait. This is all about locality. If there’s other servers near you, the scheduler will try and allocate it over there. 
+
+#### Dominant Resource Fairness
+This actually tries to calculate the dominant resource. Like, if there are two jobs and the CPU usage or memory usage is big, it picks up one of them and try to make them fair.
+
+### Further Reading
+[Apache® Hadoop™ YARN – Moving beyond MapReduce and Batch Processing with Apache® Hadoop™ 2](https://yarn-book.com/)
+This book tells you more about YARN. I think it’ll be a great thing to actually know about if you want to know stuff like Mesos, or how Kubernetes does resource allocation and stuff.
+
 #reading/books
