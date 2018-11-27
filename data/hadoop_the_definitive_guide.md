@@ -332,4 +332,23 @@ This actually tries to calculate the dominant resource. Like, if there are two j
 [Apache® Hadoop™ YARN – Moving beyond MapReduce and Batch Processing with Apache® Hadoop™ 2](https://yarn-book.com/)
 This book tells you more about YARN. I think it’ll be a great thing to actually know about if you want to know stuff like Mesos, or how Kubernetes does resource allocation and stuff.
 
+## HBase
+I’m just looking at this chapter for an overview of HBase. Since it’s not going to be easy for me to actually buy a book about HBase and study it all since I’m not really using HBase heavily. So yeah, let’s just cover the basics of it. 
+
+### HBasics
+It’s a distributed column-oriented database built on top of HDFS. It’s the Hadoop application to use when you require real-time read/write random access to very large datasets. 
+
+#### Backdrop
+Cool, HBase was made before Google’s Big Table. 
+
+### Concepts
+Let’s go see the concepts of HBase, how it’s built, what it’s built upon of.
+
+#### Whirlwind Tour of the Data Model
+The table data model is in cells. Which have rows and columns. I don’t understand but the cells are actually versioned. This means, tables are actually 3 dimensional right? 
+ The differences between an RDBMS would be, cells are versioned, rows are sorted, and columns can be added on the fly by the client as long as the column family they belong to preexists.
+ Also HBase doesn’t let you make secondary indexes. But the books says there are ways to actually do it, but I’ll find out next time. Primary index would be the primary key, index.
+
+All the other stuff is client related stuff. So I’ll just quit reading from here. Might as well build an app with HBase some time. Then I’ll get the idea. 
+
 #reading/books
