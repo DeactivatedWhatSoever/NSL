@@ -157,4 +157,78 @@ The first thing you have to do when you see something monolithic, you must separ
 * The importance of aligning your DDD Bounded Context one-to-one with a single Subdomain. -> Bounded Context : Subdomain = 1:1
 * How you should segregate a Supporting Subdomain model from your Core Domain model using a DDD Module when it is impractical to separate the two in different Bounded Contexts. 
 
+## Strategic Design with Context Mapping
+The integration between bounded contexts is called `Context Mapping`. Okay, so when you two or more bounded contexts to integrate with each other, remember that most of them are other teams. Just on first thought, you’d might have to know their language, how their team operates, and all that other stuff. How to actually integrate with code? 
+ And then, the solution of all this is actually, there’re different kinds of mappings. So we’ll solve it with those mappings!
+
+### Kinds of Mappings
+Integration or relationships!
+
+#### Partnership
+If there’s a partnership between two teams, the line is very thick. Since you guys have to synchronize each others work, do CI together, and even participate in conferences together. This partnership will last if they’re both beneficial. If not, the teams must get split up and seek another bounded context to get mapped with.
+
+#### Shared Kernel
+Woah, this is pretty dependent between the two bounded contexts. They share a kernel, which will actually share a domain model and repository, etc. But, the shared kernel must be maintained by one of the bounded contexts. If they both do it, it’ll be a disaster. So one team shall take the leadership, and the other should just use it and just give opinions or try to integrate with each other when they really need to.
+
+#### Customer-Supplier
+Well it’s just upstream(supplier) and downstream(customer) style. It’s actually just a typical team relationship. The customer comes and tells what they need, and the supplier gives it out when and what they want. Done.
+
+#### Conformist
+Well this is when there’s an upstream and a downstream team, but the upstream team can’t help or give the things that the downstream team needs or wants. It’s because it’ll possibly be a hardened domain and can’t actually change it. 
+
+#### Anticorruption Layer
+This is a very defensive context mapping relationship. The downstream team creates an anticorruption layer and translates the communication between the upstream. So the upstream does nothing and the downstream does all the work! 
+
+#### Open Host Service
+A team will just create an Open API for other teams to just use. I think this is a really good solution since there’s not much to do for the other people. Well, still they’ll need to create an anticorruption layer, and the open host service will change! They’ll have to do a lot of work to actually do maintenance. 
+
+#### Published Language
+Well this is actually stuff like giving data as JSON, XML, etc. So an API could be in ways like giving an SDK, or things like that. But if it’s some kind of unified language, a published language like JSON, people would really easily use your bounded context!
+
+#### Separate Ways
+I don’t think this is a good practice, but there are times that you’ll have to do things without integrating. You’ll just have to make your own. 
+
+#### Big Ball of Mud
+MONOLITHIC ALERT! 
+Whatever you do, don’t speak that language! Just make an anticorruption layer against the legacy system. That’s how you integrate with big balls of mud. 
+
+### Making Good Use of Context Mapping
+So it’s HTTP, RPC with JSON, XML, SOAP, RESTful interfaces -> Messaging Interface using queues, pubsub, and the worst, database or file system integration. If you have to integrate with a database, you should make an anticorruption layer to isolate your consuming model. 
+ Next, we’ll look at the three most trustworthy integration types. Least to most robust! 
+
+#### RPC with SOAP
+Remote Procedure Calls and Simple Object Access Protocol. With these two, it feels good to just use them. The client will really love to use it since it’ll be as easy of just using a function. But the thing is, even though the upstream implements an open host service and with a published language, that doesn’t mean the client should do nothing and just use it and make it get coupled with that bounded context. You need to make an anticorruption layer to protect the things that will happen when the RPC doesn’t work. If it has to go through the network, no matter what that means there’s a chance of something to go wrong. 
+
+#### RESTful HTTP
+Everything’s the same with RPC with SOAP but the different thing about this is, the domain model and resource that the RESTful interface is giving will change everything if you want to change the resource. 
+ A dude that uses the RESTful HTTP bounded context will mostly be a conformist type of mapper. It’s because, that when you change something, you have to let everyone know, and you can’t really just do everything for all the other bounded contexts want you to do. 
+
+#### Messaging
+I didn’t know that this way of messaging would be a really robust way. Since the things you are doing are going to be even-driven and non-blocking, it’s actually less coupling. You don’t have to ‘wait’ for the other or another to finish or give a response. All you need to do is just throw it, and the dude that’s subscribing will get the message and process it. 
+
+#### Going Asynchronous with REST
+I wonder if polling is really the way. If we keep on polling, that won’t actually make it robust. It has to be event-driven to actually meet the robustness we want. The author says it’s better stated in IDDD, so let’s read it and see how the author does it.
+
+#### Avoid Integration Train Wrecks
+This means, if all the clients and services request in a synchronous way, and if it needs that data and gets all the data synchronously, there will be a train wreck. This train wreck means, when one of the synchronous requests doesn’t work, the other dudes won’t work either. It’s just done and needs to do another request! So this is solved by using asynchronous messaging. 
+ I sure need to find out whether what a `Domain Event` is. I need to know what this does and how it’s implemented to actually know pub-sub messaging. Also, need to find out what an `Aggregate` does in the bounded context.
+
+#### Are Domain Event Consumers Conformists?
+A `Published Language` is a schema? Just a language like JSON? That’s all? Okay, if you want to make your bounded contexts integrate without being a conformist, it’ll depend heavily on the quality of the chosen messaging mechanism. The messaging mechanism should support `At-Least-Once Delivery`. So this is a type of eventual consistency right? 
+ The bounded context subscribing, must be implemented as an `Indempotent Receiver`. It’s a reactive pattern I guess. You can learn it from here: [Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka: Vaughn Vernon: 9780133846836: Amazon.com: Books](https://www.amazon.com/Reactive-Messaging-Patterns-Actor-Model/dp/0133846830/ref=sr_1_1?ie=UTF8&qid=1543549715&sr=8-1&keywords=reactive+messaging+patterns+with+the+actor+model)
+
+### An Example in Context Mapping
+If you make an object from a bounded context, the subscribers of that could get the message and add a new one in their database. Which is pretty cool since they get the message when something changes. Instead of actually crawling that stuff right? This isn’t bad!
+ 
+#### Enrichment versus Query-Back Trade-offs
+Enrichment of the domain event could lead to a huge layer of domain events. It’s good to keep the domain events thin and actually give a query-back option. Sometimes you’ll need to balance both. 
+
+We’ll go look at `Domain Event` design details in Chapter 6!
+
+### Summary
+* About the various kinds of `Context Mapping` relationships, such as `Partnership`, `Customer-Supplier`, and `Anticorruption Layer`.
+* How to use `Context Mapping` integration with RPC, with RESTful HTTP, and with messaging
+* How `Domain Events` work with messaging
+* A foundation on which you can build your `Context Mapping` experience.
+
 #reading/books
