@@ -231,4 +231,91 @@ We’ll go look at `Domain Event` design details in Chapter 6!
 * How `Domain Events` work with messaging
 * A foundation on which you can build your `Context Mapping` experience.
 
+## Tactical Design with Aggregates
+We’ve covered all the things we need for strategic design. Bounded Contexts, Subdomains, Context Mapping, etc. 
+ Now, we have to get deeper and see the solution space. The solution space inside the bounded context, which is `Aggregates`.
+
+### Why Used
+The picture in the book shows you a bounded context with some red circles. The marked circles are Aggregates, and the ones that aren’t are Value Objects. So I’ll have to know what an Aggregate and a Value Object is, and what actually defines them.
+
+#### What Is an Entity?
+An Entity, is something unique. Something that you can’t find from the others. This is the actual source of what you’re trying to represent. Nothing other than an Entity. The entity will be mutable at most times, but it can be immutable. 
+
+Anyways, what is an Aggregate? It can have multiple entities and some value objects. An aggregate must have a root aggregate. Which is an entity. 
+
+#### What Is a Value Object?
+A value object covers the quantity or measure of an entity. It’s just an object that represents a value. It’s supposed to be immutable, and it doesn’t have a unique identity. 
+
+I’m thinking, an aggregate has all the entities, and itself is an entity, it’ll have mappings like many-to-many, one-to-many, one-to-one right? Also, there’ll be some value objects that actually help represent some of the values, but it’s not an entity. But, does the entities always have to be mapped by the root aggregate? If it doesn’t fit in and it has to be its own entity, does it have to be another aggregate? 
+ Transactional consistency. That’s the whole thing! So that’s how you model your models. That’s how DDD goes. Dang, this sure really is a great way to architect software, it makes sense how I made all that stuff! User inside user, now I get it. This also can be used in any language and anywhere. Atomic transaction consistency is the key of how you’re going to define the root aggregates and all the entities that go below it.
+
+#### Broader Meaning of Transaction
+A transaction doesn’t always mean a database transaction. The transaction can be atomic, or it can’t if you use the Actor model because it’s event sourcing. In event sourcing, you can’t make strong consistency. It’s eventual consistency. So in a broader meaning, it’s about a root and its entities doing a transaction, whether it’s strong or eventual consistency. 
+ An aggregate’s transaction is mostly thought out of a business action. If a business action was executed, then it most be done absolutely, or else it’ll fail. Plus, there are times when you need to get separate transactions done together, or done after a transaction, like needs to react to events. We’ll get along with that in a later chapter.
+
+### Aggregate Rules of Thumb
+Basics rules of aggregate design:
+1. Protect business invariants inside Aggregate boundaries
+2. Design small Aggregates
+3. Reference other Aggregates by identity only
+4. Update other Aggregates using eventual consistency
+
+I need to study how to handle errors in eventual consistency. Also by identity means, only the PK? Just referencing other aggregates by their PK. I think that makes sense since you don’t need to have anything else of their information. If you know something else, that’s actually something wrong with the data modeling. 
+
+#### Rule 1: Protect Business Invariants inside Aggregate Boundaries
+If there’s something inside a transaction, and must be done, well, it’ll mostly be just a business operations and those operations won’t change. Those business invariants must be protected, which means they should be atomic. That is the business logic, and that logic must be consistent, atomic, and must be done. Or else it won’t be invariant. 
+
+#### Rule 2: Design Small Aggregates
+SRP comes over here. Even though you get to see a Aggregate that might become root and king, you have to think again and see whether it’s going to get too big or not. If it becomes too big, you need to split them apart. So it’s better to thing of the aggregates to have its own root, just split them and see whether they do one thing or not. The root aggregate must do one thing. If it represents too many things by itself, then it’s not doing one thing. 
+
+#### Rule 3: Reference Other Aggregates by Identity Only
+If you just have a reference for each of the aggregates, then it’ll be way easy, more robust, low memory, faster for datastore to fetch the data. Also, you can use any kind of database. It’ll be really easy to adapt the modeling to any type of database. 
+ All you need to do is, give a reference id, and done. So think of referencing with only identity. ID! 
+
+#### Rule 4: Update Other Aggregates Using Eventual Consistency
+You can use message mechanics to give Domain Events to the Aggregate you’re trying to interact with. That Aggregate will subscribe to the Domain Event and it’ll save all the things with it. But I’m not sure whether this eventual consistency thing is safe or not. 
+ I think it’ll be best to think about how Domain Events work and how to implement a messaging mechanism in the red book. If I get to actually implement the stuff with that, that project will be really, really, really cool.
+
+#### If Eventual Consistency Seems Scary
+You can use one database atomic transaction between the aggregates, but you’ll soon see that’s not the way. You’ll fail more often, and it’ll be safer to use eventual consistency. It does make sense since it doesn’t do too many things with the database at once. With eventual consistency, you only do one thing at a time. 
+
+### Modeling Aggregates
+Anemic Domain Model. These are just POJOs. But I think in DDD, they’re trying not to actually use them. Getters and setters don’t really mean anything. And if they have no business behavior, that means it’s not business centric. It’s just technical jargon. We need to think of it in the business way! Then, we’ll implement it with business logic. You have to implement your business logic inside the domain model. Don’t give it to the application service, or delegate it to utility classes.
+
+#### What about Functional Programming?
+Okay, in functional programming, Anemic Domain Models are actually right. FP separates behavior and value. But OOP adds them up. It controls state and behavior at once! So that’s why only get/set dudes are bad in DDD. But if it’s in FP, it’s good. 
+ I want to know how to use DDD in a functional programming manner. It’s still really cool how you can adapt FP into DDD. 
+[domain driven design - Is it still valid to speak about anemic model in the context of functional programming? - Software Engineering Stack Exchange](https://softwareengineering.stackexchange.com/questions/317587/is-it-still-valid-to-speak-about-anemic-model-in-the-context-of-functional-progr)
+[Domain Modeling Made Functional: Tackle Software Complexity with Domain-Driven Design and F# by Scott Wlaschin |  The Pragmatic Bookshelf](https://pragprog.com/book/swdddf/domain-modeling-made-functional)
+
+The technical things to know when you implement an Aggregate! If it’s an entity, you need to extend it from a base entity class. Also, the references that you put in like `somethingId` are actually classes! They’re value objects that have the identifiers of that entity. That’s how JPA things might work around all that. Also, POJOs are not aloud. Remember, you can implement getters, but you must implement business logic for setting, mutating the entity. If you just put the setters around, then you’ll implement the real mutation outside the object everywhere. 
+
+#### Choose Your Abstractions Carefully
+Don’t abstract everything up. Also, you have to identify the things that you can know in the future, and not. If you keep on abstracting the stuff that you might need, it’ll become a monster and you’ll never get to finish. 
+ Remember, Ubiquitous Language is the key. You have to name your models with the domain experts, and just finish it over there. Don’t try to abstract it with container, or whatever. 
+
+#### Right-Sizing Aggregates
+1. Design small Aggregates
+2. Protect Business Invariants Inside Aggregate Boundaries
+3. Ask the Domain Experts how much time may elapse until each of the reaction based updates may take place.
+4. If the aggregates need immediate updates, then you should merge those two aggregates into one.
+5. If the aggregates can be persisted in a matter of seconds/days/weeks/etc, use eventual consistency.
+
+It’s the business that draws whether you need strong consistency, or eventual consistency. Evaluate the things that really need them. If you make a lot of stuff eventual consistent, you can make your aggregates real small, robust, and self-explaining. 
+
+#### Testable Units
+Unit testing is different from validating business specifications(acceptance tests). 
+
+### Summary
+* What the Aggregate pattern is and why you should use it
+* The importance of designing with a consistency boundary in mind
+* About the various parts of an Aggregate
+* The four rules of thumb of effective Aggregate design
+* How you can model an Aggregate’s unique identity
+* The importance of Aggregate attributes and how to prevent creating a n Anemic Domain Model
+* How to model behavior on an Aggregate
+* To always adhere to the Ubiquitous Language within a Bounded Context
+* The importance of selecting the proper level of abstraction for your designs
+* A technique for right-sizing your Aggregate compositions, and how that includes designing for testability
+
 #reading/books
