@@ -318,4 +318,31 @@ Unit testing is different from validating business specifications(acceptance tes
 * The importance of selecting the proper level of abstraction for your designs
 * A technique for right-sizing your Aggregate compositions, and how that includes designing for testability
 
+## Tactical Design with Domain Events
+A Domain Event is a record of some business-significant occurrence in a Bounded Context. It’s all about ordering. These domain events help us do this after that and all that stuff. We’ll learn how to model one and use them inside the bounded contexts.
+
+### Designing, Implementing, and Using Domain Events
+First, you’ll implement an interface with a property that has `occuredOn`. You don’t have to put in that property, but mostly you’ll get to do that. It’s very useful since you’ll know when you’re Domain Event reacted. 
+ When naming your Domain Events, you need to think about the Ubiquitous Language and name them in an event occurred state. -ed. A past occurrence! 
+ What properties should a Domain Event hold? Command and result. The Domain Event must hold all the properties that the command has. 
+ I think it’s best to actually go see the actual implementation of Domain Events. I don’t really have experienced the pub-sub stuff and don’t know whether to actually do error handling and all that event stuff.
+
+### Event Sourcing
+It’s about saving the whole Domain Event instead of saving the state of the Aggregates. The event store persists all the Domain Events and all that. With this, you can just append the event stream to it and everything will just go fine. Like a stream! That’ll give us very high throughput, low latency, and high scalability. 
+
+#### Performance Conscious
+Caching and snapshots! Using actor models and caching them in memory for more hits! And using snapshots, but there’s not much of any explanation over here, so you’ll have to read it in the red book.
+
+With event sourcing, you can use this for analytics, debugging, and examine trends in the source code. Also you need to use CQRS … Let’s get it done!
+
+### Summary
+* How to create and name your Domain Events
+* The importance of defining and implementing a standard Domain Event interface
+* That naming your Domain Events well is especially important
+* How to define the properties of your Domain Events
+* That some Domain Events may be caused by commands, while others may happen due to the detection of some other changing state, such as a date or time
+* How to save your Domain Events to an event store
+* How to publish your Domain Events after they are saved
+* About Event Sourcing and how your Domain Events can be stored and used to represent the state of your Aggregates 
+
 #reading/books
