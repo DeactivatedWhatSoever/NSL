@@ -345,4 +345,78 @@ With event sourcing, you can use this for analytics, debugging, and examine tren
 * How to publish your Domain Events after they are saved
 * About Event Sourcing and how your Domain Events can be stored and used to represent the state of your Aggregates 
 
+## Acceleration and Management Tools
+The thing that I need to focus in this chapter is, design acceleration and some great management tools that helps me design with the DDD paradigm. 
+
+### Event Storming
+So it’s actually getting all the events. People usually used UML, but it was mostly for the developers since the domain experts don’t know UML. Also, the main goal of this exercise was to let the developers and the domain experts collaborate and learn rapidly. 
+
+Rapid learning and Software Design Advantages:
+* It is a very tactical approach. Everyone gets a pad of sticky notes and a pen and is responsible for contributing to the learning and design sessions. Both business people and developers stand on equal ground as they learn together. Everyone provides input to the Ubiquitous Language
+* It focuses everyone on events and the business process rather than on classes and the database.
+* It is a very visual approach, which dismisses code from the experimentation and puts everyone on a level footing with the design process.
+* It is very fast and very cheap to perform. You can literally storm out a new Core Domain in rough format in a matter of hours rather than weeks. If you write something on a sticky note that you later decide doesn’t work, you wad up the sticky note and throw it away. It costs you only a penny or two for that mistake, and no one is going to resist the opportunity to refine due to effort already invested.
+* Your team will have breakthroughs in understanding. Period. It happens every time. Some will come to the session thinking that they have a pretty good understanding of the specific core business model, but no matter, they always leave with a greater understanding and even new insights about the business process.
+* Everybody learns something. Whether you are a Domain Expert or a software developer, you will walk away from the sessions with a crisp, clear understanding of the model at hand. This is different from achieving breakthroughs and is important in its own right. In many projects, at least some project members, and possible many, do not understand what they are working on until it is too late and the damage is already in the code. Storming out a model helps everyone clear up misunderstandings and move forward with a unified direction and purpose.
+* This implies that you are also identifying problems in both the model and in understanding as early and quickly as possible. Iron out misunderstandings and leverage the outcome as new insights. Everybody in the room benefits.
+* You can use Event Storming for both big-picture and design-level modeling. Doing big-picture storming will be less precise, while design-level storming will lead you toward certain software artifacts.
+* It is unnecessary to limit the storming sessions to one. You can start off with a two-hour storming session, then take a break. Sleep on your accomplishments and return the next day to spend another hour or two to expand and refine. If you do this for two hours a day for three or four days, you will gain a deep understanding of your Core Domain and integrations with your surrounding Subdomains.
+
+What will I need to storm out a model? (Everything is in bullet points, so I’ll try to just get one sentence from all of them.)
+* Domain Experts and developers will have questions and answers for each other. They need to be in the same room. 
+* Just try to make as many events as you can. The price of refinement is really cheap, so just do it! Don’t try to be “right”. That’s not the point of event storming. 
+* Try to get a variety of sticky notes. The colors! You’ll need a lot of them.
+* Give a black marker to write for each person.
+* Try to find a really wide wall to put your models on!
+* Since the stickiness won’t last long, it’s best to put them on paper. 
+
+Now comes the Nobel steps of event storming! 
+1. Storm out the business process by creating a series of Domain Events on sticky notes. (Use Orange!)
+	1. By thinking about the Domain Events first, it means you’re getting warmed up to think about the business process first. That’s the most important thing.
+	2. Always write down your Domain Events on the sticky notes. Remember, they have to be past-tense. Ex) `BackLogItemCommitted`, `ProductCreated`.
+	3. Figuring out `when` the events will occur isn’t important at this step. It’s about finding the events in time order. What should occur first, and what should occur next.
+	4. Use vertical space to express parallel processing Domain Events.
+	5. You’ll find some problems with the events. So you should give them a little explanation with a red/purple sticky!
+	6. Some Domain Events won’t just finish in a single event. It’ll have to have a long process. So you should just give it a lilac sticky and find more important domains next. 
+	7. If you think you didn’t get all of the Domain Events, just bring another session and you’ll be fine. 
+2. Create the Commands that cause each Domain Event.
+	1. Write down the Command that triggers the Domain Event on a light blue sticky! Ex) `BacklogItemCommitted` -> `CommitBacklogItem`. 
+	2. Just align those Commands and Domain Events pair by pair. Of course some Domain Events will not have a Command, rather the Command will actually be a time limit or just a trigger by time.
+	3. If that Domain Event gets triggered by a specific role of a user, you have to write that down on a yellow sticky.
+	4. A Command can trigger a Domain Event, but it Also can trigger a Process. A Process will take long and it could do some stuff in parallel. So put those Processes with a lilac sticky.
+	5. Left to right in time order. 
+	6. You can also think out Domain Events by thinking about Commands. 
+	7. Also, one Command can trigger multiple Domain Events.
+3. Associate the Entity/Aggregate on which the Command is executed and that produces the Domain Event outcome. So the Entity/Aggregates hold the Command and the Domain Events? It’s best to think about the business process rather than data. Since that’s how we let the whole company participate in the product that we’re building together. Well anyways, this step is where we think about data. And the coming tips are for modeling Aggregates.
+	1. If the business people don’t understand Aggregates, just use Entity or Data. Use the pale yellow sticky notes for all Aggregates. It’s of course, a noun. 
+	2. Place the Aggregate on top of the Command and Domain Events. Just to know whether the Aggregate holds the Command and Domain Event. 
+	3. Even though the same Aggregate is used, just make a new sticky note with the same name and associate it with the Command and Domain Event. We’ll aggregate it all later lol. 
+	4. While you keep adding the Aggregates, there will be times when the Aggregates get too big. Then you’ll have to refine it by splitting the Aggregate, or break them into managed Processes. Also, if there are Domain Events that you haven’t covered, put them in right now! 
+4. Draw boundaries and lines with arrows to show flow on your modeling surface.
+	1. How to solve the problems of conflicting definitions of the same thing? 
+	2. Now draw solid black lines for the Bounded Contexts, and dashed lines for Subdomains. Make sure that you’re bounding the domains whether it’s right. Because the black pens are permanent! 
+	3. Place the pink sticky notes inside the various boundaries and name your Bounded Context!
+	4. Now draw an arrow and show the business process flow between the bounded contexts. 
+5. Identify the various views that your users will need to carry out their actions, and important roles for various users. 
+	1. Use green sticky notes to determine what view is associated with the domain events. 
+	2. You can use bright yellow stickies to represent a role of a user. 
+
+### Other Tools
+1. Introduce high-level executable specifications that follow the given/when/then approach. It’s known as acceptance tests, and I really want to put this in code. It’ll document the specs and also version control. It’ll be best for me to work alone. Or with only developers. Read `Specification by Example by Gojko Adzic`
+2. Try `Impact Mapping`. This helps you to identify what your Core Domain is.  Same from `Gojko Adzic`
+3. `User Story Mapping by Jeff Patton`. Also lets me focus on the Core Domain. 
+
+### Managing DDD on an Agile Project
+Recently, Agile is actually on the `No Estimates` movement. I think I should get a grasp on Kanban and Scrum for the better time. I think I liked Kanban the most, but I’m not sure with Scrum. I don’t know Agile that much, and I think I should at least read a book about it. 
+
+### First Things First
+Hiring good people. Good skills, good motivation, etc. Of course, I could be the best person and do everything right? Lol.
+
+The rest of the book is actually just applying DDD inside Scrum and stuff. I don’t know what Scrum exactly is, and I wish to know how to actually implement in properly. Most of the companies have it wrong, so I want to know how it’s right. I’ll come back and read the rest when I get to know it all. 
+
+### Summary
+* About Event Storming, how it can be used, and how to perform sessions with your team, all with a view to accelerating your modeling efforts.
+* About other tools that can be used along with Event Storming
+* How to use DDD on a project and how to manage estimates and the time you need with Domain Experts
+
 #reading/books
