@@ -1,0 +1,4 @@
+# The Java Virtual Machine Specification
+It’s the Java SE 8 Edition. Which is pretty much the best thing to know. Since Java 8 is actually the new trends of Java. Of course 9 had this jigsaw thing or whatever. But PermGen to Metaspace and stuff, I need to get a hold of it. JVM is the ‘thingy’ that actually runs, executes the byte code for us. The Java compiler, will compile the Java code into byte code. But the thing is, any language can be used, and can be compiled into byte code. Anyways, this is mostly for my interview skills and the lust of trying to get to know how a programming language really works. 
+
+#reading/books
