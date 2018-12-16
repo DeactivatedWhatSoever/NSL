@@ -41,4 +41,12 @@ Maybe I could get a cool job through Udacity! Maybe people over here could actua
 ### Time Management
 Okay, it's like one project for two weeks. Let's get it done. 
 
+## Get Help from Peers and Mentors
+* What It Takes
+* Reviews
+* Knowledge
+* Student Hub
+
+Just repeating the stuff at lesson 1. Just going to skip it all!
+
 #mooc
