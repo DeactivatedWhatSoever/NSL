@@ -49,4 +49,10 @@ Okay, it's like one project for two weeks. Let's get it done.
 
 Just repeating the stuff at lesson 1. Just going to skip it all!
 
+## Get Help with Your Account
+* FAQ
+* Support
+
+Basically the same thing with lesson 2. I think I should pass these three lessons when I ever get to start another Nanodegree. 
+
 #mooc
