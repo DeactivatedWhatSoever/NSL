@@ -82,4 +82,62 @@ Just going to get there!
 ## Story Time!
 Just talked about the mobile revolution. Also that it hasn’t been a long time since we actually had the revolution. We have a lot of opportunity, and we’re going to get there!
 
+# Getting Started with LibGDX
+Getting started with the framework!
+
+## Level Map
+We’ll get an Android and a Desktop app up!
+
+## Feedback
+I wonder whether everything will be up-to-date. Let’s try and get everything done and even reporting if it’s necessary!
+
+## Git
+Oh, so we have to actually code stuff. 
+
+## Download the Course Code
+Just git clone it, and read the README and just learn like that. 
+
+## Exploring the Code
+There’s not much to explore since it all has this and that in the code. So we’re just going to have a look of Gradle.
+
+## Gradle
+It manages all the libraries for you. So that’s just it. 
+
+## Install Android Studio
+Just install it, but I’m going to use IntelliJ
+
+## Tooled Up
+Level up!
+
+## Configure Android Studio
+Just installing the Android SDKs that you need to run a LibGDX project in Android. 
+
+## Import a LibGDX Project
+Just imported the project! Open and done. 
+
+## Import Duties
+Level up!
+
+## Run the Desktop App
+`$ ./gradlew desktop:run` and done. {platform}:run I guess.
+
+## libGDX Project Structure
+`.gradle` -> Gradle cache and stuff
+`.idea` -> State of the workspace
+
+## Run the Android App
+`$ ./gradlew android:run`
+
+## The iOS and HTML Backends
+It’s really hard to setup iOS and HTML backends since there are a lot of stuff to do. We’ll get this when we actually need it to so don’t worry. Maybe when I finish the game, I’ll make an iOS app out of it. 
+
+## Make a Change
+Just change the color of the screen. It’s just easy. 
+
+## Recap
+All we did was mostly just … setting up the development environment.
+
+## Story Time!
+Just a story about the dude that tells how he got through the 3D renderer that he didn’t even knew about. He traced all the code and saw what was working and stuff. It was pretty neat actually. 
+
 #mooc
