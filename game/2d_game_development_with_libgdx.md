@@ -140,4 +140,88 @@ All we did was mostly just … setting up the development environment.
 ## Story Time!
 Just a story about the dude that tells how he got through the 3D renderer that he didn’t even knew about. He traced all the code and saw what was working and stuff. It was pretty neat actually. 
 
+# Drawing
+We’ll finally draw stuff on the canvas!
+
+## Level Map
+Just about what we’re going to do.
+
+## How Computers Draw
+Raster! Just drawing squares on the monitor. 
+
+## Color Vision
+Each pixel has three virtual rectangles. Red, green blue. RGB. So to actually understand this, we have to know how our eye and brain interprets color. What kind of photons we need to give. We could have all yellow photons, but we could have a combination of green and red to actually get the color of what you want.
+
+## LibGDX Color Documentation
+We’ll be representing color with the `Color` class. There sure are a lot of predefined colors. The instructor actually reads the Java doc more!
+
+## Alpha
+Transparency. The opacity of the color of whatever you’re drawing. Want to make an object a ghost or something, use alpha.
+
+## Rasterization Quiz
+Didn’t know we needed to actually put the color on first. And then the computer starts drawing, which is obviously rendering. 
+
+[Rasterisation - Wikipedia](https://en.wikipedia.org/wiki/Rasterisation)
+Vector graphics -> Raster Image = Rasterization. 
+
+If we actually just render this stuff with a CPU, we’ll need so many resources to even just render 20 shapes. And that doesn’t look like the case. I’m sure the formula is overly simplified, but still, how can it be done like that? Maybe the next lecture will tell us what it is.
+
+## The CPU, the GPU, and OpenGL
+GPUs can spit out a lot of pixels! But it’s less flexible than the CPU. CPU -> OpenGL -> GPU -> Draw! Lock-stepping cores? Welp, the thing hat we need to get is, GPUs are good at drawing pixels because of how many cores it has. But it’s limited of the features of what a CPU has.
+
+## Shape Renderer Quiz
+* Points
+* Triangles
+* Rectangles
+
+The LibGDX mostly has abstractions for talking with OpenGL. Then OpenGL will talk with the GPU and then the GPU will draw it to your standard output? Or video output? I guess. 
+
+The LibGDX has three shape types. `Filled` , `Lined` and `Point`. These are the types of shapes that we can draw. 
+
+## Windows, Coordinates, and Cameras
+Okay, we’ll definitely need a canvas, which will be the window. And we’ll need x, y coordinates to let the program know where in the window you’re going to draw your shapes. But then, it’s the point of view. If it’s 2D, it’ll be easy since we only view it on a landscape or whatever. But if it’s 3D, we can have 360 degrees and points of angles to look at your object from. We need cameras anyway, but we’ll need more of its features when we do 3D right?
+
+## Import the Drawing Demo Quiz
+Just doing the same that at Lesson 2.
+
+## First Light, Drawing Points
+Learned about the `ApplicationListener` which has lifecycle methods like `create`, `resize`, `render`, `dispose`, `resume`, `pause`. You’ll get to do some certain stuff in all of these. 
+ The `ShapeRenderer` class lets you render shapes. Draw points, lines, and filled shapes. 
+
+## Draw a Starfield Quiz
+It’s time to do this myself! Let’s give it a try! 
+Okay, how to actually get the count of an object. You can determine it by getting the width and height times by the density. That’ll actually give you then count. 
+ The visualizations are so cool when you draw the stars in the render method lol. It actually looks like a television that has no signal lol. 
+
+## First Light
+Level up!
+
+## Drawing Lines
+Yep, we do all this with the `ShapeRenderer` class. Remember, you must end the transaction if you start it. 
+
+## Connect the Dots Quiz
+Just did some lining up. Wasn’t a big deal but it was pretty good when I got it right lol. 
+
+## Draw a Spiral Quiz
+Okay … I’ll get to it ASAP. 
+
+## Drawing Rectangles
+The painters algorithm. Whatever you draw first, you’ll overlap the drawing when you draw something else. 
+
+## Draw a Flower Quiz
+Just draw something with `rectLine` and rotate the rect for a certain amount of degrees and you’ll get a flower!
+
+## Level Outro
+Drawing stuff to scale to the devices of what our users will use!
+
+## Story Time
+In the old days, we only had like 32, 64, or like for max in 256 colors. Also the screen resolution was like 320x240, which is really small. So we have to use big dots to actually represent a character or whatever. 
+
+## Challenge The Cantor Gasket Quiz
+Also known as the Cantor Carpet. Drawing with recursion. God damn it! Gotta read that article of how to think recursively on medium.
+
+## Challenge The Dragon Curve Quiz
+[Dragon curve - Wikipedia](https://en.wikipedia.org/wiki/Dragon_curve)
+Looks pretty cool lol. I think I’ll spend all my hours on these three quizzes lol. But I should have a go at them so I can actually do some meaningful visualization. 
+
 #mooc
