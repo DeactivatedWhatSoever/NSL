@@ -176,4 +176,132 @@ I can’t believe that people can trade on all markets from the world. Trade in 
 Stock markets work, trades are executed and how prices are set. That’s what I learned in this lesson. 
  We’ll get to focus on the things that we really wanted to know. The data! We’ll see what kind of data will get impact to the price or whatever. Let’s trade. 
 
+# Data Processing
+I think I’ll learn about how to process data. And I’ll sure learn what kind of data that I’ll be processing. I’m just wondering how to actually make an automatic algorithm trading platform. How can I crawl the data and when I crawl it, should I execute the buy/sell right over on that tick? I’m not sure of how to actually think about this. 
+
+## Market Data
+heterogeneous vs homogeneous === not organized vs organized. Just got an introduction of market data. 
+
+## When to Use Time Stamps
+Ask: Sell, Bid: Buy. 200 trades per second? Daaaaaaang … OHLC(Open, High, Low, Close). The question over here is, when to use timestamps. 
+* Aggregating the volume of trades per day
+* Adjusting for gaps due to market closing and open
+Market closing and open is actually a time indicator. We need to know the timestamp of when it closes and opens. 
+
+## Corporate Actions: Stock Splits
+* Stock Splits
+* Dividends
+
+### Stock Splits
+Splitting a stock into multiple stocks will lead to a price drop of the division, and the amount of stocks will multiply of that division. The reason people do stock splits are:
+* The price goes down, that means people who can’t buy the stock because it’s expensive, will give it a go.
+* That’ll lead to liquidity, and the stakeholders that have a lot of stock will be able to sell or buy stocks with a lot more granularity. 
+* Getting more attention, making the price affordable, leads to liquidity. 
+
+We need to correct the price when stock splits occur. How are we going to normalize this? I’m pretty not sure about the formula, and they call it `adjusted price`. 
+
+### Dividend
+Partial cash distribution of company earnings. Since partial cash is distributed of the amount of how many stocks you have, this needs to be normalized too. Stocks, they sure have a lot of things to do. 
+* Adjusted Price Factor: 1 + D / S
+	* D: Dividend
+	* S: Stock price at ex-divitend date
+	* To normalize stock prices prior to dividend, divide by Adjusted Price Factor -> Stock Price / Adjusted Price Factor = Normalized Stock Price
+
+## Technical indicators
+Statistical measures = indicators. 
+* Simple Moving Average (Rolling Mean)
+* Constant Threshold: 
+	* when |price - average| 
+* Fraction Threshold:
+* Standard Deviation:
+	* Bollinger Bands
+		* Inflection points: when price is outside of bollinger bands several times. Inflection = when the price trend changes. What point does the price go up or down? That’s the inflection point. So in a bollinger band, we can know the inflection point when the price hits the upper or lower band. 
+
+### Thoughts
+So how can we know whether the stock is too expensive or not expensive? We first give it a given timeframe. Because value always changes in time. It could be expensive at summer, and not expensive at winter. If we use a constant or fraction threshold to observe, we’ll never hit a certain price. 
+
+## Missing Values
+There are a lot of reasons for a stock to have missing values. Especially, the timestamp. 
+* Holidays, weekends, not a trading day!
+* The company suddenly goes private!
+* The company got an IPO! 
+
+I bet when people do stat arbs, they’ll need to fill in some data when some sort of company didn’t exist lol. So we definitely need to know the trading days of the market, and need to know what happened between the gaps. If we just neglect all that, there could be sudden price changes and if we don’t put in the information about that, we won’t have a good algorithm.
+
+## Quiz: Trading Days
+ The NYSE and NASDAQ average about 252 trading days a year. This is from 365.25(days on average per year) * 5/7(proportion work days per week) = 260.89 - 9(holidays) = 251.89 ~ 252.
+
+## Quiz: Trading Experiment
+Survivor Bias. The companies that are surviving right now are tended to get traded more? That’s what I just think. But the difference of the experiment was: 
+* A: 100 companies trading now.
+* B: 100 companies trading since 2005. 
+
+We don’t know what will happen to the companies from a certain point in the past. If it was like 1 year ago, I think it wouldn’t be that much different with now. But it’s like 14 years ago! Most of the companies would’ve been dead already! 2009, and all that stuff! 
+
+## Survivor Bias
+The companies that survived will actually give an overly optimistic strategy when you backtest. Hmm … never thought of that. That’s why since 2005 means it’s more honest. It just starts from a point and we’ll get a more honest result because there’s not much survivor bias. 
+ You have to find the correlation between whether you’ll use survivor bias or not. It’s all about analysis. 
+
+## Fundamental Information
+Things that I need to keep in my brain first? Lol of course all the things over here that I learn need to be in my brain lol. 
+
+### Fundamental Analysis
+* Balance sheet
+* Cash flow statements
+
+There sure are a lot of other points of information that I must know about the company. We mostly get this information about a company in a quarter. Every three months, we get a snapshot of the company. 
+ The thing is, we need to find out all the aspects of the company whether it’s going down or going up. What kind of things will make the company go up? Of course the easiest thing would be the things that it actually put money in, and actually getting money from. If it keeps on getting money, the wallah, we’ll think it’s keeping on going up like Amazon, Google, or whatsoever. 
+ Try to find other indicators of fundamentals. 
+
+### Sales Per Share
+The company revenue is made by what is sells. To calculate the sales per share, we divide the stock count over the revenue(sales). Then we’ll get sales per share. With this, we’ll be able to know how much a share is worth in a pretty intuitive way. 
+
+### Earnings Per Share
+This indicator accounts sales per share. It’s pretty much the most intuitive indicator of how much a stock is worth. That’s why the companies that are worth big make big. But I want to know about the unicorn startups that don’t make money but over valued. Is it just for marketing? 
+ Anyways, the formula is: (Revenue - cost for making) / stock count
+
+Remember, both sales per share and earnings per share don’t give anything to the stakeholders pockets. They’re just good indicators to see how much my stock really is.
+
+### Dividends Per Share
+This is where the stakeholders get cash per stock! It’s important to know how much the company is going to give back to the stakeholders. If the company gives out like ten million dollars, and there’s ten million stocks, we’ll get one dollar per share. Well that’s it!
+ But what if the company decides to invest somewhere else with that money? They say an IPO is there for getting cash. The cash flow, they’ll sell their shares and use that money to do this and that? What if they don’t have anything? And besides, does the company have to have a certain amount of shares? Does it mean that when the founder has most of the shares, the company has a lot of shares? I’m not sure about this. 
+
+## Price to Earnings Ratio
+Stocks current market price / EPS(Earnings Per Share) = PE ratio. You can interpret this of how much is the stock worth of how much the company makes. “Worth the money off of what it makes?”
+ Current market price: based on both (current assets - liabilities + estimates of company’s future performance). 
+ 
+### What does it mean to have a high PE ratio?
+The company may have no earnings and have a high stock price. This is an example of a unicorn startup. People think it’s pretty much the future! That’ll make optimistic decisions of the future. 
+
+### What does it mean to have a low PE ratio?
+The company has high and stable earnings but less expectations for future growth. I think it’s like coca cola. Lol. Low ratio doesn’t also mean just the about the earnings. It’s about the future. How we interpret the future of the company will give us a hint of why the PE ratio is low or high. 
+ There could be governmental regulations, some bad issues, some pessimistic things about the future will make the stock price go down even though the company is making good money. Overall, if the company makes good money and has no stuff for the future, the stakeholders will just want dividends and not try to invest into new future projects. 
+
+### PE ratios: company’s financial heath snapshot
+You must not use the PE ratio alone. You have to give more insights and compare them with other competitors inside the geographical area. That’ll give you more insight on the companies current health. 
+
+## Exchange Traded Funds
+Trading algorithms goals!
+* Making money
+
+Index fund: SPY (S&P 500, Standard & Poor)
+
+All I got from this was ETF and Index funds. It’s because it’s hard for us to actually find the stocks that will actually give us great cash. For safe money,  we go with index funds ands ETFs.
+
+## Quiz: Index vs ETF
+They’re basically the same. It’s just they try to get their own source of companies!
+
+## Alternative Data
+Standard information:
+* Market Data
+* Corporate Actions
+* Fundamental Information
+* Compositional Data
+
+## Interview: Satellite Data
+Remote sensing data, geospatial data. I can’t believe they use geospatial data all around the world to predict oil, water, agricultural prices like that. I mean, they actually modeled the earth and try to gain information about all that stuff in real time. Just to trade! Now this is so sick. Maybe I could get into this business when I get better. I think it’s about quantifying the things that I see. How to make it into numbers and see how those numbers effect a certain asset to go up or down. Besides, it’s always about why this went up or down! 
+
+## Interlude: Your Goals
+I stay with problems longer: Albert Einstein. 
+
 #mooc
