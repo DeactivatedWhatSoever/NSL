@@ -304,4 +304,54 @@ Remote sensing data, geospatial data. I can’t believe they use geospatial data
 ## Interlude: Your Goals
 I stay with problems longer: Albert Einstein. 
 
+# Stock Returns
+How to actually know how much we get when we sell something? I think there’ll be all kinds of formulas and stuff over here. I bet! 
+
+## Returns
+We’re going to learn how to analyze stock data!
+
+Return synonyms: raw return, percentage return, linear return, simple return.
+
+Return r = (pt - pt-1) / pt-1
+
+(1050 - 1000) / 1000 = 50 / 1000 = 0.05 = 5%
+* Bought at $1000
+* Sold at $1050 one month later
+* Return is $50/$1000 = 5%
+
+## Quiz: Calculate Returns
+Using the `Dataframe.shift` function, we can shift the date as much as we want! 
+
+## Log Returns
+Log return = R = ln(pt / pt-1)
+
+Converting between raw and log returns
+R = ln(r + 1)
+r = eR - 1
+
+God damn it I should learn Latex. 
+
+## Quiz: Log Returns and Compounding
+* Rates of compounding
+* Continuous compounding
+* Continuously Compounded Return = log return
+* Additivity
+* Annualized Rate of Return
+* Time Additivity of Log Returns
+* Numerical Stability
+
+## Distributions of Returns and Prices
+Daily Price Values.
+Well … I totally didn’t get anything of this class. I’m pretty much bad at this stuff lol can’t believe it. Didn’t understand a thing lol. Well anyways, I think you should give it a go some time else. 
+
+## Why Log Returns?
+1. Log returns can be interpreted as continuously compounded returns
+2. Log returns are time-additive. The multi-period log return is simply the sum of single period log returns.
+3. The use of log returns prevents security prices from becoming negative in models of security returns. 
+4. For many purposes, log returns of a security can be reasonably modeled as distributed according to a normal distribution.
+5. When returns and log returns are small (their absolute values are much less than 1), their values are approximately equal.
+6. Logarithms can help make an algorithm more numerically stable.
+
+The thing that I understand about log is, it makes all the additions so small. Then it’ll be easy to make a standard deviation. Since the gains are small, we can normalize it in a form that we can use for every single trading algorithm. That’s what I understand at the moment. Need to get more examples to actually understand the other benefits. 
+
 #mooc
