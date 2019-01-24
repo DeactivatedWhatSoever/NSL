@@ -14,4 +14,14 @@ It’s pretty much all the things that I know. But there are things that I shoul
 * Triage issues and schedule your work based on the priority and severity of each issue
 * Document your progress through the issue-tracking system
 
+## Use Focused Queries to Search the Web for Insights into Your Problem
+First of all, I think it’s best to get some techniques of searching the web. Adding “” to give exact matching searches, filetypes, etc. 
+ The more important thing to get is, knowing how to ask a question. If you want to let others to give you good answers, you must give them a good question. Try to make a reproducible code snippet and give all the environmental variables that you can offer. Remember, polite all the way!
+ If there’s a bug in an open source project, try to find the issue-tracking system, GitHub issues, and then give the author your question. Remember, polite!
+
+### Things to Remember
+* Perform a web search regarding error messages by enclosing them in double quotes
+* Value the answers from StackExchange sites
+* If all else fails, post your own question or open an issue
+
 #reading/books
