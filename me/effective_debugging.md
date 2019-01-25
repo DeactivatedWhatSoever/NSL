@@ -24,4 +24,22 @@ First of all, I think it’s best to get some techniques of searching the web. A
 * Value the answers from StackExchange sites
 * If all else fails, post your own question or open an issue
 
+## Confirm That Preconditions and Postconditions Are Satisfied
+* Look for values that are null when they shouldn’t be
+* Verify that arithmetic values are within the domain of the called math function; for example, check that the value passed to log is greater than zero
+* Look inside the objects, structures, and arrays passed to the routine to verify that their contents match what is required; this also helps you pinpoint invalid pointers
+* Check that values are within a reasonable range. Often uninitialized variables have a suspect value, such as 6.89851e-308 or 61007410
+* Spot-check the integrity of any data structure passed to the routine; for example, that a map contains the expected keys and values, or that you can correctly traverse a doubly linked list. 
+
+After checking the above list, you need to think about the result of the algorithm execution.
+* Do the computed results look reasonable? Are they within the range of expected results?
+* If yes, are the results actually correct? You can verify this by executing the corresponding code by hand, by comparing them with known good values, or by calculating them with another tool or method.
+* Are the routine’s side effects the expected ones? Has any other data touched by the suspect code been corrupted or set to an incorrect value? This is especially important for algorithms that maintain their own housekeeping information within the data structures they traverse.
+* Have the resources obtained by the algorithm, such as file handles or locks, been correctly released?
+
+Comparing results to known good ones, checking whether side effects are the same, handling locks, releasing resources.
+
+### Things to Remember
+* Carefully examine a routine’s preconditions and postconditions.
+
 #reading/books
