@@ -42,4 +42,14 @@ Comparing results to known good ones, checking whether side effects are the same
 ### Things to Remember
 * Carefully examine a routine’s preconditions and postconditions.
 
+## Drill Up from the Problem to the Bug or Down from the Program’s Start to the Bug
+[Magic number (programming) - Wikipedia](https://en.wikipedia.org/wiki/Magic_number_%28programming%29) -> You can find a whole lot of magic numbers that the program makes up when it crashes. 
+ Program crashes are pretty much easy to resolve because of its call stack nature, and it actually stops at some point. Of course it could not give a dying message. Then we’ll need our memory dumping skills to actually get some evidence of the program’s death.
+ Programs that freeze, a logical way of thinking of the freeze is actually an infinite loop. If the program keeps on looping, I’m sure that it’ll make the program freeze since the main thread will be looping forever and all the events that we make will be queued in the back. If the stack gets too big, then the program will eventually crash. Anyway, you need to find the exit point of the infinite loop and see whether how to fix that condition to cover all the probabilities.
+ If your program is manifesting through an error message, make sure to use the `fgrep -r` command to find literal string matches. 
+
+### Things to Remember
+* Work bottom up in the case of failures that have a clearly identifiable case, such as crashes, freezes, and error messages.
+* Work top down in the case of failures that are difficult to pin down, such as performance, security, and reliability. 
+
 #reading/books
