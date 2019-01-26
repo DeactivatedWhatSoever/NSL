@@ -52,4 +52,14 @@ Comparing results to known good ones, checking whether side effects are the same
 * Work bottom up in the case of failures that have a clearly identifiable case, such as crashes, freezes, and error messages.
 * Work top down in the case of failures that are difficult to pin down, such as performance, security, and reliability. 
 
+## Find the Difference between a Known Good System and a Failing One
+Obviously, you need to find the difference between a nice working system and the failing one. How are you going to differentiate? First of all, you have to get as many logs as you can. The network logs, database SQL logs, operation system calls, dynamic library calls, and language calls. You always should verify whether your code has run with the right arguments. 
+ Use `javap`, `ldd`, `dumpbin`, etc for code analysis. If the code is identical and you don’t know why it’s not working, then you have to go with seeing the assembly code that the compiler generates. This is how you dig deep.
+ How the hell? A binary search? I don’t really understand this thing but you can do it very easily with `git bisect`. It’s about hunting the bugs from history.
+ Use `comm`, `diff`, `cut`, `sed`, `grep -v` and etc to do text manipulation. It helps you look at the log files much more easier and see where the actual difference lies in. 
+
+### Things to Remember
+* Compare the behavior of a known good system with that of a failing one to find the failure’s cause.
+* Consider all of the elements that can influence a system’s behavior: code, input, invocation arguments, environment variables, services, and dynamically linked libraries. 
+
 #reading/books
