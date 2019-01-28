@@ -484,4 +484,55 @@ Let’s clearly define the term `Pure Function`.
 ### See Also
 Look at the list in the book! 
 
+## Pure Functions
+Pure functions again. I bet this time, we’ll get a real good overview of how to implement pure functions and what kind of thoughts we should have when actually creating one. 
+
+### Goals
+1. Properly define the term “pure function.”
+2. Show a few examples of pure functions.
+
+### Introduction
+Remember what functional programming is. Writing software with only pure functions and immutable values. 
+
+### Definition of “pure function”
+1. A pure function depends only on (a) its declared input parameters and (b) its algorithm to produce its result. A pure function has no “back doors” which means it cannot read or write for the outside world. 
+2. A pure function does not modify its input parameters.
+
+### A mantra for writing pure functions
+> “Output depends only on input and no side effects”  
+PF = ODI + NSE
+
+### The universe of a pure function
+Just think about the universe of this function. It’s the function scope. It only has what it comes and what it outputs.
+
+### Examples of pure and impure functions
+
+#### Examples of pure functions
+Math related functions are obviously a great example of pure functions. The results only rely on the input. `scala.math._` Look here!
+ Since the `String` class is immutable, all the functions there are pure! Also the collection related classes all have defined pure functions. 
+
+#### Examples of impure functions
+I don’t really understand why the `foreach` method is impure. But the thing that I’m thinking is, that it has … a function input … ?
+ Date and time related methods all are impure because it references the outside world. It needs time! But how can this be pure? 
+
+* Read hidden inputs (variables not explicitly passed in as function input parameters)
+	* How the hell do you read hidden inputs? Is it a generic data type? Or whatever? What if it has a good data thing.
+* Write hidden outputs
+* Mutate the parameters they are given
+* Perform some sort of I/O with the outside world
+
+### Tip: Telltale signs of impure functions
+You can just tell whether a function is pure or not with function signatures only! 
+* They don’t have any input parameters
+* They don’t return anything (or they return Unit in Scala, which is the same thing)
+
+### Summary
+Just remember PF = ODI + NSE.
+
+### What’s next
+The pros and cons of pure functions.
+
+### See also
+Look at the list in the book! 
+
 #reading/books
