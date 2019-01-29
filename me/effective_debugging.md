@@ -62,4 +62,11 @@ Obviously, you need to find the difference between a nice working system and the
 * Compare the behavior of a known good system with that of a failing one to find the failure’s cause.
 * Consider all of the elements that can influence a system’s behavior: code, input, invocation arguments, environment variables, services, and dynamically linked libraries. 
 
+## Use the Software’s Debugging Facilities
+Use debugging facilities! And also, you should make debugging facilities in your program too. When to actually make debug logs and all that stuff. I think that’s pretty much a real important thing!
+ Use `-x` option for shell commands, `explain` for debugging SQL, and see if all the other binaries have this kind of thing. Find debugging facilities for every command one day!
+
+### Things to Remember
+* Identify what debugging facilities are available in the software you’re troubleshooting, and use them to investigate the problem you’re examining.
+
 #reading/books
