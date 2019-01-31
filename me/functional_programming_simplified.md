@@ -535,4 +535,51 @@ The pros and cons of pure functions.
 ### See also
 Look at the list in the book! 
 
+## Grandma’s Cookies (and Pure Functions)
+The intro was about grandam’s cookies lol.
+
+### Digging into the mystery
+He finds out that the `makeCookies` function is not pure! It’s because of the `love` value that comes out of nowhere.
+
+### Hidden inputs and free variables
+Free variable === hidden input. Basically they’re the same thing. It wasn’t passed as a function parameter.
+
+### Functions as factories
+Just imagine a function that it’s a factory. The input ingredients go in, and the factory is a blackbox, and as a result, a product comes out! That’s how you should think about functions. 
+
+### Free variables
+> “A free variable is a variable used within a function, which is neither a formal parameter to the function nor defined in the function body.  
+The formal expression will be hidden variables
+
+### What happens when hidden inputs change?
+It changes the results of the function that’s using the hidden input. 
+
+### Unit tests and purity
+It’s cool in FP that you don’t really need to do white-box testing are what-not. Because everything is in the function context. No need for complicated tests either. And while one function does one thing, the unit tests are really easy to write. 
+
+* `love`’s state affects the result of `makeCookies`
+* As a black-box consumer of this function, there’s no way for you to know that `love` affects `makeCoockies` by looking at its method signature.
+
+### Problems of the impure world
+Questions to think of:
+* Does `love` have a default value?
+* How is `love` set before you call `makeCookies`?
+* What happens if `love` is not set?
+
+If we were in a multi-threaded environment, it would be hell since `love` would be changed by other threads. It’s god damn shared memory!
+
+### The moral of this story
+* `love` is a hidden input to `makeCookies`
+* `makeCookies` output does not depend solely on its declared inputs
+* You may get a different result every time you call `makeCookies` with the same inputs
+* You can’t just read the `makeCookies` signature to know its dependencies
+
+And yes, the conclusion must be that the `love` variable will be a mutable `var`. 
+
+### What’s next
+Now we know what pure functions are, lets learn what the benefits are. 
+
+### See also
+Look at the list in the book! 
+
 #reading/books
