@@ -459,4 +459,29 @@ Breaking through the great FP terminology barrier.
 ### See also
 See the list!
 
+## The “Great FP Terminology Barrier”
+The title says it. The great terminology barrier. There’s so many terminologies, and I think those are really hard to understand and also remember. 
+ 
+The first terminology we go through is map. Getting a element and transform, and then return it. That’s what map is in mathematics. Most of these jargons come from maths! 
+
+### map as a general concept
+A map. The reason that it’s general is, any collection, any data type that is itterable can have a map function. Get one element and do this and return. If you want to do that, you need to be able to get one. 
+
+### And the moral is …
+And yes, here it comes! The `Functor`! It’s what you call the interface(trait) of what can be mapped! A data object that can be mapped is called a functor. Well the interface name is a functor yeah? Yeah.
+
+### A few more FP terms
+* Combinator: A style of organizing libraries centered around the idea of combining things. Combine + tor. For example, we can think of a pipeline. `ps aux grep root wc -l`
+* Higher-order function: A function that takes a function as an argument, or returns a function. Not only passing a data type, but passing behavior. 
+* Lambda: Anonymous function
+
+### More terms coming …
+Don’t worry about whether you know all the jargon and stuff. It’s just a barrier at start, so just get it naturally. Jargons are only used to let us talk about the same thing. 
+
+### What’s next
+Let’s clearly define the term `Pure Function`.
+
+### See Also
+Look at the list in the book! 
+
 #reading/books
