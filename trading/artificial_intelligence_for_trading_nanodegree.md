@@ -354,4 +354,52 @@ Well … I totally didn’t get anything of this class. I’m pretty much bad at
 
 The thing that I understand about log is, it makes all the additions so small. Then it’ll be easy to make a standard deviation. Since the gains are small, we can normalize it in a form that we can use for every single trading algorithm. That’s what I understand at the moment. Need to get more examples to actually understand the other benefits. 
 
+# Momentum Trading
+So I’ll be learning something called momentum trading over here right? Isn’t it something like trend following or something? Where the price is going, follow the momentum, the direction.
+
+## Designing a Trading Strategy
+“A set of rules that determine what stocks to trade, when to trade, and how much money to invest.”
+
+## Momentum-based Signals
+It’s like Newton’s movement law. When a stock rises, it tends to rise. To the opposite, if a stock falls, it tends to fall. It’s about momentum. Where it goes, it goes that way for a while. When the stock rises too much for a long time, people get in FOMO(Fear Of Missing Out) mode. And when the stock falls too much, people tend to sell before they lose too much. 
+
+## Quiz: Momentum-based Signals
+ Winner tend to outperform and the losers continue to underperform. 
+
+## Long and Short Positions
+Long positions is when you buy and hold. Actually is a position when the stock goes high. 
+
+## Quiz: Dtype
+[Data type objects (dtype) — NumPy v1.13 Manual](https://docs.scipy.org/doc/numpy-1.13.0/reference/arrays.dtypes.html)
+Data type objects. `astype` and all that stuff. It’s about making the array to have the right data type. 
+
+## Trading Strategy
+It’s just creating trading strategies with some evidence. If your trading strategy is related with momentum, you should long the best performing, and short the least performing. 
+
+### Quiz: Momentum-based Portfolio
+Just pick the most underperforming stocks to short!
+
+## Quiz: Calculate Top and Bottom Performing
+Calculate top and bottom. 
+
+## Statistical Analysis
+Using statistical knowledge to do analysis. God damn it I sure need to go learn statistics. I can’t do any of this analysis without statistics.
+
+## The Many Meanings of “Alpha”
+The math, finance industry has the word alpha. Both academia and industry have different meanings of it. I hope you find a more explanatory article about the definition. 
+
+## Quiz: Test Returns for Statistical Significance
+Standard deviation and stuff. Can’t get along :(
+
+## Quiz: Statistical Analysis
+Dunno.
+
+## Finding Alpha
+* Alpha Research
+* Improve Strategy
+* Backtesting
+
+## Interlude: Global Talent
+Everyone has the capability to find alpha.
+
 #mooc
