@@ -402,4 +402,59 @@ Dunno.
 ## Interlude: Global Talent
 Everyone has the capability to find alpha.
 
+# Quant Workflow
+The workflow of quants. 
+
+## Intro Module 2
+Just an intro
+
+## Starting from a Hypothesis
+Hypothesis -> Must be brutally descriptive. The more you know about the markets, the more your hypothesis will be better. 
+
+Market Research -> Actually every resource out there lol. 
+* News
+* Books
+* Blogs
+* Known strategies
+* Meetups and conferences
+* Academic papers
+
+## Quant Workflow
+The big picture! 
+
+1. Research
+	1. Hypothesis: An idea for a way to profit from trading
+	2. Preliminary research and testing
+	3. Signal or Alpha: What assets to buy and sell at what times
+2. Testing
+	1. Detailed research and testing, and backtesting
+	2. Strategy: how to spend $, how to make trades
+
+## Flavors of Trading
+1. Single Asset Strategies
+2. Pairwise Strategies
+3. Cross-sectional strategies
+	1. Equity statistical arbitrage, equity market neutral investing
+4. Alternative Data Based Strategies 
+
+## Anatomy of a Strategy
+
+### Cross-sectional Equity Investing
+1. Hypothesis
+2. Data Selection
+3. Universe Definition
+4. Alpha Discovery
+	1. Alpha: An expression that outputs a vector where each component is a value indicative of future returns for an individual stock. 
+5. Alpha Combination
+	1. Use statistics, average or whatever and make the alphas a model.
+6. Portfolio Construction
+7. Trading
+
+Types of Risks
+* Systematic Risks
+	* Inherent to entire market (inflation, recession, interest rates, GDP …)
+		* Sector-specific Risks
+* Idiosyncratic Risk
+	* Inherent to individual stocks (labor strike, managerial change …)
+
 #mooc
