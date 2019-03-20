@@ -69,4 +69,20 @@ Use debugging facilities! And also, you should make debugging facilities in your
 ### Things to Remember
 * Identify what debugging facilities are available in the software you’re troubleshooting, and use them to investigate the problem you’re examining.
 
+## Diversify Your Build and Execution Environment
+I’ve never thought of it in this way. So you have to diversify your build and execution environment to find more bugs? All the C library implementations are different between all platforms. You even saw `IOCP`, `kqueue`, and `epoll`. It’s that simple. In result, if the C libraries are various, then interpreted languages which have a dependency on them will vary on their behavior. 
+ It’s cool how programming languages that are close to hardware can differ in results because of the CPU architecture. Even 32bit and 64bit architectures have differences in the programming language. They actually print out different results for the size of the data type. How cool. 
+1. Use VM, Docker to test on multiple environments.
+2. Small inexpensive computers(For other CPU architectures)
+3. Rent clouds!
+
+Use multiple compilers to statically check your code. It’s a good practice! Cause compilers are good at catching language stuff. So multiple compilers will make that stronger.
+* C, C++: LLVM, GCC
+* Java: OpenJDK, GNU Classpath
+You can also reimplement your low level code into a higher level language and identify what went wrong.
+
+### Things to Remember
+* Diverse compilation and execution platforms can offer you valuable debugging insights
+* Fix a tricky algorithm by implementing it in a higher-level language
+
 #reading/books
