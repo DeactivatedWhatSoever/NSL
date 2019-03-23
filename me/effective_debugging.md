@@ -85,4 +85,26 @@ You can also reimplement your low level code into a higher level language and id
 * Diverse compilation and execution platforms can offer you valuable debugging insights
 * Fix a tricky algorithm by implementing it in a higher-level language
 
+## Focus Your Work on the Most Important Problems
+This item is actually about prioritizing work. It’s either creating or maintaining. In other words, crushing bugs. Bugs are everywhere, and you need to focus on bugs that are really critical.
+
+High priority errors:
+* Data loss
+* Security
+* Reduced service availability
+* Safety
+* Crash or freeze
+* Code hygiene
+
+Low priority errors:
+* Legacy support
+* Backward compatibility
+* Cosmetic issues
+* Documented workarounds
+* Rarely used features
+
+### Things to Remember
+* Not all problems are worth solving
+* Fixing a low-priority issue may deprive you of the time required to address a high-priority one
+
 #reading/books
