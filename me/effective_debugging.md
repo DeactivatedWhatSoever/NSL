@@ -107,4 +107,19 @@ Low priority errors:
 * Not all problems are worth solving
 * Fixing a low-priority issue may deprive you of the time required to address a high-priority one
 
+# General-Purpose Methods and Practices
+Debugging techniques vary on the platform and technology you use. But in this chapter, we’re going to look at methods that work in most of the environments and technologies. It’s general!
+
+## Set Yourself Up for Debugging Success
+Believe that the problem can be found and fixed. It’s all about your mindset. You need to give plenty of time. Don’t stop until you get it. It also goes with persistence. If you persist, you’ll get a chance to get all the test cases as you can. The test cases must have a lot, and you’ll get to automate your debugging environment. Always try to study the things that you are debugging. You won’t know where it’ll come from. This leads to no distractions while you debug, and when you can’t solve it, just give it to the diffuse mode. Remember, to do this, you have to have enough data. So if you don’t research as much, you won’t get the answer even if you give it to the diffuse mode.
+ A debugging infrastructure. I’m sure that’s a really important thing to do. Look at where I work, they have so many debugging tools and really good infrastructure for doing that. 
+
+### Things to Remember
+* Believe that the problem can be traced and fixed.
+* Set aside of sufficient time for your debugging task.
+* Arrange to work without distractions.
+* Sleep on a difficult problem.
+* Don’t give up.
+* Invest in your environment, tools, and knowledge.
+
 #reading/books
