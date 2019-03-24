@@ -36,4 +36,105 @@ Nothing but the price. We need no marketing. Of course trading for other people�
 * If the backtest performance is good, what steps do you need to take to implement the strategy, in terms of both the business structure and the technological infrastructure?
 * If the strategy is profitable in initial real-life trading, how does one scale up the capital to make it into a growing income stream while managing the inevitable (but hopefully, only occasional) losses that come with trading?
 
+# Fishing for Ideas
+Oh yes. This is where we get to know what we’re going to do! 
+
+“Where can we find good strategies?”
+
+There’s a table list of where to get trading ideas in the book. But the sad thing is, academic papers don’t really help. They’re mostly over complicated, and are out of competition because of its fame. So we get our trading ideas from other traders in the community. Of course their’s won’t work right out of the box. But if we keep on tweaking it, we’ll be in profit maybe. 
+ The author actually was scared that he wouldn’t get new trading ideas from other colleagues. So he started his own blog and gave out whatever so called secrets he had to the public. After that, he got a nice idea from one of his  readers. So actually, it’s a really good way to get the best from the best. Since people who try to read other people’s ideas and try to connect, they’ll give you really good feedback in the meantime. 
+ In result, the most important thing is not the strategy itself. It’s about finding the optimal number and variations that make it a good strategy or not.
+ In big institutes, people don’t really share their ideas. It’s because it goes right into profit. People are wary because they might pour in a whole lot of capital into that strategy and might sabotage them. 
+ The author keeps on paraphrasing `parameter tuning`. That’s what I got from it. Suiting your needs. 
+
+## How to identify a strategy that suits you
+What if the strategy is so cool and nice. But it wasn’t for me? Under what circumstances does it mean that it doesn’t suits me. I believe if there’s some expensive data that I have to consider would be hard for me to use that strategy. A strategy that uses satellite data to tell what is where in the map. That sure won’t be easy for me to get my hands on. 
+
+### Your Working Hours
+I’m going to work my ass off to automate everything. I must remove all manual things and only get alerts when problems come. That’s the only way I’ll be able to use my limited time.
+ Talking about automation again lol.
+
+### Your Programming Skills
+I have these skills, so no worries. I wonder if I can do high-frequency trading with Java? Or should I learn C++. Or not? 
+
+### Your Trading Capital
+God damn it! I can’t believe you can’t do it with less than $50,000. Damn it! Isn’t there a way? Okay what the hell is a brokerage account and a proprietary trading account. I gotta get the words out lol. 
+ Ahh I see, to get a higher initial capital, we can use leverage. How the hell do we get leverage in Korea? I’m not sure whether there is a way. Okay, trading futures, currencies, and options can offer me higher leverage than stocks. Which is totally a good thing. 
+ I don’t really understand all the futures and options things. But what I got was, if I have low capital, I need to at least get some good infrastructure and data. Good data will actually get good profits. Backtesting on good data will lead to profit! Survivorship-free data is expensive.
+
+### Your Goal
+You have to find out whether your strategy is going to be long-term, short-term. Also, ask what a `Sharpe ratio` is. 
+
+## A taste for plausible strategies and their pitfalls
+How to check the strategies!
+
+### How Does It Compare with a Benchmark and How Consistent Are Its Returns?
+Because of the benchmarks and the real world results will be different, we need to find a way to evaluate it. So we use `Sharpe ratio` and `information ratio`.
+`Information Ratio = Average of Excess Returns / Standard Deviation of Excess Returns`
+`Excess Returns = Portfolio Returns - Benchmark Returns`
+
+I sure need to understand the meaning of this statistical ratio. I even need to know the true essence of what a ratio is. How it actually gives you results like that.
+
+You choose different market indexes and different information ratios. Of course different strategies should be implemented for each market index. If we choose a market index, it’s actually just an easy portfolio is what I’m guessing. Or else you’d have to get other information from the press and see whether what kind of companies have relations with each other and who benefits or fails who. That’s manual trading. It’s not easy to quantify that kind of stuff since it needs real research from a human being. That’s why market indexes are over here. Market indexes are used because they don’t die easy, and it represents the whole market of those types of companies. 
+
+* [Risk-Free Rate Of Return](https://www.investopedia.com/terms/r/risk-freerate.asp)
+	* Risk-free rate represents the interest an investor would expect from an absolutely risk-free investment over a specified period of time.
+	* The interest rate of a risk-free return. I think these kinds of things would be actually just putting money in the bank, and those long-term holding bank accounts(installment savings, fixed deposit, etc) that you make. 
+	* So there are `risk-free assets` and `risk-adjusted asset`. A risk-free asset would be something like the U.S. Treasury Security which gives annual of 3%. And the latter would be market indexes like Standard & Poor’s 500 Index. 
+* [Sharpe Ratio Definition](https://www.investopedia.com/terms/s/sharperatio.asp)
+	* Risk adjusted returns. So the risks are calculated? How can risks be adjusted? If you lose, you’ll lose a percentage of your cash. How does risk get adjusted or even calculated? I guess I’ll have to find this in a risk management book or something.
+* [Information Ratio – IR Definition](https://www.investopedia.com/terms/i/informationratio.asp)
+	* Information Ratios give your risk-adjusted returns in relations with the benchmark. I’m not sure what the benchmark is actually referring to over here. It’s a certain point of something. But I’m not sure what that point is. 
+
+Strategies that don’t trade much, have a high MDD, and also is down for a long period of time, it’s likely to have a low Sharpe ratio.
+ The higher the Sharpe ratio(< 3), it’s more likely to win and profit in a given time interval. If we had a strategy that profits every four hours, that’d be cool. But the more we trade, the more we give cash to the exchange. Slippage must be considered.
+
+### How Deep and Long is the Drawdown?
+Maximum Drawdown. MDD. That’s it. How deep and long can you hold a position? And I mean DOWN. The percentage is minus, and how are you going to define it. 1 month of -10%? 3 months of -30%? Hope this doesn’t happen to my strategy. 
+
+### How Will Transaction Costs Affect the Strategy?
+Slippage. Transaction costs are actually the brokerage fee, the time going to the brokerage, exchange and back, and market impact. It’s really hard to calculate the market impact. You won’t even be able to buy or sell at real volatile times. 
+
+### Does the Data Suffer from Survivorship Bias?
+Survivorship bias. So data that only have the survivors will actually over optimize the backtest results. 
+
+### How Did the Performance of the Strategy Change over the Years?
+Don’t get overwhelmed by the percentages of the early days. Remember, there wasn’t quants and the spreads were real wide. Beware of the inflations, and all the stocks that have low stock prices will be bought a lot. All that surviver bias will inflate the backtests. Also, you have to be careful of the macroeconomics and regulation events. 
+ It’s best to make our backtest results good in the base of recent historical data.
+
+###  Does the Strategy Suffer from Data-Snooping Bias?
+This is where simple stupid comes in. The more rules you have, you’re never going to execute a trade. The more parameters you have, you’ll eventually just match the parameters on the backtest results. Overfitting the historical data won’t make that strategy profitable. 
+ In general, less parameters, less rules will have a high chance of profit. That’s why we need simple stupid.
+
+**Artificial Intelligence And Stock Picking**
+AI algorithms that work:
+* They are based on a sound econometric or rational basis, and not on random discovery of patterns.
+* They have few parameters that need to be fitted to past data.
+* They involve linear regression only, and not fitting to some esoteric nonlinear functions.
+* They are conceptually simple.
+* All optimizations must occur in a loopback moving window, involving no future unseen data. And the effect of this optimization must be continuously demonstrated using this future, unseen data.
+
+### Does the Strategy “Fly under the Radar” of Institutional Money Managers?
+It doesn’t by itself. You have to find the “Fly under the Radar” strategies. Niche points are where you’re going to find profit. 
+ For example, low capacities that trade too often, strategies that trade very few stocks every day, very infrequent positions.
+
+## Summary
+* Business school and other economic research web sites
+* Financial web sites and blogs focusing on the retail investors
+* Trader forums where you can exchange ideas with fellow traders
+
+When you try to choose, there’re factors that you need to consider.
+* How much time do you have for baby-sitting your trading programs?
+* How good a programmer are you?
+* How much capital do you have/
+* Is your goal to earn steady monthly income or to strive for a large, long-term capital gain?
+
+Even before backtesting, you can filter those strategies out with these criteria:
+* Does it outperform a benchmark?
+* Does it have a high enough Sharpe ratio?
+* Does it have a small enough drawdown and short enough drawdown duration?
+* Does the backtest suffer from survivorship bias?
+* Does the strategy loose stream in recent years compared to its earlier years?
+* Does the strategy have its own "niche” that protects it from intense competition from large institutional money managers?
+
 #reading/books
