@@ -122,4 +122,14 @@ Believe that the problem can be found and fixed. It’s all about your mindset. 
 * Don’t give up.
 * Invest in your environment, tools, and knowledge.
 
+## Enable the Efficient Reproduction of the Problem
+How the hell do we make reproduction efficient? Recording all user movements and getting a pattern of them doing this and that could help. But still, there should be a lot of infrastructure to help reproducing the problem. Let’s find out.
+ It’s all about reliably reproducing the problem. Making a `self-contained` test case will resolve everything. Also it’s a good technique to use as deleting code with binary search lol. There are times when you will need a replicable environment. Use Docker or VMs to do this. Install and reinstall until you catch the bug! Oh, and don’t forget version controlling the failing version. You should put in a commit hash like this: `git log -n 1 —format=‘const string version = “%h”;’`.
+
+### Things to Remember
+* Reproducible runs simplify your debugging process.
+* Create a short self-contained example that reproduces the problem.
+* Have mechanisms to create a replicable execution environment.
+* Use a revision control system to label and retrieve your software’s versions.
+ 
 #reading/books
