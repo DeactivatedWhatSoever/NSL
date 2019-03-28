@@ -128,7 +128,7 @@ These are the author’s first questions, so let’s jot them down, and make you
 * If all variables are immutable, how do I handle changes in my code?
 	* For instance, if I’m writing an order-entry system for a pizza store, what do I do when the customer wants to change their pizza crust or toppings in the middle of entering an order?
 * Why is recursion better? Is it really better? Why can’t I just use `var` fields inside my functions, as long as I don’t share those `var`s outside the function scope?
-* Is “Functional I/O” really better than “Traditional I/O”
+* Is “Functional I_O” really better than “Traditional I_O”
 * Are there certain applications where the FP approach is better or worse?
 * In what points does it vary with OOP? 
 	* Does FP need access modifiers?
@@ -292,7 +292,7 @@ It’s actually a really huge point. Things haven’t actually been considered w
 3. Networking 
 There were not such things as files or networking. Because of that, we need to find out how to solve those problems with FP.
 
-So the result comes to: pure functional programs can’t have states and are immutable. Which means they can’t have I/O. Also, there was a 62 year gap between the invention of lambda calculus and monads. Monads are actually the solver of I/O. I don’t know what monads are, but I hope to get a good understanding of it. I only got a hint of it as lazy evaluation.
+So the result comes to: pure functional programs can’t have states and are immutable. Which means they can’t have I_O. Also, there was a 62 year gap between the invention of lambda calculus and monads. Monads are actually the solver of I_O. I don’t know what monads are, but I hope to get a good understanding of it. I only got a hint of it as lazy evaluation.
 
 ### If you like history …
 [The Innovators: How a Group of Hackers, Geniuses, and Geeks Created the Digital Revolution: Walter Isaacson: 9781476708706: Amazon.com: Books](https://www.amazon.com/Innovators-Hackers-Geniuses-Created-Revolution/dp/1476708703/ref=as_li_ss_tl?s=books&ie=UTF8&qid=1471034437&sr=1-3&keywords=walter+isaacson&linkCode=sl1&tag=devdaily-20&linkId=6cf7a95f04552678b8e78436fa48aeb6)
@@ -420,7 +420,7 @@ Yep, case classes come in. Copy and just change the variables that you need to c
 Yep … If there is a case class, but has some properties which are objects … That’ll be a really hard run. Well luckily, these problems are solved and we’ll know soon!
 
 ### 5) Pure functions and I/O don’t really mix
-Doing any sort of I/O is going to be impure. So, all the other things will be written in pure functions, but with I/O, that’s just going to be one peal of the onion. An impure outer layer is going to do that for us. `The Scala cookbook` -> This book has a lot of implementations for this.
+Doing any sort of I_O is going to be impure. So, all the other things will be written in pure functions, but with I_O, that’s just going to be one peal of the onion. An impure outer layer is going to do that for us. `The Scala cookbook` -> This book has a lot of implementations for this.
 
 #### Pure and impure functions
 In Scala, we wrap those IO stuff with the IO[] class. This wrapper indicates this function is impure! Because, you don’t know what will be returned.
@@ -580,6 +580,63 @@ And yes, the conclusion must be that the `love` variable will be a mutable `var`
 Now we know what pure functions are, lets learn what the benefits are. 
 
 ### See also
+Look at the list in the book! 
+
+## Benefits of Pure Functions
+Just getting to know what’s best. Good things about pure functions.
+
+### Benefits of pure functions
+* They’re easier to reason about
+* They’re easier to combine
+* They’re easier to test
+* They’re easier to debug
+* They’re easier to parallelize
+
+Additional benefits:
+* They are idempotent
+* They offer referential transparency
+* They are memoizable
+* They can be lazy
+
+### Pure functions are easier to reason about
+Pure functions are easier to reason with because when you look at the function signature, that’s all what you expect. The function name will tell you what it’ll do with it’s parameters and return type. Also, remember there’s no outside world I/O stuff. That’s what makes it easy to reason with. You can see right through it!
+
+### Pure functions are easier to combine
+Dot-notation on all the functions work. But I wonder how you implement pipeline-accessible functions? We’ll learn this in “FP is Like Unix Pipelines”.
+
+### Pure functions are easier to test
+It’s pretty obvious. No dependency on the outside world makes it really easy to reason with.
+
+### Pure functions are easier to debug
+It’s mostly because of outside world I/O. Because we eliminate that, it’s way easier to reason with.
+
+### Pure functions are easier to parallelize
+Since every function that’s running won’t actually have a dependency with each other. You run it, then you just run it. Then parallelize it will! Relational databases have been performing mathematical operation optimizations for years. I wonder how they did it.
+
+### Pure functions are idempotent
+If an operation is idempotent, we can run it as many times as we want. It’s just like Terraform. Ansible isn’t idempotent. Because if you run it, it won’t give you the same results.
+
+### Pure functions offer referential transparency
+`val z = x + y` -> If x and y are immutable values, z will always be immutable. This is referential transparency. Everything that’s referenced, will have the ability to be replaced. So whatever x + y is, it’s z. 
+
+### Pure functions are memoizable
+Since functions give the same result all the time(if the parameter values are the same), expensive function call results can be cached. Can’t believe the compiler does this stuff! 
+
+### Pure functions can be lazy
+Haskell actually runs everything lazy! Scala has this lazy thing but the author doesn’t know the benefits of this at the moment. I think I’ll need to find this.
+
+### Summary
+* They’re easier to reason about
+* They’re easier to combine
+* They’re easier to test
+* They’re easier to debug
+* They’re easier to parallelize
+* They are idempotent
+* They offer referential transparency
+* They are memoizable
+* They an be lazy
+
+### See Also
 Look at the list in the book! 
 
 #reading/books
