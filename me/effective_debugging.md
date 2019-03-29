@@ -132,4 +132,14 @@ How the hell do we make reproduction efficient? Recording all user movements and
 * Have mechanisms to create a replicable execution environment.
 * Use a revision control system to label and retrieve your software’s versions.
  
+## Minimize the Turnaround Time from Your Changes to Their Result
+Trying to make your debugging cycle to take as less time as it can. Building and executing, less time! Or you can just use unit tests to make it go ASAP. 
+ The build must be fast, and the build must fail fast too. Also, when you make an automated testing environment, that environment must boot up fast, do stuff fast, and fail fast. That’s how you reduce your time. 
+ If you need to automate testing for GUI and web browsers, use selenium, AutoHotkey, Automator, and AutoKey for each platforms.
+
+### Things to Remember
+* A fast turnaround time increases your effectiveness.
+* Set up a fast automated build and deployment process.
+* Minimize the time it takes for your tests to fail.
+
 #reading/books
