@@ -142,4 +142,10 @@ Trying to make your debugging cycle to take as less time as it can. Building and
 * Set up a fast automated build and deployment process.
 * Minimize the time it takes for your tests to fail.
 
+## Automate Complex Testing Scenarios
+Automating complex testing scenarios with scripting languages. Actually put a language executor inside the C language and invoke those scripting language methods over there, which is pretty cool. All this item shows you is the progress of doing that. Complex -> Simplify with scripting languages. 
+
+### Things to Remember
+* Automate the execution of complex test cases through the use of a scripting language.
+
 #reading/books
