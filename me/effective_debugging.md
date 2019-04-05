@@ -148,4 +148,15 @@ Automating complex testing scenarios with scripting languages. Actually put a la
 ### Things to Remember
 * Automate the execution of complex test cases through the use of a scripting language.
 
+## Enable a Comprehensive Overview of Your Debugging Data
+Comprehend the data that you’re going to debug with. If you don’t know your data, obviously it won’t be easy to actually find the problem. Or even define the problem.
+ It’s critical to get all the information that you can get. The log files, the code, host information, anything that can help you find the culprit. It’s about understanding where the problem might be and gathering all the information you can get to find it. Also, viewing it at a whole is really important. It’s about the eye. If you can’t find it, try to make the screen bigger and fill in all the information at once. 
+ Maximize your screen so all the logs print in one line. If they collapse, it’s going to be hard to see what type of message is important or different or not. 
+ Printing also helps, I mean really literally printing the information on a white sheet and looking at it. I do agree that it might be an efficient method if you can’t really find anything in that data mine lol. 
+
+### Things to Remember
+* With a lot of data in view, you can concentrate better and spot patterns and correlations
+* Use the largest display area you can obtain
+* Display relatively static data on printed sheets
+
 #reading/books
