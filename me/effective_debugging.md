@@ -159,4 +159,13 @@ Comprehend the data that you’re going to debug with. If you don’t know your 
 * Use the largest display area you can obtain
 * Display relatively static data on printed sheets
 
+## Consider Updating Your Software
+Sometimes software updates can resolve your problem. But obviously, this is the most low probability that you’ll ever see. Your house is going to be messy instead of theirs. But when it comes, you should check the operating system, the compiler, the interpreter, or whatever and see whether that actually is the culprit. Make a sandbox and execute your program in other versions of software and see if there’s any differences. 
+ Remember, don’t suspect that your code is innocent. Always, think that you’ll be wrong, which is the highest probability. 
+
+### Things to Remember
+* Try your failing system on an updated environment
+* Don’t expect too much from this exercise
+* Consider the possibility of third-party bugs
+
 #reading/books
